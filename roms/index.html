@@ -24,7 +24,7 @@
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/site.css?v=d4ccdcb">
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -58,7 +58,7 @@
       <h2 class="visually-hidden" id="phones-title">Phones</h2>
       <ul class="phone-cards">
         <li class="phone-card is-current">
-          <h3 class="phone-card__name"><a href="lumia-950-xl/">Lumia 950 XL</a></h3>
+          <div class="app-head app-head--phone"><img src="../assets/img/phones/lumia-950-xl-small.webp" alt="" width="216" height="420"><h3 class="phone-card__name"><a href="lumia-950-xl/">Lumia 950 XL</a></h3></div>
           <p class="device__meta"><span>LineageOS 23.2, Android 16</span><span class="status is-works">Available</span></p>
           <p>The first Android 16 build for the 950 XL: calls, LTE, Wi-Fi, Bluetooth, NFC, both cameras, hardware video, USB-C video out and powered docks. VoLTE and Iris Unlock are experimental.</p>
           <p class="phone-card__date">Latest build: 11 November 2026</p>
@@ -68,7 +68,7 @@
           </div>
         </li>
         <li class="phone-card">
-          <h3 class="phone-card__name"><a href="lumia-1520/">Lumia 1520</a></h3>
+          <div class="app-head app-head--phone"><svg class="phone-glyph" aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="13" y="4" width="22" height="40"/><path d="M13 10h22M13 37h22"/></svg><h3 class="phone-card__name"><a href="lumia-1520/">Lumia 1520</a></h3></div>
           <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Test builds</span></p>
           <p>Boots through BootShim and lk1st into Android. Wi-Fi, mobile data, SMS, NFC and hardware video already work; the microphone in calls, the camera and GPS are next.</p>
           <div class="actions">
@@ -76,7 +76,7 @@
           </div>
         </li>
         <li class="phone-card">
-          <h3 class="phone-card__name"><a href="lumia-930/">Lumia 930</a></h3>
+          <div class="app-head app-head--phone"><img src="../assets/img/phones/lumia-930-small.webp" alt="" width="221" height="420"><h3 class="phone-card__name"><a href="lumia-930/">Lumia 930</a></h3></div>
           <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-testing">In preparation</span></p>
           <p>Starts from the 1520 port, on the same chip. Kernel, bootloader, a first ROM and the installer are built and tested offline, waiting for a test phone.</p>
           <div class="actions">
@@ -98,6 +98,7 @@
   </main>
 
   <footer class="footer">
+    <p>Phone photos from Wikimedia Commons, backgrounds removed: <a href="https://commons.wikimedia.org/wiki/File:Lumia_950_XL_-WMAT_Objektiv-_2018_by-RaBoe_001_038.jpg">Lumia 950 XL</a> by Ra Boe, <a href="https://creativecommons.org/licenses/by-sa/3.0/de/deed.en">CC BY-SA 3.0 DE</a>; <a href="https://commons.wikimedia.org/wiki/File:Microsoft_Nokia_Lumia_930.png">Lumia 930</a> by Lumia930uploader, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
     <p>These are unofficial builds, not affiliated with or endorsed by LineageOS, Microsoft or Nokia.</p>
     <p>Set in Fira Sans by Erik Spiekermann, Ralph du Carrois and the Carrois team, under the SIL Open Font License. No cookies: visits are counted anonymously with <a href="https://www.goatcounter.com">GoatCounter</a>.</p>
   </footer>

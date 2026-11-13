@@ -225,12 +225,14 @@ pre code {
 
 .sitenav {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.4rem;
 }
 
 .sitenav a {
   color: var(--muted);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .sitenav a:hover,
@@ -241,8 +243,15 @@ pre code {
 /* language switch: same page in the other language */
 .sitenav .lang {
   color: var(--accent);
-  padding-left: 1.5rem;
+  padding-left: 1.4rem;
   border-left: 1px solid var(--line);
+}
+
+@media (max-width: 30rem) {
+  .sitenav .lang {
+    padding-left: 0;
+    border-left: 0;
+  }
 }
 
 .prose {
@@ -523,6 +532,19 @@ pre code {
 
 .tile--wide .tile__glyph img {
   width: 26%;
+}
+
+/* real phone photos: sized by the tile's height, since they are tall */
+.tile__glyph--photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tile .tile__glyph--photo img {
+  width: auto;
+  max-width: none;
+  height: 78%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -837,6 +859,30 @@ pre code {
 
 .app-head--small img {
   width: 3rem;
+}
+
+.app-head--phone img,
+.app-head--phone .phone-glyph {
+  width: auto;
+  height: 4.5rem;
+}
+
+.app-head--phone .phone-glyph {
+  width: 2.4rem;
+  color: var(--muted);
+  flex: none;
+}
+
+.device-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem 2rem;
+  align-items: center;
+}
+
+.device-hero__photo {
+  width: auto;
+  height: clamp(7rem, 21vw, 15rem);
 }
 
 .shot {
