@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script>try{if(localStorage.getItem("theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lumia 1520: LineageOS 18.1 (Android 11) | Lorenzo Giannoccaro</title>
   <meta name="description" content="LineageOS 18.1 (Android 11) for the Nokia Lumia 1520 (bandit): what works, what is next, sources and credits.">
@@ -24,7 +25,8 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=d4ccdcb">
+  <link rel="stylesheet" href="../../assets/css/site.css?v=6e2c198">
+  <script src="../../assets/js/theme.js?v=6e2c198" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -39,6 +41,12 @@
       <a href="../../contact/">Contact</a>
       <a href="https://github.com/giannoccarol">GitHub</a>
       <a class="lang" href="../../it/roms/lumia-1520/" hreflang="it" lang="it">Italiano</a>
+      <button class="theme-toggle" type="button" hidden>
+        <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+        <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <span class="visually-hidden theme-label--light">Use the light theme</span>
+        <span class="visually-hidden theme-label--dark">Use the dark theme</span>
+      </button>
     </nav>
   </header>
 

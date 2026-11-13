@@ -23,7 +23,7 @@
   window.onTurnstileLoad = function () {
     widget = window.turnstile.render("#cf-turnstile", {
       sitekey: sitekey,
-      theme: "dark",
+      theme: document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark",
       language: lang,
       action: "contact",
     });
