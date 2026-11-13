@@ -1250,6 +1250,87 @@ kbd {
   font-size: var(--step--1);
 }
 
+/* ---------- contact form ---------- */
+
+.contact-form {
+  max-width: 36rem;
+}
+
+.field {
+  margin: 0 0 1.25rem;
+}
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: var(--wash);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.65rem 0.8rem;
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: #3d3d3d;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 10rem;
+}
+
+/* honeypot: off screen, out of the tab order, hidden from screen readers */
+.trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.turnstile {
+  min-height: 65px;
+}
+
+.contact-form .actions {
+  margin-top: 1rem;
+}
+
+button.button {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.form-status {
+  min-height: 1.6em;
+  margin: 1rem 0 0.5rem;
+}
+
+.form-status.is-error {
+  color: var(--broken);
+}
+
+.form-note {
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
 /* ---------- footer ---------- */
 
 .footer {
