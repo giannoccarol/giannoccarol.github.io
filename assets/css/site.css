@@ -571,6 +571,20 @@ pre code {
   opacity: 0.8;
 }
 
+@media (max-width: 30rem) {
+  .tile__bar {
+    gap: 0.55rem;
+    padding: 0 0.6rem;
+  }
+  .tile__bar svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .tile__bar span span {
+    display: none;
+  }
+}
+
 .tile > a {
   position: absolute;
   inset: 0;
@@ -624,17 +638,19 @@ pre code {
   width: 26%;
 }
 
-/* real phone photos: sized by the tile's height, since they are tall */
+/* real phone photos: sized by the tile's height, since they are tall, and kept above the label so the
+   label never sits on the coloured back of a phone */
 .tile__glyph--photo {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 0.8rem;
 }
 
 .tile .tile__glyph--photo img {
   width: auto;
   max-width: none;
-  height: 78%;
+  height: calc(100% - 0.8rem - 2.3rem);
 }
 
 @media (prefers-reduced-motion: no-preference) {
