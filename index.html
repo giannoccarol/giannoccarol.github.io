@@ -5,10 +5,10 @@
   <script>try{if(localStorage.getItem("theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lorenzo Giannoccaro</title>
-  <meta name="description" content="Lorenzo Giannoccaro (giannoccarol): things I build. Android ROMs for Lumia phones that shipped with Windows, and desktop apps: GitTree and Lieve.">
+  <meta name="description" content="Lorenzo Giannoccaro (giannoccarol), web developer. The apps I write for my own needs, published as open source: Android ROMs for Lumia phones, GitTree and Lieve.">
   <meta name="theme-color" content="#000000">
   <meta property="og:title" content="Lorenzo Giannoccaro">
-  <meta property="og:description" content="Things I build, starting with Android ROMs for Lumia phones.">
+  <meta property="og:description" content="Web developer. The apps I write for my own needs, published as open source.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lorenzo Giannoccaro">
   <meta property="og:image" content="https://giannoccarol.github.io/assets/img/og/og-home.png">
@@ -25,8 +25,9 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=ec2d71a">
-  <script src="assets/js/theme.js?v=ec2d71a" defer></script>
+  <link rel="stylesheet" href="assets/css/site.css?v=5460505">
+  <script src="assets/js/theme.js?v=5460505" defer></script>
+  <script src="assets/js/rain.js?v=5460505" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -51,8 +52,19 @@
   </header>
 
   <main id="main" class="page">
-    <h1 class="hero-name">Lorenzo Giannoccaro</h1>
-    <p class="lede">Developer. This is where I collect the things I build, starting with Android for phones that never had it.</p>
+    <section class="hero" aria-labelledby="hero-name">
+      <div class="rain" id="rain" aria-hidden="true">
+        <div class="rain__scene">
+          <canvas data-depth="far"></canvas>
+          <canvas data-depth="mid"></canvas>
+          <canvas data-depth="near"></canvas>
+        </div>
+      </div>
+      <div class="hero__text">
+        <h1 class="hero-name" id="hero-name">Lorenzo<br>Giannoccaro</h1>
+        <p class="lede">Web developer. I write the apps I need and publish them as open source, so they can be useful to others too.</p>
+      </div>
+    </section>
 
     <section class="home-section" id="work" aria-labelledby="work-title">
       <h2 class="section-title" id="work-title">Work</h2>
@@ -182,7 +194,7 @@
 
     <section class="home-section prose" id="about" aria-labelledby="about-title">
       <h2 class="section-title" id="about-title">About</h2>
-      <p>I’m Lorenzo Giannoccaro, giannoccarol on GitHub. I write software from the kernel up: drivers and system code, Android and desktop apps, and the tools I need along the way. Most of it is open source.</p>
+      <p>I’m Lorenzo Giannoccaro, giannoccarol on GitHub. I mostly build web apps. In my spare time I write the tools I need, from a Git client to a code editor, and bring Android to old Lumia phones. Almost everything I make is open source.</p>
       <ul class="contact">
         <li><a href="https://github.com/giannoccarol">GitHub</a></li>
       </ul>
