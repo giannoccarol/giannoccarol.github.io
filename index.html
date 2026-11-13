@@ -25,9 +25,10 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=5460505">
-  <script src="assets/js/theme.js?v=5460505" defer></script>
-  <script src="assets/js/rain.js?v=5460505" defer></script>
+  <link rel="stylesheet" href="assets/css/site.css?v=3fe866a">
+  <script src="assets/js/theme.js?v=3fe866a" defer></script>
+  <script src="assets/js/rain.js?v=3fe866a" defer></script>
+  <script src="assets/js/motion.js?v=3fe866a" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -113,15 +114,21 @@
               <span class="tile__label">Lumia 930<span class="visually-hidden">: Android 11, in preparation</span></span>
             </a>
           </li>
-          <li class="tile c-dark">
+          <li class="tile c-dark live" style="--live-delay: 4s">
             <a href="https://github.com/giannoccarol/cityman-camera" data-goatcounter-click="arco">
-              <span class="tile__glyph" aria-hidden="true"><svg><use href="assets/img/glyphs.svg#camera"/></svg></span>
+              <span class="live__faces" aria-hidden="true">
+                <span class="live__face"><span class="tile__glyph"><svg><use href="assets/img/glyphs.svg#camera"/></svg></span></span>
+                <span class="live__face live__face--back"><span class="live__big">RAW</span><span class="live__small">Multi-frame, on the GPU</span></span>
+              </span>
               <span class="tile__label">Arco camera</span>
             </a>
           </li>
-          <li class="tile c-dark">
+          <li class="tile c-dark live" style="--live-delay: 7s">
             <a href="https://github.com/giannoccarol/rom-bench">
-              <span class="tile__glyph" aria-hidden="true"><svg><use href="assets/img/glyphs.svg#gauge"/></svg></span>
+              <span class="live__faces" aria-hidden="true">
+                <span class="live__face"><span class="tile__glyph"><svg><use href="assets/img/glyphs.svg#gauge"/></svg></span></span>
+                <span class="live__face live__face--back"><span class="live__big">17</span><span class="live__small">Areas tested, Android 11 to 17</span></span>
+              </span>
               <span class="tile__label">ROM Bench</span>
             </a>
           </li>
