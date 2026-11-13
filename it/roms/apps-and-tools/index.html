@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>App e strumenti per le ROM Lumia | Lorenzo Giannoccaro</title>
+  <meta name="description" content="App e strumenti scritti per i port Android dei Lumia: Arco, ROM Bench, cityman-iris, installer e impostazioni del dispositivo.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="App e strumenti per le ROM Lumia">
+  <meta property="og:description" content="App e strumenti scritti per i port Android dei Lumia: Arco, ROM Bench, cityman-iris, installer e impostazioni del dispositivo.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="../../../roms/apps-and-tools/">
+  <link rel="alternate" hreflang="it" href="./">
+  <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../../assets/css/site.css">
+  <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Vai al contenuto</a>
+
+  <header class="masthead">
+    <a class="brand" href="../../">Lorenzo Giannoccaro</a>
+    <nav class="sitenav" aria-label="Sito">
+      <a href="../../#work" aria-current="page">Progetti</a>
+      <a href="../../#about">Chi sono</a>
+      <a href="https://github.com/giannoccarol">GitHub</a>
+      <a class="lang" href="../../../roms/apps-and-tools/" hreflang="en" lang="en">English</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <div class="rom-head">
+      <a class="rom-head__title" href="../">ROM Android</a>
+      <nav class="rom-nav" aria-label="ROM Android">
+        <a href="../">Panoramica</a>
+        <a href="../lumia-950-xl/">Lumia 950 XL</a>
+        <a href="../lumia-1520/">Lumia 1520</a>
+        <a href="../lumia-930/">Lumia 930</a>
+        <a href="../apps-and-tools/" aria-current="page">App e strumenti</a>
+      </nav>
+    </div>
+
+    <section class="device" aria-labelledby="tools-title">
+      <h1 class="device__name" id="tools-title">App e strumenti</h1>
+      <p class="lede">Scritti per questi port, tutti open source.</p>
+      <div class="block">
+      <ul class="tools">
+        <li>
+          <h2><a href="https://github.com/giannoccarol/cityman-camera" data-goatcounter-click="arco">Arco</a></h2>
+          <p>App fotocamera per il Lumia 950 XL: quadranti ad arco per bilanciamento del bianco, messa a fuoco, ISO, tempo di scatto ed esposizione, JPEG e DNG, video, elaborazione RAW multi-frame facoltativa sulla GPU.</p>
+          <p class="meta">Kotlin, Camera2, Jetpack Compose</p>
+        </li>
+        <li>
+          <h2><a href="https://github.com/giannoccarol/rom-bench">ROM Bench</a></h2>
+          <p>Banco di prova hardware per lo sviluppo di ROM: controlli automatici e guidati, con report pronti per XDA, bug tracker e agenti AI. Da Android 11 a 17.</p>
+          <p class="meta">Kotlin, Jetpack Compose</p>
+        </li>
+        <li>
+          <h2><a href="https://github.com/giannoccarol/cityman-iris">cityman-iris</a></h2>
+          <p>Sblocco con l’iride per il Lumia 950 XL su Android 16: motore di riconoscimento, HAL AIDL del volto e uno strumento di cattura per la fotocamera IR.</p>
+          <p class="meta">C++</p>
+        </li>
+        <li>
+          <h2><a href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Installer del Lumia 950 XL</a></h2>
+          <p>Installa la ROM Android 16 da Windows 10 Mobile, sopra un altro Android o come aggiornamento, controllando ogni file e chiedendo conferma prima di ogni passo distruttivo.</p>
+          <p class="meta">PowerShell, Windows</p>
+        </li>
+        <li>
+          <h2><a href="https://github.com/lumia-msm8974/bandit-installer" data-goatcounter-click="installer-1520-930">Installer per Lumia 1520 e 930</a></h2>
+          <p>Fa il backup del telefono, estrae il firmware originale, prepara la catena di avvio BootShim e lk1st e le partizioni Android, poi installa la ROM.</p>
+          <p class="meta">Python, Windows e Linux</p>
+        </li>
+        <li>
+          <h2><a href="https://github.com/giannoccarol/android_packages_apps_CitymanParts">CitymanParts</a> e <a href="https://github.com/lumia-msm8974/android_packages_apps_LumiaParts">LumiaParts</a></h2>
+          <p>Impostazioni del dispositivo: profili prestazioni sul 950 XL; profili prestazioni, doppio tocco per riattivare e tasti capacitivi su 1520 e 930.</p>
+          <p class="meta">Java</p>
+        </li>
+      </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Build non ufficiali, non affiliate né approvate da LineageOS, Microsoft o Nokia.</p>
+    <p>Testi in Fira Sans di Erik Spiekermann, Ralph du Carrois e del team Carrois, con licenza SIL Open Font License. Niente cookie: le visite sono contate in forma anonima con <a href="https://www.goatcounter.com">GoatCounter</a>.</p>
+  </footer>
+</body>
+</html>

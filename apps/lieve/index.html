@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lieve: native code editor | Lorenzo Giannoccaro</title>
+  <meta name="description" content="Lieve, a lightweight native code editor for Linux and Windows built on Qt 6 and KDE Frameworks, with the look and shortcuts of VS Code.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Lieve: native code editor">
+  <meta property="og:description" content="Lieve, a lightweight native code editor for Linux and Windows built on Qt 6 and KDE Frameworks, with the look and shortcuts of VS Code.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="alternate" hreflang="it" href="../../it/apps/lieve/">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <a class="brand" href="../../">Lorenzo Giannoccaro</a>
+    <nav class="sitenav" aria-label="Site">
+      <a href="../../#work" aria-current="page">Work</a>
+      <a href="../../#about">About</a>
+      <a href="https://github.com/giannoccarol">GitHub</a>
+      <a class="lang" href="../../it/apps/lieve/" hreflang="it" lang="it">Italiano</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <div class="rom-head">
+      <a class="rom-head__title" href="../">Desktop apps</a>
+      <nav class="rom-nav" aria-label="Desktop apps">
+        <a href="../">Overview</a>
+        <a href="../gittree/">GitTree</a>
+        <a href="../lieve/" aria-current="page">Lieve</a>
+      </nav>
+    </div>
+
+    <article class="device" aria-labelledby="lieve-title">
+      <header>
+        <div class="app-head">
+          <img src="../../assets/img/apps/lieve-icon.svg" alt="" width="96" height="96">
+          <h1 class="device__name" id="lieve-title">Lieve</h1>
+        </div>
+        <p class="device__meta"><span>Native code editor for Linux and Windows</span><span class="status is-works">Version 0.1.6</span></p>
+      </header>
+
+      <div class="actions">
+        <a class="button button--primary" href="#lieve-install">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
+          Install
+        </a>
+        <a class="button" href="https://github.com/giannoccarol/lieve/releases/tag/v0.1.6" data-goatcounter-click="download-lieve-windows">Download for Windows</a>
+        <a class="button" href="https://github.com/giannoccarol/lieve">Source on GitHub</a>
+      </div>
+
+      <dl class="facts">
+        <div><dt>Latest release</dt><dd>0.1.6, 10 November 2026</dd></div>
+        <div><dt>Platforms</dt><dd>Linux (any desktop), Windows 10 and 11</dd></div>
+        <div><dt>Built with</dt><dd>C++, Qt 6, KDE Frameworks</dd></div>
+        <div><dt>Interface</dt><dd>English and Italian</dd></div>
+        <div><dt>Licence</dt><dd>GPL-3.0</dd></div>
+      </dl>
+
+      <div class="intro prose">
+        <p>A lightweight, native code editor, without Electron. It is at home on KDE Plasma and at ease on GNOME and the other desktops, with the look, the file icons and the main keyboard shortcuts of VS Code.</p>
+        <p>It does a few things and does them well. <em lang="it">Lieve</em> is Italian for light.</p>
+      </div>
+
+      <figure class="shot">
+        <img src="../../assets/img/apps/lieve-overview.webp" width="1600" height="1025" loading="lazy" alt="Lieve with its own source code open: Explorer on the left, a C++ file with change marks next to the line numbers and inline blame">
+        <figcaption>Explorer, editor with change marks next to the line numbers, and inline blame.</figcaption>
+      </figure>
+
+      <section class="block" aria-labelledby="lieve-weight">
+        <h2 id="lieve-weight">How light it is</h2>
+        <p class="prose">Measured with the same medium-sized Angular project open in both editors:</p>
+        <div class="table-wrap">
+          <table class="modes">
+            <caption class="visually-hidden">Lieve and VS Code compared</caption>
+            <thead><tr><th scope="col"></th><th scope="col">VS Code, with its extensions</th><th scope="col">Lieve</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Memory (PSS)</th><td>about 1,270 MB</td><td>about 110 MB</td></tr>
+              <tr><th scope="row">Processes and threads</th><td>24 and 434</td><td>2 and 14</td></tr>
+              <tr><th scope="row">Disk space</th><td>about 2.7 GB</td><td>about 1.4 MB, plus the KDE libraries that Plasma already ships</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="prose">It starts in about a quarter of a second, and each extra open project costs a few MB. A language server, when you install one, costs what it costs in VS Code too.</p>
+      </section>
+
+      <section class="block" aria-labelledby="lieve-features">
+        <h2 id="lieve-features">Features</h2>
+        <div class="board">
+          <div>
+            <h3>Editing</h3>
+            <ul>
+              <li>The editor of Kate (KTextEditor): highlighting for hundreds of languages, multiple cursors, <code>.editorconfig</code></li>
+              <li>Editors side by side, Markdown preview</li>
+              <li>Unsaved files kept across restarts and crashes, as in VS Code</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Finding your way</h3>
+            <ul>
+              <li>Explorer, and search and replace in files with ripgrep, which honours <code>.gitignore</code></li>
+              <li>Quick Open (<kbd>Ctrl+P</kbd>) and the Command Palette (<kbd>Ctrl+Shift+P</kbd>)</li>
+              <li>Several projects open at once, one window each, with a project picker on <kbd>Ctrl+R</kbd></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Git</h3>
+            <ul>
+              <li>Git panel with change marks next to the line numbers and inline blame</li>
+              <li>Branches, stashes, history and merge conflicts</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Tools</h3>
+            <ul>
+              <li>Terminal in the panel: Konsole when installed, otherwise Lieve’s own</li>
+              <li>Prettier and ESLint on save, a Problems panel and npm scripts</li>
+              <li>Go to definition, errors and completion from a language server, when one is installed</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="lieve-install" aria-labelledby="lieve-install-title">
+        <h2 id="lieve-install-title">Install</h2>
+        <h3>Linux</h3>
+        <p class="prose">Lieve needs KDE Frameworks 6 (the libraries, not Plasma) and ripgrep. On Arch and CachyOS with Plasma almost everything is already installed, and Debian 13, Ubuntu 25.04 and Fedora have all of it. This script downloads the latest release, builds it and installs it in <code>~/.local</code>, without sudo, and tells you which packages are missing:</p>
+        <pre><code>curl -fsSL https://raw.githubusercontent.com/giannoccarol/lieve/main/install.sh | bash</code></pre>
+        <p class="prose">Or build it yourself:</p>
+        <pre><code>git clone https://github.com/giannoccarol/lieve.git
+cd lieve
+make -j$(nproc)
+make install</code></pre>
+        <p class="prose">PKGBUILDs for Arch are in <a href="https://github.com/giannoccarol/lieve/tree/main/packaging/aur"><code>packaging/aur</code></a>.</p>
+        <h3>Windows</h3>
+        <p class="prose">Download <code>Lieve-v0.1.6-windows-x64.zip</code> from the <a href="https://github.com/giannoccarol/lieve/releases/tag/v0.1.6" data-goatcounter-click="download-lieve-windows">release</a>, unzip it anywhere and run <code>lieve.exe</code> (Windows 10 or 11, 64-bit, ripgrep included). Install Git for Windows for the Git features, and Node.js for Prettier, ESLint and the language servers.</p>
+        <h3>Updates</h3>
+        <p class="prose">Lieve checks GitHub for new versions by itself and offers the update in the status bar: one click to install it, one to restart.</p>
+      </section>
+
+      <section class="block" aria-labelledby="lieve-credits">
+        <h2 id="lieve-credits">Credits</h2>
+        <p class="prose">Lieve puts together components written by others: the credit for the heavy lifting is theirs. The full list, with licences, is in the <a href="https://github.com/giannoccarol/lieve#credits">README</a>.</p>
+        <ul class="credits">
+          <li><strong>KDE Community</strong>: KTextEditor and KSyntaxHighlighting (editor, highlighting and the VSCodium Dark theme), Konsole, KParts and the other KDE Frameworks.</li>
+          <li><strong>The Qt Company</strong> and contributors: Qt 6, and the terminal view of Qt Creator used for Lieve’s own terminal.</li>
+          <li><strong>Paul Evans</strong>: libvterm; <strong>Vitaly Petrov</strong>: Pty-Qt; <strong>Microsoft</strong>: the ConPTY code of Windows Terminal.</li>
+          <li><strong>Andrew Gallant</strong> (BurntSushi): ripgrep; <strong>Martin Mitáš</strong>: MD4C, behind the Markdown preview.</li>
+          <li><strong>vscode-icons team</strong> and <strong>Philipp Kief</strong> (Material Icon Theme): the file icons, read from the extensions installed in VS Code and not bundled.</li>
+          <li><strong>MSYS2</strong>: the packages behind the Windows build; <strong>Git</strong>, <strong>Prettier</strong>, <strong>ESLint</strong>, <strong>Node.js</strong> and the language servers Lieve uses when they are installed.</li>
+          <li><strong>Microsoft</strong>: Visual Studio Code, the model for the layout, the shortcuts and many features; <strong>Meld</strong>: the bands between the two sides of a diff.</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>Set in Fira Sans by Erik Spiekermann, Ralph du Carrois and the Carrois team, under the SIL Open Font License. No cookies: visits are counted anonymously with <a href="https://www.goatcounter.com">GoatCounter</a>.</p>
+  </footer>
+</body>
+</html>

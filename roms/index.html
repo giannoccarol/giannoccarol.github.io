@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Android ROMs for Lumia phones | Lorenzo Giannoccaro</title>
+  <meta name="description" content="LineageOS for Lumia phones that shipped with Windows: Lumia 950 XL on Android 16, Lumia 1520 and 930 in progress.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Android ROMs for Lumia phones">
+  <meta property="og:description" content="LineageOS for Lumia phones that shipped with Windows: Lumia 950 XL on Android 16, Lumia 1520 and 930 in progress.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="alternate" hreflang="it" href="../it/roms/">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <a class="brand" href="../">Lorenzo Giannoccaro</a>
+    <nav class="sitenav" aria-label="Site">
+      <a href="../#work" aria-current="page">Work</a>
+      <a href="../#about">About</a>
+      <a href="https://github.com/giannoccarol">GitHub</a>
+      <a class="lang" href="../it/roms/" hreflang="it" lang="it">Italiano</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <h1 class="page-title">Android ROMs</h1>
+    <p class="lede">LineageOS for Microsoft and Nokia Lumia phones, which shipped with Windows and never had an Android vendor of their own.</p>
+
+    <nav class="rom-nav" aria-label="Android ROMs">
+      <a href="./" aria-current="page">Overview</a>
+      <a href="lumia-950-xl/">Lumia 950 XL</a>
+      <a href="lumia-1520/">Lumia 1520</a>
+      <a href="lumia-930/">Lumia 930</a>
+      <a href="apps-and-tools/">Apps and tools</a>
+    </nav>
+
+    <section class="block" aria-labelledby="phones-title">
+      <h2 class="visually-hidden" id="phones-title">Phones</h2>
+      <ul class="phone-cards">
+        <li class="phone-card is-current">
+          <h3 class="phone-card__name"><a href="lumia-950-xl/">Lumia 950 XL</a></h3>
+          <p class="device__meta"><span>LineageOS 23.2, Android 16</span><span class="status is-works">Available</span></p>
+          <p>The first Android 16 build for the 950 XL: calls, LTE, Wi-Fi, Bluetooth, NFC, both cameras, hardware video, USB-C video out and powered docks. VoLTE and Iris Unlock are experimental.</p>
+          <p class="phone-card__date">Latest build: 11 November 2026</p>
+          <div class="actions">
+            <a class="button button--primary" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261111-cityman" data-goatcounter-click="download-rom-950xl"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg> Download</a>
+            <a class="button" href="lumia-950-xl/">Status and install guide</a>
+          </div>
+        </li>
+        <li class="phone-card">
+          <h3 class="phone-card__name"><a href="lumia-1520/">Lumia 1520</a></h3>
+          <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Test builds</span></p>
+          <p>Boots through BootShim and lk1st into Android. Wi-Fi, mobile data, SMS, NFC and hardware video already work; the microphone in calls, the camera and GPS are next.</p>
+          <div class="actions">
+            <a class="button" href="lumia-1520/">What works</a>
+          </div>
+        </li>
+        <li class="phone-card">
+          <h3 class="phone-card__name"><a href="lumia-930/">Lumia 930</a></h3>
+          <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-testing">In preparation</span></p>
+          <p>Starts from the 1520 port, on the same chip. Kernel, bootloader, a first ROM and the installer are built and tested offline, waiting for a test phone.</p>
+          <div class="actions">
+            <a class="button" href="lumia-930/">What is ready</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <aside class="telegram" aria-label="Telegram channel">
+      <p><strong>Follow the 1520 and 930 ports on Telegram</strong>Test builds, progress and requests for testers come out there first.</p>
+      <a class="button" href="https://t.me/Android_Port_Nokia_1520_930" data-goatcounter-click="telegram-1520-930">Join the channel</a>
+    </aside>
+
+    <section class="block" aria-labelledby="overview-tools">
+      <h2 id="overview-tools">Apps and tools</h2>
+      <p class="prose">Arco, a camera app for the 950 XL; ROM Bench, to test a new build on the phone; Iris Unlock; the installers for each phone; and the device settings apps. <a href="apps-and-tools/">All apps and tools</a></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>These are unofficial builds, not affiliated with or endorsed by LineageOS, Microsoft or Nokia.</p>
+    <p>Set in Fira Sans by Erik Spiekermann, Ralph du Carrois and the Carrois team, under the SIL Open Font License. No cookies: visits are counted anonymously with <a href="https://www.goatcounter.com">GoatCounter</a>.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumia 1520: LineageOS 18.1 (Android 11) | Lorenzo Giannoccaro</title>
+  <meta name="description" content="LineageOS 18.1 (Android 11) for the Nokia Lumia 1520 (bandit): what works, what is next, sources and credits.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Lumia 1520: LineageOS 18.1 (Android 11)">
+  <meta property="og:description" content="LineageOS 18.1 (Android 11) for the Nokia Lumia 1520 (bandit): what works, what is next, sources and credits.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="alternate" hreflang="it" href="../../it/roms/lumia-1520/">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <a class="brand" href="../../">Lorenzo Giannoccaro</a>
+    <nav class="sitenav" aria-label="Site">
+      <a href="../../#work" aria-current="page">Work</a>
+      <a href="../../#about">About</a>
+      <a href="https://github.com/giannoccarol">GitHub</a>
+      <a class="lang" href="../../it/roms/lumia-1520/" hreflang="it" lang="it">Italiano</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <div class="rom-head">
+      <a class="rom-head__title" href="../">Android ROMs</a>
+      <nav class="rom-nav" aria-label="Android ROMs">
+        <a href="../">Overview</a>
+        <a href="../lumia-950-xl/">Lumia 950 XL</a>
+        <a href="../lumia-1520/" aria-current="page">Lumia 1520</a>
+        <a href="../lumia-930/">Lumia 930</a>
+        <a href="../apps-and-tools/">Apps and tools</a>
+      </nav>
+    </div>
+
+    <article class="device" id="lumia-1520" aria-labelledby="bandit-title">
+      <header>
+        <h1 class="device__name" id="bandit-title">Lumia 1520</h1>
+        <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Test builds</span></p>
+      </header>
+
+      <div class="prose">
+        <p>The phone launched with Windows Phone 8 and never had an Android vendor. It boots through UEFI, BootShim and lk1st into the LineageOS msm8974 3.4 kernel, adapted to the Windows Phone TrustZone. The modem firmware comes from the stock image, where it is encrypted: the phone’s own TrustZone decrypts it at boot.</p>
+      </div>
+
+      <aside class="telegram" aria-label="Telegram channel">
+        <p><strong>Follow the 1520 and 930 ports on Telegram</strong>Test builds, progress and requests for testers come out there first.</p>
+        <a class="button" href="https://t.me/Android_Port_Nokia_1520_930" data-goatcounter-click="telegram-1520-930">Join the channel</a>
+      </aside>
+
+      <div class="columns">
+        <div>
+          <h2>Already working</h2>
+          <ul class="mark is-works">
+            <li>All four CPU cores, 1080p display with GPU acceleration</li>
+            <li>Touch and capacitive keys</li>
+            <li>Wi-Fi, Bluetooth, NFC</li>
+            <li>SIM, LTE data, SMS and outgoing calls</li>
+            <li>Loudspeaker and earpiece</li>
+            <li>Hardware video decoding</li>
+            <li>MicroSD, sensors, charging</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Working on</h2>
+          <ul class="mark is-broken">
+            <li>Microphone in calls: the other side can’t hear you yet</li>
+            <li>Camera</li>
+            <li>GPS fix</li>
+            <li>Deep sleep and battery life</li>
+            <li>Smoother app transitions</li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="inline-links">
+        <li><a href="https://github.com/lumia-msm8974">Sources on GitHub</a></li>
+        <li><a href="https://github.com/lumia-msm8974/bandit-installer" data-goatcounter-click="installer-1520-930">Installer for Windows and Linux</a></li>
+      </ul>
+
+      <section class="block" aria-labelledby="bandit-credits">
+        <h2 id="bandit-credits">Credits</h2>
+        <ul class="credits">
+          <li><strong>KorelisLabs</strong>: lumia-1520-mainline (boot chain, device tree, TrustZone quirks, hardware addresses, APDS-9930).</li>
+          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux (SMP through the UEFI mailbox, touch, graphics).</li>
+          <li><strong>imbushuo</strong>: BootShim.</li>
+          <li><strong>msm8916-mainline</strong>: lk2nd (lk1st).</li>
+          <li><strong>René Lergner</strong> (HeathCliff): WPInternals; <strong>AkariRiku</strong> and <strong>joaozittoo</strong>: the RM-1085 donor files.</li>
+          <li><strong>WOA-Project</strong> and the <strong>Legacy Portable Computing Wiki</strong>: unlock guides.</li>
+          <li><strong>Android4Lumia950</strong> (djokcho, EpicLPer, j0sh1x, sonic011gamer and the community): the Lumia Android installer used as the model for the boot chain and partition layout, and the 950 XL work reused here (modem bring-up, UIM bootstrap).</li>
+          <li><strong>msm8974-mainline</strong> and <strong>postmarketOS</strong>.</li>
+          <li><strong>LineageOS</strong> and <strong>TheMuppets</strong>: the msm8974 kernel, the OnePlus One (bacon) and msm8974-common trees and blobs, the legacy NXP NFC stack.</li>
+          <li><strong>NXP</strong> (Sylvain Fonteneau): the Android PN544 kernel driver.</li>
+          <li><strong>TeamWin</strong>: TWRP.</li>
+          <li>The mainline Linux authors of the tsl2772, ak8974 (HSCDTD008A) and TAS2552 drivers, used as references; <strong>STMicroelectronics</strong>: the lis3dh_acc driver used as a model.</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>These are unofficial builds, not affiliated with or endorsed by LineageOS, Microsoft or Nokia.</p>
+    <p>Set in Fira Sans by Erik Spiekermann, Ralph du Carrois and the Carrois team, under the SIL Open Font License. No cookies: visits are counted anonymously with <a href="https://www.goatcounter.com">GoatCounter</a>.</p>
+  </footer>
+</body>
+</html>

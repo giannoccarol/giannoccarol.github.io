@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GitTree: Git desktop client | Lorenzo Giannoccaro</title>
+  <meta name="description" content="GitTree, a fast open-source Git desktop client for Windows, macOS and Linux: visual history, explicit workflows, local-first, no account.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="GitTree: Git desktop client">
+  <meta property="og:description" content="GitTree, a fast open-source Git desktop client for Windows, macOS and Linux: visual history, explicit workflows, local-first, no account.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="alternate" hreflang="it" href="../../it/apps/gittree/">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <a class="brand" href="../../">Lorenzo Giannoccaro</a>
+    <nav class="sitenav" aria-label="Site">
+      <a href="../../#work" aria-current="page">Work</a>
+      <a href="../../#about">About</a>
+      <a href="https://github.com/giannoccarol">GitHub</a>
+      <a class="lang" href="../../it/apps/gittree/" hreflang="it" lang="it">Italiano</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <div class="rom-head">
+      <a class="rom-head__title" href="../">Desktop apps</a>
+      <nav class="rom-nav" aria-label="Desktop apps">
+        <a href="../">Overview</a>
+        <a href="../gittree/" aria-current="page">GitTree</a>
+        <a href="../lieve/">Lieve</a>
+      </nav>
+    </div>
+
+    <article class="device" aria-labelledby="gittree-title">
+      <header>
+        <div class="app-head">
+          <img src="../../assets/img/apps/gittree-icon.webp" alt="" width="96" height="96">
+          <h1 class="device__name" id="gittree-title">GitTree</h1>
+        </div>
+        <p class="device__meta"><span>Git desktop client for Windows, macOS and Linux</span><span class="status is-works">Version 1.1.0</span></p>
+      </header>
+
+      <div class="actions">
+        <a class="button button--primary" href="https://github.com/giannoccarol/gittree/releases/tag/v1.1.0" data-goatcounter-click="download-gittree">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
+          Download 1.1.0
+        </a>
+        <a class="button" href="https://github.com/giannoccarol/gittree">Source on GitHub</a>
+        <a class="button" href="https://github.com/giannoccarol/gittree/blob/master/docs/USER_GUIDE.md">User guide</a>
+      </div>
+
+      <dl class="facts">
+        <div><dt>Latest release</dt><dd>1.1.0, 30 October 2026</dd></div>
+        <div><dt>Platforms</dt><dd>Windows, macOS, Linux</dd></div>
+        <div><dt>Built with</dt><dd>Electron, TypeScript</dd></div>
+        <div><dt>Interface</dt><dd>English and Italian, light and dark themes</dd></div>
+        <div><dt>Licence</dt><dd>MIT</dd></div>
+      </dl>
+
+      <div class="intro prose">
+        <p>See your repository clearly. GitTree is a fast, open-source Git desktop client for visual history, explicit workflows and local-first repository management.</p>
+        <p>It works directly on the local repository and runs real Git operations, so it stays compatible with the workflows and tools you already use. You don’t need an account, there is no telemetry and nothing is uploaded anywhere.</p>
+      </div>
+
+      <figure class="shot">
+        <img src="../../assets/img/apps/gittree-history.webp" width="1440" height="900" loading="lazy" alt="GitTree in the dark theme: branches on the left, the commit graph of a test repository in the middle, a diff on the right">
+        <figcaption>Commit history in the dark theme, on a test repository.</figcaption>
+      </figure>
+
+      <section class="block" aria-labelledby="gittree-features">
+        <h2 id="gittree-features">Features</h2>
+        <div class="board">
+          <div>
+            <h3>Repositories and branches</h3>
+            <ul>
+              <li>Several repositories in tabs, with recursive folder import, worktree-aware discovery and <code>gittree://</code> links</li>
+              <li>Branch navigator with local and remote folders, instant search and ahead/behind counts</li>
+              <li>Create, rename, delete, track and check out branches, also into a linked worktree; recover any commit from the reflog</li>
+            </ul>
+          </div>
+          <div>
+            <h3>History</h3>
+            <ul>
+              <li>Multi-lane commit graph with real parents and octopus merges</li>
+              <li>Virtualised, paged history that stays fast on large repositories</li>
+              <li>Diffs with word-level highlighting</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Changes</h3>
+            <ul>
+              <li>Stage and unstage by file or hunk, discard, commit, amend, sign-off, GPG and SSH signing, hooks</li>
+              <li>Merge, rebase and cherry-pick with previews, and a conflict editor with incoming, current and result panes</li>
+              <li>Stashes, tags, remotes and submodules from the sidebar and the settings</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Hosting and comfort</h3>
+            <ul>
+              <li>Pull request review for GitHub and GitLab (sign-in with a device code) and Azure DevOps (personal access token), with inline comments and encrypted drafts</li>
+              <li>Compare and pull request links for GitHub, GitLab, Bitbucket Cloud and Azure DevOps</li>
+              <li>Light and dark themes in five tones each, and keyboard shortcuts for fetch, pull, push and new branch</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="gittree-privacy">
+        <h2 id="gittree-privacy">Privacy and security</h2>
+        <ul class="prose">
+          <li>No GitTree account and no built-in telemetry</li>
+          <li>Nothing uploaded automatically</li>
+          <li>Sign-in tokens stay in the main process, encrypted with the system’s secure storage</li>
+          <li>Git operations are validated, run one at a time per repository, and changes are guarded by a snapshot</li>
+        </ul>
+      </section>
+
+      <section class="block" aria-labelledby="gittree-install">
+        <h2 id="gittree-install">Install</h2>
+        <p class="prose">Download the installer for your system from the <a href="https://github.com/giannoccarol/gittree/releases/tag/v1.1.0" data-goatcounter-click="download-gittree">latest release</a>. Until production certificates are in place, the system may warn that the build is unsigned.</p>
+        <div class="table-wrap">
+          <table class="modes">
+            <caption class="visually-hidden">Downloads by platform</caption>
+            <thead><tr><th scope="col">Platform</th><th scope="col">Download</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Windows</th><td>Installer (<code>.exe</code>)</td></tr>
+              <tr><th scope="row">macOS</th><td>Disk image (<code>.dmg</code>) for Apple silicon and Intel</td></tr>
+              <tr><th scope="row">Linux</th><td>AppImage, Debian package or pacman package</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="prose">On Arch Linux and its derivatives:</p>
+        <pre><code>sudo pacman -U GitTree-*-linux-x64.pacman</code></pre>
+        <h3>From source</h3>
+        <p class="prose">You need Node.js 22 or later, Git and npm:</p>
+        <pre><code>git clone https://github.com/giannoccarol/gittree.git
+cd gittree
+npm ci
+npm start</code></pre>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>Set in Fira Sans by Erik Spiekermann, Ralph du Carrois and the Carrois team, under the SIL Open Font License. No cookies: visits are counted anonymously with <a href="https://www.goatcounter.com">GoatCounter</a>.</p>
+  </footer>
+</body>
+</html>

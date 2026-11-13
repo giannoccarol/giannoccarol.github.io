@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumia 950 XL: LineageOS 23.2 (Android 16) | Lorenzo Giannoccaro</title>
+  <meta name="description" content="LineageOS 23.2 (Android 16) per il Lumia 950 XL (cityman): stato, guida all’installazione, download, sorgenti e crediti.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Lumia 950 XL: LineageOS 23.2 (Android 16)">
+  <meta property="og:description" content="LineageOS 23.2 (Android 16) per il Lumia 950 XL (cityman): stato, guida all’installazione, download, sorgenti e crediti.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="../../../roms/lumia-950-xl/">
+  <link rel="alternate" hreflang="it" href="./">
+  <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../../assets/css/site.css">
+  <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Vai al contenuto</a>
+
+  <header class="masthead">
+    <a class="brand" href="../../">Lorenzo Giannoccaro</a>
+    <nav class="sitenav" aria-label="Sito">
+      <a href="../../#work" aria-current="page">Progetti</a>
+      <a href="../../#about">Chi sono</a>
+      <a href="https://github.com/giannoccarol">GitHub</a>
+      <a class="lang" href="../../../roms/lumia-950-xl/" hreflang="en" lang="en">English</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <div class="rom-head">
+      <a class="rom-head__title" href="../">ROM Android</a>
+      <nav class="rom-nav" aria-label="ROM Android">
+        <a href="../">Panoramica</a>
+        <a href="../lumia-950-xl/" aria-current="page">Lumia 950 XL</a>
+        <a href="../lumia-1520/">Lumia 1520</a>
+        <a href="../lumia-930/">Lumia 930</a>
+        <a href="../apps-and-tools/">App e strumenti</a>
+      </nav>
+    </div>
+
+    <article class="device" id="lumia-950-xl" aria-labelledby="cityman-title">
+      <header>
+        <h1 class="device__name" id="cityman-title">Lumia 950 XL</h1>
+        <p class="device__meta"><span>LineageOS 23.2, Android 16</span><span class="status is-works">Disponibile</span></p>
+      </header>
+
+      <div class="actions">
+        <a class="button button--primary" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261111-cityman" data-goatcounter-click="download-rom-950xl">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
+          Scarica la build 2026-11-11
+        </a>
+        <a class="button" href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Scarica l’installer</a>
+        <a class="button" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/twrp-cityman-a16-20261030" data-goatcounter-click="download-twrp-950xl">TWRP per Android 16</a>
+      </div>
+
+      <dl class="facts">
+        <div><dt>Ultima build</dt><dd>11 novembre 2026</dd></div>
+        <div><dt>Android</dt><dd>16 (BP4A.251205.006)</dd></div>
+        <div><dt>LineageOS</dt><dd>23.2, userdebug, chiavi di test</dd></div>
+        <div><dt>Patch di sicurezza</dt><dd>1 ottobre 2026</dd></div>
+        <div><dt>Kernel</dt><dd>3.10.108, MMO msm8994</dd></div>
+        <div><dt>Chip</dt><dd>Snapdragon 810 (MSM8994)</dd></div>
+        <div><dt>Nome in codice</dt><dd>cityman</dd></div>
+        <div><dt>SELinux</dt><dd>Permissive</dd></div>
+      </dl>
+
+      <ul class="onthispage" aria-label="In questa pagina">
+        <li><a href="#cityman-status">Stato</a></li>
+        <li><a href="#cityman-install">Installazione</a></li>
+        <li><a href="#cityman-downloads">Download</a></li>
+        <li><a href="#cityman-sources">Sorgenti</a></li>
+        <li><a href="#cityman-credits">Crediti</a></li>
+      </ul>
+
+      <div class="intro prose">
+        <p>La prima build Android 16 per il Lumia 950 XL. Il telefono è uscito con Windows 10 Mobile e non ha mai avuto un produttore Android, per questo la build usa un kernel 3.10 con backport BPF, i blob Lumia di Android 13 adattati al linker Treble di Android 16 e wrapper HIDL per radio e Wi-Fi.</p>
+        <p>LineageOS è una distribuzione Android libera e sviluppata dalla community, basata sull’Android Open Source Project, e funziona senza app Google. Considera questa build sperimentale.</p>
+      </div>
+
+      <section class="news" aria-labelledby="cityman-news">
+        <h2 id="cityman-news">Novità della build 2026-11-11</h2>
+        <ul>
+          <li>Funzionano i dock USB-C con alimentazione propria: dispositivi USB, Ethernet, video e ricarica attraverso il dock.</li>
+          <li>Il segnale DisplayPort usa i valori del driver Windows e del riferimento Analogix, così il dock HD-500 si collega alla massima velocità.</li>
+          <li>Niente più crash e blocchi quando scolleghi un dock o mentre il video è attivo.</li>
+        </ul>
+      </section>
+
+      <!-- ---------- status ---------- -->
+
+      <section class="block" id="cityman-status" aria-labelledby="cityman-status-title">
+        <h2 id="cityman-status-title">Stato</h2>
+        <ul class="legend" aria-label="Legenda">
+          <li class="is-works">Funziona</li>
+          <li class="is-experimental">Sperimentale</li>
+          <li class="is-broken">Non funziona ancora</li>
+          <li class="is-testing">Da provare</li>
+        </ul>
+
+        <h3 class="status-title">Cosa funziona</h3>
+        <div class="board">
+          <div>
+            <h4>Display e sistema</h4>
+            <ul class="mark is-works">
+              <li>Avvio (non A/B, la partizione cache è usata come /metadata)</li>
+              <li>Display AMOLED WQHD con accelerazione GPU, display sempre attivo</li>
+              <li>Touch, doppio tocco per riattivare</li>
+              <li>Profili prestazioni (Risparmio, Bilanciato, Prestazioni) in Impostazioni &gt; Batteria e nelle Impostazioni rapide</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Rete e connessioni</h4>
+            <ul class="mark is-works">
+              <li>Wi-Fi (QCA6174), anche sui telefoni senza i MAC di Wi-Fi e Bluetooth impostati</li>
+              <li>SIM, dati LTE e SMS (wrapper IRadio 1.4 sopra rild)</li>
+              <li>Bluetooth, compreso lo streaming audio A2DP</li>
+              <li>NFC</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Chiamate e audio</h4>
+            <ul class="mark is-works">
+              <li>Chiamate vocali (CSFB, 2G e 3G) con capsula, microfono e vivavoce</li>
+              <li>Riproduzione dall’altoparlante</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Fotocamera e video</h4>
+            <ul class="mark is-works">
+              <li>Fotocamera posteriore: autofocus, stabilizzazione ottica, colori corretti, meno rumore ed esposizione più luminosa; video 1080p a 30 fps con una nuova modalità binned del sensore</li>
+              <li>Fotocamera frontale: foto e video a colori, anche con poca luce, con i colori della calibrazione della fotocamera di Windows</li>
+              <li>Flash LED posteriore e torcia</li>
+              <li>App fotocamera di terze parti: Open Camera (Camera1 e Camera2, ISO e tempo di scatto manuali) e <a href="#cityman-extras">Arco</a></li>
+              <li>Riproduzione video, YouTube con l’audio compreso, con decodifica e codifica in hardware (firmware Venus firmato per questo telefono)</li>
+            </ul>
+          </div>
+          <div>
+            <h4>USB-C</h4>
+            <ul class="mark is-works">
+              <li>ADB, USB OTG automatico</li>
+              <li>Ricarica fino a 3 A con un caricatore USB-C; corrente ridotta sotto i 15 °C e niente ricarica sotto 0 °C, come su Windows</li>
+              <li>Uscita video con semplici adattatori da USB-C a HDMI, fino a 1080p60</li>
+              <li>Dock con alimentazione propria: dispositivi USB, Ethernet, video e ricarica. Provati con il Microsoft Display Dock HD-500, il ThinkPad USB-C Dock Gen 2 e un dock compatibile con Switch</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Sensori, memoria e batteria</h4>
+            <ul class="mark is-works">
+              <li>Prossimità (schermo spento durante le chiamate), accelerometro, giroscopio, magnetometro, luce, barometro</li>
+              <li>MicroSD</li>
+              <li>Sospensione profonda a schermo spento; il display sempre attivo consuma circa 80-100 mA quando è acceso</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callouts">
+          <div class="callout">
+            <h3 class="status-title">Sperimentale</h3>
+            <ul class="mark is-experimental">
+              <li><strong>VoLTE</strong> (chiamate in 4G) con lo stack IMS open source di phh. Si registra sulla rete IMS dell’operatore con l’autenticazione della SIM e IPsec, e gestisce da sé l’audio della chiamata. Provato su Iliad (Italia): chiamate in uscita con audio nei due sensi e SMS con il VoLTE attivo. Altri operatori possono funzionare se la loro rete lo accetta: segnala il tuo operatore e il risultato. Se i dati mobili si fermano dopo una chiamata VoLTE caduta, riavvia.</li>
+              <li><strong>Sblocco con l’iride</strong> (Impostazioni &gt; Sicurezza e privacy &gt; Sblocco del dispositivo). La fotocamera IR dell’iride, il suo LED IR e la registrazione funzionano, con un’anteprima IR dal vivo, ma il riconoscimento non sblocca ancora il telefono. È una biometria debole, quindi le app bancarie e i pagamenti non la accettano mai. Il LED IR lampeggia in sincronia con i fotogrammi della fotocamera entro i limiti del driver Windows, e in ogni caso il kernel lo spegne 100 ms dopo l’ultima scrittura.</li>
+            </ul>
+          </div>
+          <div class="callout">
+            <h3 class="status-title">In attesa delle vostre prove</h3>
+            <ul class="mark is-testing">
+              <li>Chiamate con un auricolare Bluetooth (audio a banda stretta): corrette, in attesa di conferma</li>
+              <li>Durata della batteria su lunghi periodi</li>
+              <li>VoLTE con operatori diversi da Iliad e chiamate VoLTE in entrata</li>
+              <li>Altri dock USB-C e lapdock: segnala il modello e cosa funziona</li>
+            </ul>
+            <h3 class="status-title">Non funziona ancora</h3>
+            <ul class="mark is-broken">
+              <li>GPS: nessun fix satellitare per ora, lo sto studiando sul lato modem. Con le app Google installate, in Maps funziona la posizione di rete (Wi-Fi e celle)</li>
+              <li>Riconoscimento per lo sblocco con l’iride</li>
+              <li>Dock USB-C: il primo collegamento può non riuscire o riavviare il telefono (ricollegalo); il dock ThinkPad non ricarica il telefono; l’HP Elite x3 Lapdock dà il video ma non l’USB</li>
+              <li>SELinux è permissive</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- install ---------- -->
+
+      <section class="block" id="cityman-install" aria-labelledby="cityman-install-title">
+        <h2 id="cityman-install-title">Installazione</h2>
+        <p class="warning">Un’installazione completa cancella Windows 10 Mobile. Leggi tutta la guida prima di iniziare. Installi a tuo rischio: non c’è garanzia, e un errore può lasciare il telefono senza avvio finché non lo recuperi da fastboot.</p>
+
+        <h3>Con l’installer (consigliato)</h3>
+        <div class="prose">
+          <p>L’installer cityman per Windows segue passo per passo l’installer LK ufficiale di Android4Lumia950 (Developer Menu, boot shim, LK, partizioni Android, provisioning), poi installa questa ROM con la TWRP per Android 16. La ROM ha bisogno di quella TWRP: con la versione precedente il suo zip si ferma.</p>
+          <p>Ti servono:</p>
+          <ul>
+            <li>Un PC con Windows 10 o 11</li>
+            <li><a href="https://github.com/ReneLergner/WPinternals">WPInternals</a>, per la prima installazione da Windows 10 Mobile</li>
+            <li>Android SDK Platform Tools (adb e fastboot) nel PATH</li>
+            <li>Il driver USB di Google, installato per tutto il sistema</li>
+            <li>La batteria sopra il 50% e un buon cavo USB</li>
+            <li>Una partizione cache in ext4, perché la ROM la usa come /metadata. Lo zip della ROM la controlla e, se non lo è, si ferma con le istruzioni</li>
+            <li>Per Clean e Update avviati da Android: il debug USB attivo</li>
+          </ul>
+        </div>
+
+        <div class="table-wrap">
+          <table class="modes">
+            <caption class="visually-hidden">Modalità dell’installer</caption>
+            <thead>
+              <tr><th scope="col">Modalità</th><th scope="col">Si parte da</th><th scope="col">Cosa fa</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Full</th>
+                <td>Windows 10 Mobile, sbloccato con WPInternals e in modalità mass storage</td>
+                <td>Cancella Windows. Scarica i file ufficiali di Android4Lumia950 che gli servono (circa 110 MB) e salva sul PC i file di EFIESP e le 15 partizioni di provisioning prima di cancellare qualsiasi cosa. Un’installazione completa interrotta si può riprendere (vedi il README dell’installer).</td>
+              </tr>
+              <tr>
+                <th scope="row">Clean</th>
+                <td>LK e partizioni Android già presenti, per esempio LineageOS 18.1 di Android4Lumia950</td>
+                <td>Installa questa ROM e cancella tutti i dati.</td>
+              </tr>
+              <tr>
+                <th scope="row">Update</th>
+                <td>Questa ROM</td>
+                <td>Installa la nuova build e mantiene i tuoi dati.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <ol class="steps">
+          <li>Scarica l’installer. Metti lo zip della ROM e il suo <code>SHA256SUMS</code> in <code>rom\</code>, e <code>twrp-cityman-a16.img</code> in <code>twrp\</code>.</li>
+          <li>Avvia <code>installer.bat</code> e scegli Full, Clean o Update.</li>
+          <li>Segui le istruzioni. Ogni passo distruttivo ti chiede di scrivere una parola di conferma, ogni file viene controllato con il suo SHA-256 prima di essere scritto, e l’esecuzione viene registrata in <code>logs\</code>.</li>
+          <li>Aspetta il primo avvio: richiede diversi minuti.</li>
+        </ol>
+        <p class="prose">L’installer corregge anche un bug dello script ufficiale <code>partition.sh</code>, che poteva formattare la partizione <code>aboot</code> (LK) mentre creava <code>boot</code>.</p>
+
+        <h3>Installazione manuale</h3>
+        <ol class="steps">
+          <li>Segui la guida ufficiale di Android4Lumia950: il <a href="https://www.youtube.com/watch?v=U4K6ZLpKPPE">video di installazione</a> e <a href="https://github.com/Android4Lumia950/installer/tree/cityman-temp">l’installer LK, branch cityman-temp</a>.</li>
+          <li>Quando l’installer si è riavviato nella sua TWRP e ti chiede di fare il sideload di una ROM, fermati lì. Non lasciargli installare il suo kernel di LineageOS 18.1.</li>
+          <li>Riavvia nel bootloader (fastboot) e avvia la TWRP per Android 16:
+            <pre><code>fastboot boot twrp-cityman-a16.img</code></pre></li>
+          <li>Solo alla prima installazione: Wipe &gt; Format Data, poi cancella Cache e Dalvik.</li>
+          <li>Fai il sideload della ROM da Advanced &gt; ADB Sideload. <code>SHA256SUMS</code> serve solo all’installer.
+            <pre><code>adb sideload lineage-23.2-20261111-UNOFFICIAL-cityman.zip</code></pre></li>
+          <li>Facoltativo: fai il sideload di un pacchetto GApps per Android 16 (MindTheGapps o NikGapps core) prima del primo avvio.</li>
+          <li>Riavvia.</li>
+        </ol>
+
+        <h3>Aggiornamento</h3>
+        <p class="prose">Avvia l’installer in modalità Update, oppure avvia di nuovo la TWRP per Android 16 (passo 3 qui sopra) e fai il sideload del nuovo zip senza cancellare i dati. Se usi le GApps, rifai il loro sideload subito dopo la ROM, prima di riavviare.</p>
+
+        <h3>Se resta in bootloop</h3>
+        <p class="prose">Entra in fastboot, avvia la TWRP per Android 16 con <code>fastboot boot</code> e installa di nuovo la ROM, oppure avvia l’installer in modalità Clean o Update.</p>
+      </section>
+
+      <!-- ---------- downloads ---------- -->
+
+      <section class="block" id="cityman-downloads" aria-labelledby="cityman-downloads-title">
+        <h2 id="cityman-downloads-title">Download</h2>
+        <ul class="links">
+          <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261111-cityman" data-goatcounter-click="download-rom-950xl">ROM, build 2026-11-11</a><span>Release su GitHub con lo zip (circa 1 GB) e il suo SHA256SUMS</span></li>
+          <li><a href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Installer</a><span>Per Windows, con le modalità Full, Clean e Update</span></li>
+          <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/twrp-cityman-a16-20261030" data-goatcounter-click="download-twrp-950xl">TWRP per Android 16</a><span><code>twrp-cityman-a16.img</code>, richiesta da questa ROM</span></li>
+          <li><a href="https://github.com/Android4Lumia950/installer/tree/cityman-temp">Installer LK di Android4Lumia950</a><span>Quello ufficiale, branch cityman-temp, per l’installazione manuale</span></li>
+        </ul>
+      </section>
+
+      <!-- ---------- extras ---------- -->
+
+      <section class="block" id="cityman-extras" aria-labelledby="cityman-extras-title">
+        <h2 id="cityman-extras-title">Extra</h2>
+        <div class="prose">
+            <h3>Arco</h3>
+            <p>Un’app fotocamera con un’interfaccia in stile Lumia: quadranti ad arco per bilanciamento del bianco, messa a fuoco, ISO, tempo di scatto ed esposizione, ed elaborazione RAW multi-frame facoltativa sulla GPU, simile alla GCam.</p>
+            <p><a href="https://github.com/giannoccarol/cityman-camera" data-goatcounter-click="arco">Arco su GitHub</a>, e le altre <a href="../apps-and-tools/">app e strumenti</a> per questi port.</p>
+          </div>
+      </section>
+
+      <!-- ---------- sources ---------- -->
+
+      <section class="block" id="cityman-sources" aria-labelledby="cityman-sources-title">
+        <h2 id="cityman-sources-title">Sorgenti</h2>
+        <ul class="links">
+          <li><a href="https://github.com/giannoccarol/android_kernel_mmo_msm8994/tree/lineage-23-cityman">Kernel</a><span>Kernel MMO msm8994, branch lineage-23-cityman</span></li>
+          <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/tree/lineage-23-cityman">Device tree</a><span>Branch lineage-23-cityman</span></li>
+          <li><a href="https://github.com/giannoccarol/android_vendor_msft_cityman/tree/lineage-23-cityman">Vendor</a><span>Branch lineage-23-cityman</span></li>
+          <li><a href="https://github.com/giannoccarol/talkman-manifests/tree/lineage-23-cityman/lineageos-23">Manifest locale e patch</a><span>Tutto quello che serve sopra LineageOS 23.2 per compilarla</span></li>
+          <li><a href="https://github.com/giannoccarol/android_packages_apps_CitymanParts">CitymanParts</a><span>Profili prestazioni</span></li>
+          <li><a href="https://github.com/giannoccarol/cityman-iris">cityman-iris</a><span>Motore di riconoscimento dell’iride e servizio di sblocco</span></li>
+          <li><a href="https://github.com/krazey/ims">krazey/ims</a><span>Stack IMS per il VoLTE, con una patch nel manifest locale</span></li>
+        </ul>
+      </section>
+
+      <!-- ---------- credits ---------- -->
+
+      <section class="block" id="cityman-credits" aria-labelledby="cityman-credits-title">
+        <h2 id="cityman-credits-title">Crediti</h2>
+        <p class="prose">Questa build si regge sul lavoro di molte persone. Grazie a tutti.</p>
+        <ul class="credits">
+          <li><strong>Android4Lumia950</strong> (djokcho, EpicLPer, j0sh1x e la community): il port Android di Lumia 950 e 950 XL, il kernel MMO e gli alberi talkman su cui si basa questo lavoro.</li>
+          <li><strong>shadowofleaf96</strong>: device tree cityman, amplificatore TAS2553 e audio Quaternary MI2S, instradamento delle chiamate.</li>
+          <li><strong>EpicLPer</strong>: port del driver dell’amplificatore TAS2552/3, prime ricerche su sensori e NFC.</li>
+          <li><strong>archienz</strong>: misure della fotocamera posteriore del Lumia 950 (mappa delle lane CSI, MCLK a 24 MHz, disposizione CCI).</li>
+          <li><strong>hraj9258</strong> (Himanshu Raj): la taratura della fotocamera posteriore dal suo port talkman, con la chromatix dell’IMX230 (livello del nero e matrice colore del modulo), la taratura dell’autofocus, il driver dell’attuatore della lente e il suo supporto nel kernel, il driver e la libreria del flash LED Hill e le ricerche sui clock della fotocamera; analisi e misure del rilevamento della microSD.</li>
+          <li><strong>davigamer987</strong>: gli HAL display, audio e media MSM8994, l’albero Android 16 del OnePlus 2 usato come riferimento (integrazione del wrapper radio, configurazione dell’HAL Wi-Fi, metodo di patch dei blob) e i blob perfd del OnePlus 2.</li>
+          <li><strong>mukul2259</strong> e <strong>LineageOS-OP2</strong>: ottimizzazione di prestazioni e scheduler del OnePlus 2.</li>
+          <li><strong>Yaroslav Zviezda</strong> (acroreiser): il wrapper IRadio 1.4 di LineageOS e RadioConfig per i vecchi dispositivi Qualcomm.</li>
+          <li><strong>Pierre-Hugues Husson</strong> (phhusson): lo stack IMS open source usato per il VoLTE; <strong>krazey</strong>: il suo fork per LineageOS 23; <strong>amikhasenko</strong> (rnnoise) e <strong>ewan-xu</strong> (AEC3): le sue parti audio.</li>
+          <li><strong>Ultra-Legacy-Hippeastrum</strong> (acroreiser, Lost-Entrepreneur439 e gli autori delle patch che raccolgono: phh, Adithya R, Roman Stratiienko, davigamer987): legacy_support_patches e la sepolicy QCOM legacy per Android 16 sui kernel vecchi.</li>
+          <li><strong>GuaiYiHu</strong> e <strong>xiaomi-classic-dev</strong>: backport BPF per i kernel 3.x (leo, libra).</li>
+          <li><strong>LineageOS-UL</strong>: l’HAL audio msm8992 e l’HAL GPS msm8994.</li>
+          <li><strong>LineageOS</strong> e <strong>TheMuppets</strong>: il sistema di base e gli alberi vendor di riferimento.</li>
+          <li><strong>TeamWin</strong>: TWRP. La TWRP per Android 16 è la TWRP cityman dell’installer Android4Lumia950 con il kernel Android 16.</li>
+          <li><strong>sonic011gamer</strong> (snaccy): il branch cityman-temp dell’installer Android4Lumia950 e il video di installazione.</li>
+          <li><strong>René Lergner</strong>: WPInternals.</li>
+          <li><strong>Konrad Dybcio</strong> e <strong>WOA-Project</strong>: documentazione dell’hardware di Lumia 950 e 950 XL nei kernel mainline e WOA; <strong>gus33</strong> (WOA-Project) e gli autori di <strong>LumiaWoA</strong>: i driver ricostruiti di PHY e mux USB-C.</li>
+          <li><strong>Analogix</strong>: i valori di riferimento dell’ANX7816 per il segnale DisplayPort.</li>
+          <li><strong>Aleksandar Jovanovic</strong>: prove dei dock USB-C.</li>
+          <li><strong>Microsoft</strong> e <strong>Qualcomm</strong>: i driver Windows Phone del Lumia 950 XL, riferimento per la calibrazione della fotocamera, la fotocamera e il LED IR dell’iride, i limiti di ricarica della batteria, il power delivery USB-C e il bridge DisplayPort. Il motore di riconoscimento dell’iride segue i metodi pubblicati da J. Daugman.</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>Build non ufficiali, non affiliate né approvate da LineageOS, Microsoft o Nokia.</p>
+    <p>Testi in Fira Sans di Erik Spiekermann, Ralph du Carrois e del team Carrois, con licenza SIL Open Font License. Niente cookie: le visite sono contate in forma anonima con <a href="https://www.goatcounter.com">GoatCounter</a>.</p>
+  </footer>
+</body>
+</html>

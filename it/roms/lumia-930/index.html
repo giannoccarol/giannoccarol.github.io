@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumia 930: LineageOS 18.1 (Android 11) | Lorenzo Giannoccaro</title>
+  <meta name="description" content="LineageOS 18.1 (Android 11) per il Nokia Lumia 930 (martini), in preparazione: cosa è pronto, sorgenti e crediti.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Lumia 930: LineageOS 18.1 (Android 11)">
+  <meta property="og:description" content="LineageOS 18.1 (Android 11) per il Nokia Lumia 930 (martini), in preparazione: cosa è pronto, sorgenti e crediti.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="../../../roms/lumia-930/">
+  <link rel="alternate" hreflang="it" href="./">
+  <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../../assets/css/site.css">
+  <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Vai al contenuto</a>
+
+  <header class="masthead">
+    <a class="brand" href="../../">Lorenzo Giannoccaro</a>
+    <nav class="sitenav" aria-label="Sito">
+      <a href="../../#work" aria-current="page">Progetti</a>
+      <a href="../../#about">Chi sono</a>
+      <a href="https://github.com/giannoccarol">GitHub</a>
+      <a class="lang" href="../../../roms/lumia-930/" hreflang="en" lang="en">English</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <div class="rom-head">
+      <a class="rom-head__title" href="../">ROM Android</a>
+      <nav class="rom-nav" aria-label="ROM Android">
+        <a href="../">Panoramica</a>
+        <a href="../lumia-950-xl/">Lumia 950 XL</a>
+        <a href="../lumia-1520/">Lumia 1520</a>
+        <a href="../lumia-930/" aria-current="page">Lumia 930</a>
+        <a href="../apps-and-tools/">App e strumenti</a>
+      </nav>
+    </div>
+
+    <article class="device" id="lumia-930" aria-labelledby="martini-title">
+      <header>
+        <h1 class="device__name" id="martini-title">Lumia 930</h1>
+        <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-testing">In preparazione</span></p>
+      </header>
+
+      <div class="prose">
+        <p>Il 930 (RM-1045) ha lo stesso chip del 1520, quindi il port parte dal codice del 1520. Tutto quello che si può fare senza il telefono è fatto e provato offline. Su un Lumia 930 vero non è ancora partito niente: è il prossimo passo, con un telefono di prova.</p>
+      </div>
+
+      <aside class="telegram" aria-label="Canale Telegram">
+        <p><strong>Segui i port di 1520 e 930 su Telegram</strong>Build di prova, avanzamenti e richieste di tester escono prima lì.</p>
+        <a class="button" href="https://t.me/Android_Port_Nokia_1520_930" data-goatcounter-click="telegram-1520-930">Entra nel canale</a>
+      </aside>
+
+      <div class="columns">
+        <div>
+          <h2>Pronto, non ancora avviato</h2>
+          <ul class="mark is-testing">
+            <li>Kernel, con il driver del pannello AMOLED e il modem attivo</li>
+            <li>Bootloader lk1st</li>
+            <li>Device tree e vendor, con il firmware originale dai pacchetti driver di Windows</li>
+            <li>Una prima build della ROM e la TWRP</li>
+            <li>L’installer, ora condiviso tra 1520 e 930</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Primi passi sul telefono</h2>
+          <ul class="mark is-testing">
+            <li>Backup completo con l’installer</li>
+            <li>Avvio del kernel dalla RAM con fastboot</li>
+            <li>Poi display, touch, Wi-Fi e modem</li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="inline-links">
+        <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini">Device tree su GitHub</a></li>
+        <li><a href="https://github.com/lumia-msm8974">Tutti i sorgenti</a></li>
+      </ul>
+
+      <section class="block" aria-labelledby="martini-credits">
+        <h2 id="martini-credits">Crediti</h2>
+        <p class="prose">Il port del 930 parte da quello del <a href="../lumia-1520/">Lumia 1520</a>, quindi chi è citato lì fa parte anche di questo. Per il 930 in particolare:</p>
+        <ul class="credits">
+          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux, con la catena di avvio del 930, il touch e le note sull’hardware.</li>
+          <li><strong>2314372037</strong> (zh/hao): LineageOS 17.1 sul 930, usato come riferimento per pannello, audio e vibrazione.</li>
+          <li><strong>imbushuo</strong> (Bingxing Wang): BootShim e l’lk del 930; <strong>rickliu2000</strong>: Lumia930Pkg.</li>
+          <li><strong>Mainline4Lumia</strong> (Dominduchami): supporto lk2nd per il 930; <strong>Android4Lumia</strong> (J0SH1X, sonic011gamer): il kernel e l’lk2nd del 930.</li>
+          <li><strong>sonic011gamer</strong>: i pacchetti driver Lumia da cui viene il firmware del 930.</li>
+          <li><strong>KorelisLabs</strong> (lumia-1520-mainline), <strong>msm8916-mainline</strong> (lk2nd) e <strong>René Lergner</strong> (HeathCliff, WPInternals).</li>
+          <li><strong>LineageOS</strong> e <strong>TheMuppets</strong>, <strong>TeamWin</strong> (TWRP) e <strong>Android4Lumia950</strong> (djokcho, EpicLPer, j0sh1x, sonic011gamer e la community).</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>Build non ufficiali, non affiliate né approvate da LineageOS, Microsoft o Nokia.</p>
+    <p>Testi in Fira Sans di Erik Spiekermann, Ralph du Carrois e del team Carrois, con licenza SIL Open Font License. Niente cookie: le visite sono contate in forma anonima con <a href="https://www.goatcounter.com">GoatCounter</a>.</p>
+  </footer>
+</body>
+</html>

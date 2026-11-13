@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumia 930: LineageOS 18.1 (Android 11) | Lorenzo Giannoccaro</title>
+  <meta name="description" content="LineageOS 18.1 (Android 11) for the Nokia Lumia 930 (martini), in preparation: what is ready, sources and credits.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Lumia 930: LineageOS 18.1 (Android 11)">
+  <meta property="og:description" content="LineageOS 18.1 (Android 11) for the Nokia Lumia 930 (martini), in preparation: what is ready, sources and credits.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="alternate" hreflang="it" href="../../it/roms/lumia-930/">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <a class="brand" href="../../">Lorenzo Giannoccaro</a>
+    <nav class="sitenav" aria-label="Site">
+      <a href="../../#work" aria-current="page">Work</a>
+      <a href="../../#about">About</a>
+      <a href="https://github.com/giannoccarol">GitHub</a>
+      <a class="lang" href="../../it/roms/lumia-930/" hreflang="it" lang="it">Italiano</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page">
+    <div class="rom-head">
+      <a class="rom-head__title" href="../">Android ROMs</a>
+      <nav class="rom-nav" aria-label="Android ROMs">
+        <a href="../">Overview</a>
+        <a href="../lumia-950-xl/">Lumia 950 XL</a>
+        <a href="../lumia-1520/">Lumia 1520</a>
+        <a href="../lumia-930/" aria-current="page">Lumia 930</a>
+        <a href="../apps-and-tools/">Apps and tools</a>
+      </nav>
+    </div>
+
+    <article class="device" id="lumia-930" aria-labelledby="martini-title">
+      <header>
+        <h1 class="device__name" id="martini-title">Lumia 930</h1>
+        <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-testing">In preparation</span></p>
+      </header>
+
+      <div class="prose">
+        <p>The 930 (RM-1045) shares its chip with the 1520, so the port starts from the 1520 code. Everything that can be done without the phone is done and tested offline. Nothing has run on a real Lumia 930 yet: that comes next, with a test phone.</p>
+      </div>
+
+      <aside class="telegram" aria-label="Telegram channel">
+        <p><strong>Follow the 1520 and 930 ports on Telegram</strong>Test builds, progress and requests for testers come out there first.</p>
+        <a class="button" href="https://t.me/Android_Port_Nokia_1520_930" data-goatcounter-click="telegram-1520-930">Join the channel</a>
+      </aside>
+
+      <div class="columns">
+        <div>
+          <h2>Ready, not booted yet</h2>
+          <ul class="mark is-testing">
+            <li>Kernel, with the AMOLED panel driver and the modem enabled</li>
+            <li>lk1st bootloader</li>
+            <li>Device tree and vendor, with the stock firmware from the Windows driver packages</li>
+            <li>A first ROM build and TWRP</li>
+            <li>The installer, now shared by the 1520 and the 930</li>
+          </ul>
+        </div>
+        <div>
+          <h2>First steps on the phone</h2>
+          <ul class="mark is-testing">
+            <li>Full backup with the installer</li>
+            <li>Boot the kernel from RAM with fastboot</li>
+            <li>Then display, touch, Wi-Fi and modem</li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="inline-links">
+        <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini">Device tree on GitHub</a></li>
+        <li><a href="https://github.com/lumia-msm8974">All sources</a></li>
+      </ul>
+
+      <section class="block" aria-labelledby="martini-credits">
+        <h2 id="martini-credits">Credits</h2>
+        <p class="prose">The 930 port starts from the <a href="../lumia-1520/">Lumia 1520</a> one, so everyone credited there is part of it too. For the 930 itself:</p>
+        <ul class="credits">
+          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux, with the 930 boot chain, touch and hardware notes.</li>
+          <li><strong>2314372037</strong> (zh/hao): LineageOS 17.1 on the 930, used as a reference for its panel, audio and vibration.</li>
+          <li><strong>imbushuo</strong> (Bingxing Wang): BootShim and the 930 lk; <strong>rickliu2000</strong>: Lumia930Pkg.</li>
+          <li><strong>Mainline4Lumia</strong> (Dominduchami): lk2nd support for the 930; <strong>Android4Lumia</strong> (J0SH1X, sonic011gamer): the 930 kernel and lk2nd.</li>
+          <li><strong>sonic011gamer</strong>: the Lumia driver packages the 930 firmware comes from.</li>
+          <li><strong>KorelisLabs</strong> (lumia-1520-mainline), <strong>msm8916-mainline</strong> (lk2nd) and <strong>René Lergner</strong> (HeathCliff, WPInternals).</li>
+          <li><strong>LineageOS</strong> and <strong>TheMuppets</strong>, <strong>TeamWin</strong> (TWRP) and <strong>Android4Lumia950</strong> (djokcho, EpicLPer, j0sh1x, sonic011gamer and the community).</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>These are unofficial builds, not affiliated with or endorsed by LineageOS, Microsoft or Nokia.</p>
+    <p>Set in Fira Sans by Erik Spiekermann, Ralph du Carrois and the Carrois team, under the SIL Open Font License. No cookies: visits are counted anonymously with <a href="https://www.goatcounter.com">GoatCounter</a>.</p>
+  </footer>
+</body>
+</html>

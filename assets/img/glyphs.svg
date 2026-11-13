@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- Line glyphs for the tiles, drawn on a 48 x 48 grid in the flat Metro manner. -->
+  <symbol id="phone" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5">
+    <rect x="13" y="4" width="22" height="40"/>
+    <path d="M13 10h22M13 37h22"/>
+  </symbol>
+  <symbol id="camera" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5">
+    <path d="M5 14h10l3-5h12l3 5h10v25H5z"/>
+    <circle cx="24" cy="26" r="8"/>
+  </symbol>
+  <symbol id="gauge" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5">
+    <path d="M6 36a18 18 0 1 1 36 0"/>
+    <path d="M24 36l9-12"/>
+    <path d="M10 22l3 2M24 14v4M38 22l-3 2"/>
+  </symbol>
+  <symbol id="eye" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5">
+    <path d="M3 24c5-8 12-12 21-12s16 4 21 12c-5 8-12 12-21 12S8 32 3 24z"/>
+    <circle cx="24" cy="24" r="7"/>
+    <circle cx="24" cy="24" r="2" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="plane" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M43 7L4 22l12 5 4 12 6-8 10 7z"/>
+    <path d="M16 27L43 7"/>
+  </symbol>
+  <symbol id="install" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5">
+    <path d="M24 5v25M14 20l10 10 10-10"/>
+    <path d="M7 32v10h34V32"/>
+  </symbol>
+  <symbol id="grid" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5">
+    <rect x="7" y="7" width="14" height="14"/>
+    <rect x="27" y="7" width="14" height="14"/>
+    <rect x="7" y="27" width="14" height="14"/>
+    <rect x="27" y="27" width="14" height="14"/>
+  </symbol>
+  <symbol id="code" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5">
+    <path d="M16 14L6 24l10 10M32 14l10 10-10 10M27 9l-6 30"/>
+  </symbol>
+  <symbol id="sliders" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5">
+    <path d="M12 6v36M24 6v36M36 6v36"/>
+    <rect x="8" y="26" width="8" height="6" fill="currentColor"/>
+    <rect x="20" y="12" width="8" height="6" fill="currentColor"/>
+    <rect x="32" y="30" width="8" height="6" fill="currentColor"/>
+  </symbol>
+</svg>
