@@ -71,7 +71,7 @@
   document.body.prepend(bar);
   const mast = document.querySelector(".masthead");
   const heroText = document.querySelector(".hero__text");
-  const rain = document.getElementById("rain");
+  const field = document.getElementById("dots");
   let lastY = window.scrollY, ticking = false;
   function onScroll() {
     const y = window.scrollY;
@@ -83,7 +83,7 @@
       heroText.style.transform = `translateY(${(-y * 0.25).toFixed(1)}px)`;
       heroText.style.opacity = Math.max(0, 1 - y / 520).toFixed(3);
     }
-    if (rain && y < 900) rain.style.transform = `translateY(${(y * 0.35).toFixed(1)}px)`;
+    if (field && y < 900) field.style.transform = `translateY(${(y * 0.35).toFixed(1)}px)`;
     ticking = false;
   }
   window.addEventListener("scroll", () => {
