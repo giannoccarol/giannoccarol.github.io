@@ -1051,14 +1051,33 @@ pre code {
 
 .device-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem 2rem;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 1.5rem 2rem;
   align-items: center;
 }
 
+/* The phone sits in the middle of the free space next to the title, the
+   intro text and the buttons. */
 .device-hero__photo {
+  justify-self: center;
   width: auto;
-  height: clamp(7rem, 21vw, 15rem);
+  height: clamp(12rem, 30vw, 26rem);
+}
+
+.device-hero .prose,
+.device-hero .actions {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 44rem) {
+  .device-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .device-hero__photo {
+    grid-row: 1;
+    height: 13rem;
+  }
 }
 
 .shot {
