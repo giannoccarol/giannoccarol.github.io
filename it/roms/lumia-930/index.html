@@ -25,8 +25,8 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=8f19623">
-  <script src="../../../assets/js/theme.js?v=8f19623" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=9ef47d9">
+  <script src="../../../assets/js/theme.js?v=9ef47d9" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -66,9 +66,17 @@
       <header class="device-hero">
         <div>
           <h1 class="device__name" id="martini-title">Lumia 930</h1>
-          <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-testing">Si avvia su un telefono di prova</span></p>
+          <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Build di prova</span></p>
           <div class="prose">
-            <p>Il 930 (RM-1045) ha lo stesso chip del 1520, quindi il port parte dal codice del 1520. Il 13 novembre 2026 è partito per la prima volta su un vero Lumia 930: l’installer ha preparato la catena di avvio dal boot manager di Windows del telefono e Android 11 è arrivato alla schermata di configurazione. Dal 14 novembre funzionano anche le due fotocamere, il motore della vibrazione e i sensori di movimento. Non c’è ancora una build pubblica.</p>
+            <p>Il 930 (RM-1045) ha lo stesso chip del 1520, quindi il port parte dal codice del 1520. Il 13 novembre 2026 è partito per la prima volta su un vero Lumia 930: l’installer ha preparato la catena di avvio dal boot manager di Windows del telefono e Android 11 è arrivato alla schermata di configurazione. Dal 14 novembre funzionano anche le due fotocamere, il motore della vibrazione e i sensori di movimento, ed è uscita la prima build di prova.</p>
+          </div>
+          <div class="actions">
+            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261114-martini" data-goatcounter-click="download-rom-930">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
+              Scarica la build di prova del 14/11/2026
+            </a>
+            <a class="button" href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.0" data-goatcounter-click="installer-930">Scarica l’installer</a>
+            <a class="button" href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/twrp-martini-20261113" data-goatcounter-click="download-twrp-930">TWRP per il Lumia 930</a>
           </div>
         </div>
         <img class="device-hero__photo" src="../../../assets/img/phones/lumia-930.webp" width="473" height="900" alt="Il retro di un Lumia 930 arancione">
@@ -106,20 +114,19 @@
             <li>Microfoni: corretti nell’ultima build di prova, in attesa di una prova con la voce</li>
             <li>Chiamate: capsula e microfono ancora da provare</li>
             <li>GPS: nessun fix satellitare per ora, lo sto studiando sul lato modem. Con le app Google installate, in Maps funziona la posizione di rete (Wi-Fi e celle)</li>
-            <li>Una build pubblica</li>
           </ul>
         </div>
       </div>
 
       <section class="block" id="martini-install" aria-labelledby="martini-install-title">
-        <h2 id="martini-install-title">Come è stato installato il telefono di prova</h2>
-        <p class="prose">Questi sono i passi fatti sul primo Lumia 930. Aspetta una build pubblica prima di provarli: fino ad allora ROM e TWRP del 930 non sono pubblicate.</p>
+        <h2 id="martini-install-title">Installazione</h2>
+        <p class="prose">Da un Lumia 930 (RM-1045) ancora con Windows Phone. Ogni passo è stato eseguito su un telefono vero; la modalità Completa dell’installer, quella in un clic, resta spenta sul 930 finché non gira per intero, quindi i passi si fanno uno alla volta dagli strumenti avanzati. Cancella Windows e tutto quello che c’è sul telefono: fai i backup che l’installer propone e conservali.</p>
         <ol class="steps">
           <li>Sblocca il bootloader con WPinternals su un PC Windows, poi passa il telefono in modalità mass storage.</li>
-          <li>Installer: backup delle partizioni proprie del telefono (modem, calibrazioni, catena di avvio) e del firmware di Windows che serve ad Android.</li>
-          <li>Installer: catena di avvio, con BootShim e lk1st su EFIESP. All’avvio successivo il telefono si ferma nel menu fastboot di lk1st.</li>
-          <li>Installer, strumenti avanzati: la fase 2 crea le partizioni Android. Questo cancella Windows.</li>
-          <li>Installer: la modalità Pulita avvia la TWRP in RAM, formatta i dati e installa la ROM.</li>
+          <li>Scarica l’installer e metti lo zip della ROM con il suo <code>SHA256SUMS</code> nella cartella <code>rom</code> dell’installer; la TWRP la scarica l’installer da solo. Avvialo e scegli Lumia 930.</li>
+          <li>Strumenti avanzati: Backup, poi Firmware, poi Catena di avvio. Al riavvio il telefono si ferma nel menu fastboot di lk1st; esegui Verifica lk1st.</li>
+          <li>Strumenti avanzati: Partizioni Android. Cancella Windows.</li>
+          <li>Modalità Pulita: TWRP in RAM, dati formattati, ROM installata. Il primo avvio richiede qualche minuto. Le build successive si installano con la modalità Aggiornamento, senza cancellare i dati.</li>
         </ol>
       </section>
 
