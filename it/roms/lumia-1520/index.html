@@ -25,8 +25,8 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=9ef47d9">
-  <script src="../../../assets/js/theme.js?v=9ef47d9" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=baab855">
+  <script src="../../../assets/js/theme.js?v=baab855" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -70,6 +70,14 @@
           <div class="prose">
             <p>Il telefono è uscito con Windows Phone 8 e non ha mai avuto un produttore Android. Si avvia tramite UEFI, BootShim e lk1st nel kernel msm8974 3.4 di LineageOS, adattato alla TrustZone di Windows Phone. Il firmware del modem viene dall’immagine originale, dove è cifrato: lo decifra all’avvio la TrustZone del telefono stesso.</p>
           </div>
+          <div class="actions">
+            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261114-bandit" data-goatcounter-click="download-rom-1520">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
+              Scarica la build del 14/11/2026
+            </a>
+            <a class="button" href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.1" data-goatcounter-click="installer-1520">Scarica l’installer</a>
+            <a class="button" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/twrp-bandit-20261102" data-goatcounter-click="download-twrp-1520">TWRP per il Lumia 1520</a>
+          </div>
         </div>
         <img class="device-hero__photo" src="../../../assets/img/phones/lumia-1520.webp" width="270" height="508" alt="Il retro di un Lumia 1520 giallo">
       </header>
@@ -88,6 +96,9 @@
             <li>Wi-Fi, Bluetooth, NFC</li>
             <li>SIM, dati LTE, SMS e chiamate in uscita</li>
             <li>Altoparlante e capsula</li>
+            <li>Fotocamere posteriore e frontale: foto e video, autofocus e flash</li>
+            <li>App delle impostazioni Lumia: profili prestazioni, doppio tocco per riattivare, tasti capacitivi</li>
+            <li>Menu fastboot di lk1st sullo schermo (con l’installer 0.3.1)</li>
             <li>Decodifica video in hardware</li>
             <li>MicroSD, sensori, ricarica</li>
           </ul>
@@ -96,13 +107,23 @@
           <h2>In lavorazione</h2>
           <ul class="mark is-broken">
             <li>Microfono in chiamata: dall’altra parte non ti sentono ancora</li>
-            <li>Fotocamera</li>
             <li>Fix GPS</li>
             <li>Sospensione profonda e durata della batteria</li>
-            <li>Transizioni tra le app più fluide</li>
+            <li>Fluidità: dentro ci sono le impostazioni del 930, da misurare</li>
           </ul>
         </div>
       </div>
+
+      <section class="block" id="bandit-install" aria-labelledby="bandit-install-title">
+        <h2 id="bandit-install-title">Installazione</h2>
+        <p class="prose">Da un Lumia 1520 ancora con Windows Phone. L’installazione di Android cancella Windows e tutto quello che c’è sul telefono: fai i backup che l’installer propone e conservali.</p>
+        <ol class="steps">
+          <li>Sblocca il bootloader con WPinternals su un PC Windows, poi passa il telefono in modalità mass storage.</li>
+          <li>Scarica l’installer e metti lo zip della ROM con il suo <code>SHA256SUMS</code> nella cartella <code>rom</code> dell’installer; la TWRP la scarica l’installer da solo. Avvialo e scegli Lumia 1520.</li>
+          <li>Modalità Completa: backup, firmware, catena di avvio, partizioni Android e ROM, uno dopo l’altro, con una conferma scritta prima di ogni passo che scrive sul telefono.</li>
+          <li>Il primo avvio richiede qualche minuto. Le build successive si installano con la modalità Aggiornamento, senza cancellare i dati.</li>
+        </ol>
+      </section>
 
       <ul class="inline-links">
         <li><a href="https://github.com/lumia-msm8974">Sorgenti su GitHub</a></li>
