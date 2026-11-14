@@ -25,8 +25,8 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=9141d4d">
-  <script src="../../assets/js/theme.js?v=9141d4d" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=472e3f1">
+  <script src="../../assets/js/theme.js?v=472e3f1" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -72,7 +72,7 @@
       </header>
 
       <div class="prose">
-        <p>The 930 (RM-1045) shares its chip with the 1520, so the port starts from the 1520 code. On 13 November 2026 it ran on a real Lumia 930 for the first time: the installer set up the boot chain from the phone’s own Windows boot manager, and Android 11 reached the setup screen. There is no public build yet.</p>
+        <p>The 930 (RM-1045) shares its chip with the 1520, so the port starts from the 1520 code. On 13 November 2026 it ran on a real Lumia 930 for the first time: the installer set up the boot chain from the phone’s own Windows boot manager, and Android 11 reached the setup screen. Since 14 November both cameras and the vibration motor work too. There is no public build yet.</p>
       </div>
 
       <aside class="telegram" aria-label="Telegram channel">
@@ -89,6 +89,9 @@
             <li>AMOLED display with brightness and screen off, touch</li>
             <li>Wi-Fi and Bluetooth turn on; the modem, audio DSP and Wi-Fi core start</li>
             <li>SIM, LTE mobile data and SMS</li>
+            <li>Rear camera with autofocus and flash, and the front camera: photos and video; the rear camera opens in under 3 seconds</li>
+            <li>Vibration, driven through the audio chip as on the original system</li>
+            <li>Sound from the speaker</li>
             <li>Light and proximity sensor</li>
             <li>Charging, up to 4.35 V with the original battery</li>
           </ul>
@@ -96,10 +99,9 @@
         <div>
           <h2>Still to do</h2>
           <ul class="mark is-broken">
-            <li>Calls, and sound from the speaker</li>
-            <li>Fixed in the kernel, coming with the next build: the empty battery icon when restarting with the cable plugged in</li>
+            <li>Calls: earpiece and microphone not tested yet</li>
             <li>Motion sensors: their Qualcomm driver crashes, so they are off for now</li>
-            <li>Camera and GPS</li>
+            <li>GPS</li>
             <li>A public build</li>
           </ul>
         </div>
