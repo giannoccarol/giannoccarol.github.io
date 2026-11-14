@@ -77,7 +77,10 @@
     const y = window.scrollY;
     const max = document.documentElement.scrollHeight - window.innerHeight;
     bar.style.setProperty("--p", max > 0 ? (y / max).toFixed(4) : 0);
-    if (mast) mast.classList.toggle("is-hidden", y > lastY && y > 140);
+    if (mast) {
+      mast.classList.toggle("is-stuck", y > 8);
+      mast.classList.toggle("is-hidden", y > lastY && y > 140);
+    }
     lastY = y;
     if (heroText && y < 900) {
       heroText.style.transform = `translateY(${(-y * 0.25).toFixed(1)}px)`;

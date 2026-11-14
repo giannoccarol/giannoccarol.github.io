@@ -219,7 +219,6 @@ pre code {
 
 /* ---------- frame ---------- */
 
-.masthead,
 .page,
 .footer {
   max-width: calc(var(--wide) + 2 * var(--gutter));
@@ -229,7 +228,11 @@ pre code {
   padding-right: var(--gutter);
 }
 
+/* The masthead spans the whole window, so its glass background reaches both edges; the padding keeps its
+   content in line with the page column. */
 .masthead {
+  padding-left: max(var(--gutter), calc((100% - var(--wide)) / 2));
+  padding-right: max(var(--gutter), calc((100% - var(--wide)) / 2));
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -1580,16 +1583,21 @@ button.button:disabled {
   background: radial-gradient(circle, rgba(255, 90, 0, 0.12) 0%, rgba(255, 90, 0, 0.04) 35%, rgba(255, 90, 0, 0) 68%);
 }
 
-/* ---------- masthead: glass, hides while scrolling down ---------- */
+/* ---------- masthead: clear at the top, glass once the page scrolls, hides while scrolling down ---------- */
 .anim .masthead {
   position: sticky;
   top: 0;
   z-index: 40;
   padding-bottom: 0.9rem;
-  background: color-mix(in srgb, var(--paper) 72%, transparent);
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), background-color 0.3s ease;
+}
+.anim .masthead.is-stuck {
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  /* soft lower edge instead of a hard line */
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 0.7rem), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 0.7rem), transparent);
 }
 .anim .masthead.is-hidden {
   transform: translateY(-110%);
