@@ -25,9 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=f2df19d">
-  <script src="../../assets/js/theme.js?v=f2df19d" defer></script>
-  <script src="../../assets/js/phone3d.js?v=f2df19d" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=7f97246">
+  <script src="../../assets/js/theme.js?v=7f97246" defer></script>
+  <script src="../../assets/js/phone3d.js?v=7f97246" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -69,9 +69,9 @@
           <h1 class="device__name" id="cityman-title">Lumia 950 XL</h1>
           <p class="device__meta"><span>LineageOS 23.2, Android 16</span><span class="status is-works">Available</span></p>
           <div class="actions">
-            <a class="button button--primary" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261111-cityman" data-goatcounter-click="download-rom-950xl">
+            <a class="button button--primary" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261115-cityman" data-goatcounter-click="download-rom-950xl">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
-              Download build 2026-11-11
+              Download build 2026-11-15
             </a>
             <a class="button" href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Get the installer</a>
             <a class="button" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/twrp-cityman-a16-20261030" data-goatcounter-click="download-twrp-950xl">TWRP for Android 16</a>
@@ -81,7 +81,7 @@
       </header>
 
       <dl class="facts">
-        <div><dt>Latest build</dt><dd>11 November 2026</dd></div>
+        <div><dt>Latest build</dt><dd>15 November 2026</dd></div>
         <div><dt>Android</dt><dd>16 (BP4A.251205.006)</dd></div>
         <div><dt>LineageOS</dt><dd>23.2, userdebug, test keys</dd></div>
         <div><dt>Security patch</dt><dd>1 October 2026</dd></div>
@@ -106,11 +106,11 @@
       </div>
 
       <section class="news" aria-labelledby="cityman-news">
-        <h2 id="cityman-news">New in build 2026-11-11</h2>
+        <h2 id="cityman-news">New in build 2026-11-15</h2>
         <ul>
-          <li>USB-C docks with their own power supply work: USB devices, Ethernet, video and charging through the dock.</li>
-          <li>The DisplayPort signal uses the values of the Windows driver and the Analogix reference, so the HD-500 dock trains at full speed.</li>
-          <li>No more crashes and freezes when you unplug a dock or while video is on.</li>
+          <li>Rear camera autofocus fixed: continuous and tap-to-focus AF move the lens again, so close subjects come out sharp in every camera app.</li>
+          <li>Dual SIM on the Lumia 950 XL Dual SIM (RM-1116): both slots, calls and SMS on each SIM, and mobile data switchable between the SIMs in Settings. Call audio on SIM 2 is waiting for confirmation.</li>
+          <li>The zip also installs from the Lumia 950 TWRP, and stops before writing anything on a phone that is not a Lumia, such as a real Nexus 5X or 6P.</li>
         </ul>
       </section>
 
@@ -141,6 +141,7 @@
             <ul class="mark is-works">
               <li>Wi-Fi (QCA6174), also on phones without Wi-Fi and Bluetooth MAC provisioning</li>
               <li>SIM, LTE data and SMS (IRadio 1.4 wrapper over rild)</li>
+              <li>Dual SIM on the RM-1116: calls and SMS on both SIMs, mobile data switchable in Settings</li>
               <li>Bluetooth, including A2DP audio streaming</li>
               <li>NFC</li>
             </ul>
@@ -195,6 +196,7 @@
             <h3 class="status-title">Waiting for your reports</h3>
             <ul class="mark is-testing">
               <li>Calls through a Bluetooth headset (narrowband audio): fixed, waiting for confirmation</li>
+              <li>Call audio on SIM 2 of the dual SIM model</li>
               <li>Battery life over long periods</li>
               <li>VoLTE on carriers other than Iliad, and incoming VoLTE calls</li>
               <li>Other USB-C docks and lapdocks: please report the model and what works</li>
@@ -273,7 +275,7 @@
             <pre><code>fastboot boot twrp-cityman-a16.img</code></pre></li>
           <li>First install only: Wipe &gt; Format Data, then wipe Cache and Dalvik.</li>
           <li>Sideload the ROM from Advanced &gt; ADB Sideload. <code>SHA256SUMS</code> is only needed by the installer.
-            <pre><code>adb sideload lineage-23.2-20261111-UNOFFICIAL-cityman.zip</code></pre></li>
+            <pre><code>adb sideload lineage-23.2-20261115-UNOFFICIAL-cityman.zip</code></pre></li>
           <li>Optional: sideload an Android 16 GApps package (MindTheGapps or NikGapps core) before the first boot.</li>
           <li>Reboot.</li>
         </ol>
@@ -290,7 +292,7 @@
       <section class="block" id="cityman-downloads" aria-labelledby="cityman-downloads-title">
         <h2 id="cityman-downloads-title">Downloads</h2>
         <ul class="links">
-          <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261111-cityman" data-goatcounter-click="download-rom-950xl">ROM, build 2026-11-11</a><span>GitHub release with the zip (about 1 GB) and its SHA256SUMS</span></li>
+          <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261115-cityman" data-goatcounter-click="download-rom-950xl">ROM, build 2026-11-15</a><span>GitHub release with the zip (about 1 GB) and its SHA256SUMS</span></li>
           <li><a href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Installer</a><span>For Windows, with Full, Clean and Update modes</span></li>
           <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/twrp-cityman-a16-20261030" data-goatcounter-click="download-twrp-950xl">TWRP for Android 16</a><span><code>twrp-cityman-a16.img</code>, required by this ROM</span></li>
           <li><a href="https://github.com/Android4Lumia950/installer/tree/cityman-temp">Android4Lumia950 LK installer</a><span>The official one, cityman-temp branch, for manual installation</span></li>
@@ -366,7 +368,7 @@
           <li><strong>René Lergner</strong>: WPInternals.</li>
           <li><strong>Konrad Dybcio</strong> and the <strong>WOA-Project</strong>: Lumia 950 and 950 XL hardware documentation in the mainline and WOA kernels; <strong>gus33</strong> (WOA-Project) and the <strong>LumiaWoA</strong> authors: the rebuilt USB-C PHY and mux drivers.</li>
           <li><strong>Analogix</strong>: the ANX7816 reference values for the DisplayPort signal.</li>
-          <li><strong>Aleksandar Jovanovic</strong>: testing of the USB-C docks, the installer (first full install from Windows 10 Mobile) and GPS.</li>
+          <li><strong>Aleksandar Jovanovic</strong>: testing of the USB-C docks, the installer (first full install from Windows 10 Mobile) and GPS, and the dual SIM logs and call tests.</li>
           <li><strong>Microsoft</strong> and <strong>Qualcomm</strong>: the Windows Phone drivers of the Lumia 950 XL, the reference for the camera calibration, the iris camera and IR LED, the battery charging limits, USB-C power delivery and the DisplayPort bridge. The iris recognition engine follows J. Daugman’s published methods.</li>
         </ul>
       </section>
