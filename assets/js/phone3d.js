@@ -44,8 +44,21 @@
       keys: [[0.2428, 0.3840], [0.4679, 0.5390], [0.7532, 0.8243]], keyColor: [0.73, 0.71, 0.65]
     },
     "lumia-930": {
-      body: [71, 137, 9.8], corner: 3.8, backEdge: 1.2, frontEdge: 0.5,
-      screen: [13.5, 12.8, 4.35], side: [0.62, 0.61, 0.58], metal: true, gloss: 0.5, iris: false
+      body: [71, 137, 9.8], corner: 3.1,
+      // measured on the side view: the orange cover curves away over about 23 mm, the aluminium frame is
+      // straight for 6.9 mm below the front (frame: where the cover begins, in mm from the front face)
+      edge: {
+        back: [[23.1, 0], [17.2, 0.25], [11.9, 0.49], [9.8, 0.74], [8.2, 0.98], [6.4, 1.22], [4.8, 1.47], [3.7, 1.72],
+          [2.65, 1.96], [1.6, 2.2], [1.06, 2.45], [0.53, 2.7], [0, 2.94]],
+        front: [[0, 0.74], [0.27, 0.49], [0.8, 0.2], [1.25, 0]],
+        glass: 1.25,
+        frame: 6.9
+      },
+      screen: [8.9, 16.0, 5.2], side: [0.72, 0.72, 0.73], metal: true, gloss: 0.5, iris: false,
+      cover: [0.93, 0.39, 0.18],
+      front: "lumia-930-front.webp",
+      // volume, power, camera
+      keys: [[0.209, 0.360], [0.442, 0.500], [0.686, 0.756]], keyColor: [0.85, 0.85, 0.86], keyBand: [3.1, 2.2]
     }
   };
 
@@ -124,7 +137,7 @@
     });
 
     const verts = [], index = [];
-    // 0 = back (photo), 1 = sides, 2 = front (screen), 3 = keys
+    // 0 = back (photo), 1 = sides, 2 = front (screen), 3 = keys, 4 = back cover beside the photo
     function vertex(x, y, z, nx, ny, nz, mat) {
       const u = mat === 2 ? 0.5 + x / W : 0.5 - x / W; // the back is seen from behind
       verts.push(x, y, z, nx, ny, nz, u, 0.5 - y / H, mat);
@@ -136,7 +149,10 @@
       for (let j = 0; j < profile.length - 1; j++) {
         const corners = [[i, j], [i + 1, j], [i + 1, j + 1], [i, j + 1]];
         const facing = (profile[j][3] + profile[j + 1][3]) / 2;
-        const mat = facing < -0.45 ? 0 : 1;
+        // below the metal frame (cfg.edge.frame) the steep part of the back cover keeps the cover colour
+        const onCover = cfg.edge && cfg.edge.frame !== undefined &&
+          (profile[j][1] + profile[j + 1][1]) / 2 < T / 2 - cfg.edge.frame * mm;
+        const mat = facing < -0.45 ? 0 : onCover ? 4 : 1;
         const first = verts.length / 9;
         corners.forEach(function (c) {
           const p = outline[c[0]], q = profile[c[1]], xy = inset(p, q[0]);
@@ -232,6 +248,7 @@
     "uniform sampler2D uBack; uniform sampler2D uFront;",
     "uniform vec3 uSide; uniform vec3 uKey; uniform vec3 uEye; uniform vec3 uAccent; uniform float uMetal; uniform float uGloss;",
     "uniform vec3 uTone;", // exposure, contrast, contrast pivot
+    "uniform vec3 uCover;",
     "vec3 lin(vec3 c) { return pow(c, vec3(2.2)); }",
     // a studio around the phone: dark floor, a soft box above, two tall strips at the sides
     "vec3 studio(vec3 r) {",
@@ -255,24 +272,29 @@
     "  } else if (vMat < 2.5) {",
     "    base = lin(texture2D(uFront, vUv).rgb);",
     "    spec = 0.9; shine = 180.0; refl = 1.0;",
-    "  } else {",
+    "  } else if (vMat < 3.5) {",
     "    base = lin(uKey); metal = 0.7;",
     "    spec = 0.8; shine = 40.0; refl = 0.7;",
+    "  } else {",
+    "    base = lin(uCover);",
+    "    spec = uGloss * uGloss + 0.02; shine = mix(8.0, 70.0, uGloss); refl = uGloss * 0.6;",
     "  }",
+    "  float glass = step(1.5, vMat) * step(vMat, 2.5);",
     "  vec3 L1 = normalize(vec3(-0.55, 0.75, 0.9));",
     "  vec3 L2 = normalize(vec3(0.9, 0.15, 0.45));",
     "  vec3 L3 = normalize(vec3(0.35, 0.3, -1.0));",
     "  float d1 = max(dot(N, L1), 0.0), d2 = max(dot(N, L2), 0.0), d3 = max(dot(N, L3), 0.0);",
     "  float ndv = max(dot(N, V), 0.0);",
     "  float s = pow(max(dot(N, normalize(L1 + V)), 0.0), shine) + 0.5 * pow(max(dot(N, normalize(L2 + V)), 0.0), shine);",
-    "  float f0 = vMat > 1.5 ? 0.04 : 0.05;",
+    "  float f0 = mix(0.05, 0.04, glass);",
     "  float fres = f0 + (1.0 - f0) * pow(1.0 - ndv, 5.0);",
     "  vec3 env = studio(reflect(-V, N));",
     "  vec3 diffuse = base * (0.16 + 0.8 * d1 + 0.32 * d2 + 0.22 * d3);",
     "  vec3 tint = mix(vec3(1.0), base, metal);",
     // glass keeps a little reflection even head-on, like a real screen
-    "  float mirror = vMat > 1.5 ? 0.12 + 0.88 * fres : mix(fres, 0.6, metal);",
-    "  vec3 col = diffuse * (1.0 - 0.8 * metal) + tint * s * spec + env * tint * refl * mirror;",
+    "  float mirror = mix(mix(fres, 0.6, metal), 0.12 + 0.88 * fres, glass);",
+    // brushed metal keeps some light of its own, so it reads as silver also where the studio reflects dark
+    "  vec3 col = diffuse * (1.0 - 0.45 * metal) + tint * s * spec + env * tint * refl * mirror;",
     "  col += uAccent * pow(1.0 - ndv, 3.0) * d3 * 0.35;",
     "  vec3 c = pow(col * uTone.x, vec3(1.0 / 2.2));",
     "  c = clamp((c - uTone.z) * uTone.y + uTone.z, 0.0, 1.0);",
@@ -412,7 +434,7 @@
         gl.vertexAttribPointer(loc, a[1], gl.FLOAT, false, 36, a[2] * 4);
       });
       const u = {};
-      ["uModel", "uViewProj", "uBack", "uFront", "uSide", "uKey", "uEye", "uAccent", "uMetal", "uGloss", "uTone"].forEach(function (n) {
+      ["uModel", "uViewProj", "uBack", "uFront", "uSide", "uKey", "uEye", "uAccent", "uMetal", "uGloss", "uTone", "uCover"].forEach(function (n) {
         u[n] = gl.getUniformLocation(prog, n);
       });
       texture(gl, backCanvas(photo), 0);
@@ -425,6 +447,7 @@
       gl.uniform1f(u.uMetal, cfg.metal ? 1 : 0);
       gl.uniform1f(u.uGloss, cfg.gloss);
       gl.uniform3fv(u.uTone, cfg.tone || [1, 1, 0.5]);
+      gl.uniform3fv(u.uCover, cfg.cover || cfg.side);
       gl.enable(gl.DEPTH_TEST);
       gl.clearColor(0, 0, 0, 0);
 
