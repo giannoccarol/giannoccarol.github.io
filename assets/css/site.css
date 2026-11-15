@@ -774,6 +774,13 @@ pre code {
   height: calc(100% - 0.8rem - 2.3rem);
 }
 
+/* the turning 3D phone in a tile: the tile stays a plain link, so the model takes no clicks */
+.tile .tile__3d {
+  height: calc(100% - 0.8rem - 2.3rem);
+  aspect-ratio: 3 / 4;
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .tile {
     transition: transform 120ms ease-out;
@@ -1114,7 +1121,7 @@ pre code {
 }
 
 /* the 3D model (phone3d.js) takes the photo's place; the photo stays for browsers without WebGL */
-.device-hero__photo.is-replaced {
+img.is-replaced {
   display: none;
 }
 
