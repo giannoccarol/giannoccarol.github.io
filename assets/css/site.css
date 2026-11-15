@@ -1113,6 +1113,24 @@ pre code {
   margin-top: 1.5rem;
 }
 
+/* the 3D model (phone3d.js) takes the photo's place; the photo stays for browsers without WebGL */
+.device-hero__photo.is-replaced {
+  display: none;
+}
+
+.device-hero__3d {
+  justify-self: center;
+  height: clamp(13rem, 33vw, 28rem);
+  aspect-ratio: 3 / 4;
+  cursor: grab;
+  touch-action: pan-y;
+  outline-offset: 4px;
+}
+
+.device-hero__3d.is-dragging {
+  cursor: grabbing;
+}
+
 @media (max-width: 44rem) {
   .device-hero {
     grid-template-columns: minmax(0, 1fr);
@@ -1121,6 +1139,11 @@ pre code {
   .device-hero__photo {
     grid-row: 1;
     height: 13rem;
+  }
+
+  .device-hero__3d {
+    grid-row: 1;
+    height: 15rem;
   }
 }
 

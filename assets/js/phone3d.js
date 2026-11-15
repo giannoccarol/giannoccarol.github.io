@@ -1,0 +1,515 @@
+// Phone pages: the phone in the header becomes a 3D model that turns slowly by itself and follows a drag.
+// Hand-written WebGL, no library. The photo already on the page is the back of the model, a canvas drawing is
+// the front (screen off, glass, earpiece, front camera), and the sides take the colour of the body. The
+// sizes come from the phones' published dimensions. Without WebGL the photo simply stays where it is.
+(function () {
+  const img = document.querySelector("img.device-hero__photo[data-phone]");
+  if (!img) return;
+
+  // Millimetres: body width, height, depth; corner radius; rounding of the back and front edges; screen
+  // borders (top, bottom, sides). Colours are 0-1 sRGB. "metal" sides reflect like aluminium.
+  const PHONES = {
+    "lumia-950-xl": {
+      body: [78.4, 151.9, 8.1], corner: 12.5, backEdge: 2.6, frontEdge: 0.8,
+      screen: [13.5, 12.2, 3.7], side: [0.27, 0.27, 0.28], metal: false, gloss: 0.12, iris: true
+    },
+    // front: picture of the front in 3d/ (tools/phone-textures.py); camera: raised disc on the back, centre
+    // and radius as fractions of the back photo, height in mm; keys: on the right side, top and bottom as
+    // fractions of the height
+    "lumia-1520": {
+      body: [85.4, 162.8, 8.7], corner: 2.6,
+      // measured on the side view of the sheet: the back rises towards the edge, the front glass is flat
+      // inside a 2.6 mm rim, so the edge itself is thin and rounded
+      edge: {
+        back: [[9.8, 0], [7.9, 0.32], [6.6, 0.62], [5.5, 1.08], [4.5, 1.37], [3.5, 1.77], [2.6, 2.17],
+          [1.9, 2.6], [1.3, 3.15], [0.64, 3.95], [0.32, 4.5], [0, 5.1]],
+        front: [[0, 2.2], [0.32, 1.2], [0.64, 0.92], [0.96, 0.52], [1.3, 0.3], [1.6, 0.1], [1.93, 0]],
+        glass: 2.6
+      },
+      screen: [16.6, 15.7, 5.9], side: [0.86, 0.84, 0.3], metal: false, gloss: 0.6, iris: false,
+      front: "lumia-1520-front.webp",
+      camera: { u: 0.4962, v: 0.2428, r: 0.103, height: 1.6 },
+      keys: [[0.2428, 0.3840], [0.4679, 0.5390], [0.7532, 0.8243]], keyColor: [0.73, 0.71, 0.65]
+    },
+    "lumia-930": {
+      body: [71, 137, 9.8], corner: 3.8, backEdge: 1.2, frontEdge: 0.5,
+      screen: [13.5, 12.8, 4.35], side: [0.62, 0.61, 0.58], metal: true, gloss: 0.5, iris: false
+    }
+  };
+  const cfg = PHONES[img.dataset.phone];
+  if (!cfg) return;
+
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const canvas = document.createElement("canvas");
+  const gl = canvas.getContext("webgl", { antialias: true, alpha: true, premultipliedAlpha: true });
+  if (!gl) return;
+
+  // ---------- small matrix helpers (column-major, as WebGL wants) ----------
+  function perspective(fovy, aspect, near, far) {
+    const f = 1 / Math.tan(fovy / 2), nf = 1 / (near - far);
+    return [f / aspect, 0, 0, 0, 0, f, 0, 0, 0, 0, (far + near) * nf, -1, 0, 0, 2 * far * near * nf, 0];
+  }
+  function multiply(a, b) {
+    const o = new Array(16);
+    for (let c = 0; c < 4; c++)
+      for (let r = 0; r < 4; r++)
+        o[c * 4 + r] = a[r] * b[c * 4] + a[4 + r] * b[c * 4 + 1] + a[8 + r] * b[c * 4 + 2] + a[12 + r] * b[c * 4 + 3];
+    return o;
+  }
+  function rotateY(t) { const c = Math.cos(t), s = Math.sin(t); return [c, 0, -s, 0, 0, 1, 0, 0, s, 0, c, 0, 0, 0, 0, 1]; }
+  function rotateX(t) { const c = Math.cos(t), s = Math.sin(t); return [1, 0, 0, 0, 0, c, s, 0, 0, -s, c, 0, 0, 0, 0, 1]; }
+  function translate(x, y, z) { return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, y, z, 1]; }
+
+  // ---------- geometry: a rounded slab swept around the outline of the photo ----------
+  // The body is 2 units tall and as wide as the photo's proportions; depth and radii scale with it.
+  const aspect = img.naturalWidth / img.naturalHeight || cfg.body[0] / cfg.body[1];
+  const H = 2, W = H * aspect, mm = H / cfg.body[1];
+  const T = cfg.body[2] * mm, R = cfg.corner * mm;
+  const outline = []; // [x, y, normal x, normal y, corner centre x, centre y, corner quadrant x, y]
+  const cornerSteps = 12, ax = W / 2 - R, ay = H / 2 - R;
+  [[ax, ay, 1, 1], [-ax, ay, -1, 1], [-ax, -ay, -1, -1], [ax, -ay, 1, -1]].forEach(function (c, k) {
+    for (let i = 0; i <= cornerSteps; i++) {
+      const t = (k + i / cornerSteps) * Math.PI / 2;
+      outline.push([c[0] + R * Math.cos(t), c[1] + R * Math.sin(t), Math.cos(t), Math.sin(t), c[0], c[1], c[2], c[3]]);
+    }
+  });
+  outline.push(outline[0]); // close the loop
+  // a point d inside the outline; deeper than the corner radius the corner becomes a sharp one
+  function inset(p, d) {
+    if (d <= R) return [p[4] + (R - d) * p[2], p[5] + (R - d) * p[3]];
+    return [p[4] + (R - d) * p[6], p[5] + (R - d) * p[7]];
+  }
+
+  // edge profile from the back face to the front face, as [inset, z]. A measured profile (cfg.edge: back
+  // rise and front drop in mm, by inset from the outline) when the phone has one, two round edges otherwise.
+  const pts = [];
+  let backInset, frontInset;
+  if (cfg.edge) {
+    cfg.edge.back.forEach(function (q) { pts.push([q[0] * mm, -T / 2 + q[1] * mm]); });
+    cfg.edge.front.forEach(function (q) { pts.push([q[0] * mm, T / 2 - q[1] * mm]); });
+    pts.push([cfg.edge.glass * mm, T / 2]);
+    backInset = cfg.edge.back[0][0] * mm;
+    frontInset = cfg.edge.glass * mm;
+  } else {
+    const rb = Math.min(cfg.backEdge * mm, R * 0.9, T * 0.45);
+    const rf = Math.min(cfg.frontEdge * mm, R * 0.9, T * 0.45);
+    for (let i = 0; i <= 6; i++) {
+      const t = -Math.PI / 2 + (Math.PI / 2) * i / 6;
+      pts.push([rb - rb * Math.cos(t), -T / 2 + rb + rb * Math.sin(t)]);
+    }
+    for (let i = 0; i <= 6; i++) {
+      const t = (Math.PI / 2) * i / 6;
+      pts.push([rf - rf * Math.cos(t), T / 2 - rf + rf * Math.sin(t)]);
+    }
+    backInset = rb;
+    frontInset = rf;
+  }
+  // normals from the neighbouring segments (outwards, z); the path runs back to front around the edge
+  function segNormal(a, b) {
+    const to = -(b[0] - a[0]), tz = b[1] - a[1], l = Math.hypot(to, tz) || 1;
+    return [tz / l, -to / l];
+  }
+  const profile = pts.map(function (q, i) {
+    const n1 = i > 0 ? segNormal(pts[i - 1], q) : null, n2 = i < pts.length - 1 ? segNormal(q, pts[i + 1]) : null;
+    let no = (n1 ? n1[0] : 0) + (n2 ? n2[0] : 0), nz = (n1 ? n1[1] : 0) + (n2 ? n2[1] : 0);
+    const l = Math.hypot(no, nz) || 1;
+    return [q[0], q[1], no / l, nz / l];
+  });
+
+  const verts = [], index = [];
+  // 0 = back (photo), 1 = sides, 2 = front (screen), 3 = keys
+  function vertex(x, y, z, nx, ny, nz, mat) {
+    const u = mat === 2 ? 0.5 + x / W : 0.5 - x / W; // the back is seen from behind
+    verts.push(x, y, z, nx, ny, nz, u, 0.5 - y / H, mat);
+    return verts.length / 9 - 1;
+  }
+  // The sides, one quad at a time so each can take its own material: where the surface faces backwards
+  // it shows the back photo projected straight on (the photo is a view from behind), elsewhere the body colour.
+  for (let i = 0; i < outline.length - 1; i++)
+    for (let j = 0; j < profile.length - 1; j++) {
+      const corners = [[i, j], [i + 1, j], [i + 1, j + 1], [i, j + 1]];
+      const facing = (profile[j][3] + profile[j + 1][3]) / 2;
+      const mat = facing < -0.45 ? 0 : 1;
+      const first = verts.length / 9;
+      corners.forEach(function (c) {
+        const p = outline[c[0]], q = profile[c[1]], xy = inset(p, q[0]);
+        vertex(xy[0], xy[1], q[1], p[2] * q[2], p[3] * q[2], q[3], mat);
+      });
+      index.push(first, first + 1, first + 2, first, first + 2, first + 3);
+    }
+  [[backInset, -T / 2, -1, 0], [frontInset, T / 2, 1, 2]].forEach(function (cap) {
+    const center = vertex(0, 0, cap[1], 0, 0, cap[2], cap[3]);
+    const first = verts.length / 9;
+    outline.forEach(function (p) {
+      const xy = inset(p, cap[0]);
+      vertex(xy[0], xy[1], cap[1], 0, 0, cap[2], cap[3]);
+    });
+    for (let i = 0; i < outline.length - 1; i++) index.push(center, first + i, first + i + 1);
+  });
+
+  // the outermost band of the side, where keys sit: the z range around the widest point
+  let keyZ = [-T / 4, T / 4];
+  {
+    let lo = 0, hi = 0;
+    profile.forEach(function (q, i) { if (q[0] < profile[lo][0] || (q[0] === profile[lo][0] && i < lo)) lo = i; });
+    hi = lo;
+    while (hi + 1 < profile.length && profile[hi + 1][0] <= profile[lo][0] + 0.15 * mm) hi++;
+    const mid = (profile[lo][1] + profile[hi][1]) / 2, half = Math.max(0.8 * mm, Math.abs(profile[hi][1] - profile[lo][1]) / 2);
+    keyZ = [mid - half, mid + half];
+  }
+
+  // the camera as a raised disc: its top and rounded rim show the photo, its wall the body colour
+  if (cfg.camera) {
+    const cx = (0.5 - cfg.camera.u) * W, cy = (0.5 - cfg.camera.v) * H;
+    const r = cfg.camera.r * W, hgt = cfg.camera.height * mm, bev = Math.min(hgt * 0.6, r * 0.12);
+    const base = -T / 2, top = base - hgt, steps = 48;
+    // rings: [radius, z, normal outwards, normal z, material]
+    // the third ring repeats the second with the other material, so the two never blend
+    const rings = [[r - bev, top, 0, -1, 0], [r - bev * 0.3, top + bev * 0.3, 0.6, -0.8, 0],
+      [r - bev * 0.3, top + bev * 0.3, 0.6, -0.8, 1], [r, top + bev, 1, 0, 1], [r, base, 1, 0, 1]];
+    const firstRing = verts.length / 9;
+    for (let i = 0; i <= steps; i++) {
+      const t = (i / steps) * Math.PI * 2, c = Math.cos(t), s = Math.sin(t);
+      rings.forEach(function (g) {
+        vertex(cx + c * g[0], cy + s * g[0], g[1], c * g[2], s * g[2], g[3], g[4]);
+      });
+    }
+    for (let i = 0; i < steps; i++)
+      for (let j = 0; j < rings.length - 1; j++) {
+        const a = firstRing + i * rings.length + j, b = a + rings.length;
+        index.push(a, b, a + 1, a + 1, b, b + 1);
+      }
+    const disc = vertex(cx, cy, top, 0, 0, -1, 0);
+    for (let i = 0; i < steps; i++)
+      index.push(disc, firstRing + i * rings.length, firstRing + (i + 1) * rings.length);
+  }
+
+  // side keys: small blocks standing out of the right side (material 3)
+  (cfg.keys || []).forEach(function (k) {
+    const x0 = W / 2 - 0.8 * mm, x1 = W / 2 + 0.5 * mm, z0 = keyZ[0], z1 = keyZ[1];
+    const y0 = (0.5 - k[1]) * H, y1 = (0.5 - k[0]) * H;
+    [
+      [[x1, y0, z0], [x1, y1, z0], [x1, y1, z1], [x1, y0, z1], [1, 0, 0]],
+      [[x0, y1, z0], [x1, y1, z0], [x1, y1, z1], [x0, y1, z1], [0, 1, 0]],
+      [[x0, y0, z0], [x1, y0, z0], [x1, y0, z1], [x0, y0, z1], [0, -1, 0]],
+      [[x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1], [0, 0, 1]],
+      [[x0, y0, z0], [x1, y0, z0], [x1, y1, z0], [x0, y1, z0], [0, 0, -1]]
+    ].forEach(function (f) {
+      const n = f[4];
+      const a = vertex(f[0][0], f[0][1], f[0][2], n[0], n[1], n[2], 3);
+      vertex(f[1][0], f[1][1], f[1][2], n[0], n[1], n[2], 3);
+      vertex(f[2][0], f[2][1], f[2][2], n[0], n[1], n[2], 3);
+      vertex(f[3][0], f[3][1], f[3][2], n[0], n[1], n[2], 3);
+      index.push(a, a + 1, a + 2, a, a + 2, a + 3);
+    });
+  });
+
+  // ---------- shaders ----------
+  const VS = [
+    "attribute vec3 aPos; attribute vec3 aNor; attribute vec2 aUv; attribute float aMat;",
+    "uniform mat4 uModel; uniform mat4 uViewProj;",
+    "varying vec3 vPos; varying vec3 vNor; varying vec2 vUv; varying float vMat;",
+    "void main() {",
+    "  vec4 wp = uModel * vec4(aPos, 1.0);",
+    "  vPos = wp.xyz; vNor = (uModel * vec4(aNor, 0.0)).xyz; vUv = aUv; vMat = aMat;", // rotation only
+    "  gl_Position = uViewProj * wp;",
+    "}"
+  ].join("\n");
+  const FS = [
+    "precision mediump float;",
+    "varying vec3 vPos; varying vec3 vNor; varying vec2 vUv; varying float vMat;",
+    "uniform sampler2D uBack; uniform sampler2D uFront;",
+    "uniform vec3 uSide; uniform vec3 uKey; uniform vec3 uEye; uniform vec3 uAccent; uniform float uMetal; uniform float uGloss;",
+    "vec3 lin(vec3 c) { return pow(c, vec3(2.2)); }",
+    // a studio around the phone: dark floor, a soft box above, two tall strips at the sides
+    "vec3 studio(vec3 r) {",
+    "  float up = r.y * 0.5 + 0.5;",
+    "  vec3 c = mix(vec3(0.015), vec3(0.12), smoothstep(0.25, 1.0, up));",
+    "  c += vec3(0.9) * smoothstep(0.78, 0.97, up);",
+    "  c += vec3(0.55) * smoothstep(0.6, 0.92, abs(r.x)) * smoothstep(0.35, 0.65, up);",
+    "  return c;",
+    "}",
+    "void main() {",
+    "  vec3 N = normalize(vNor);",
+    "  vec3 V = normalize(uEye - vPos);",
+    "  vec3 base; float spec; float shine; float refl; float metal = 0.0;",
+    "  if (vMat < 0.5) {",
+    "    vec4 t = texture2D(uBack, vUv);",
+    "    base = mix(lin(uSide), lin(t.rgb), t.a);",
+    "    spec = uGloss; shine = mix(8.0, 70.0, uGloss); refl = uGloss * 0.6;",
+    "  } else if (vMat < 1.5) {",
+    "    base = lin(uSide); metal = uMetal;",
+    "    spec = mix(uGloss, 0.9, uMetal); shine = mix(mix(8.0, 70.0, uGloss), 45.0, uMetal); refl = mix(uGloss * 0.6, 0.9, uMetal);",
+    "  } else if (vMat < 2.5) {",
+    "    base = lin(texture2D(uFront, vUv).rgb);",
+    "    spec = 0.9; shine = 180.0; refl = 1.0;",
+    "  } else {",
+    "    base = lin(uKey); metal = 0.7;",
+    "    spec = 0.8; shine = 40.0; refl = 0.7;",
+    "  }",
+    "  vec3 L1 = normalize(vec3(-0.55, 0.75, 0.9));",
+    "  vec3 L2 = normalize(vec3(0.9, 0.15, 0.45));",
+    "  vec3 L3 = normalize(vec3(0.35, 0.3, -1.0));",
+    "  float d1 = max(dot(N, L1), 0.0), d2 = max(dot(N, L2), 0.0), d3 = max(dot(N, L3), 0.0);",
+    "  float ndv = max(dot(N, V), 0.0);",
+    "  float s = pow(max(dot(N, normalize(L1 + V)), 0.0), shine) + 0.5 * pow(max(dot(N, normalize(L2 + V)), 0.0), shine);",
+    "  float f0 = vMat > 1.5 ? 0.04 : 0.05;",
+    "  float fres = f0 + (1.0 - f0) * pow(1.0 - ndv, 5.0);",
+    "  vec3 env = studio(reflect(-V, N));",
+    "  vec3 diffuse = base * (0.16 + 0.8 * d1 + 0.32 * d2 + 0.22 * d3);",
+    "  vec3 tint = mix(vec3(1.0), base, metal);",
+    // glass keeps a little reflection even head-on, like a real screen
+    "  float mirror = vMat > 1.5 ? 0.12 + 0.88 * fres : mix(fres, 0.6, metal);",
+    "  vec3 col = diffuse * (1.0 - 0.8 * metal) + tint * s * spec + env * tint * refl * mirror;",
+    "  col += uAccent * pow(1.0 - ndv, 3.0) * d3 * 0.35;",
+    "  gl_FragColor = vec4(pow(col, vec3(1.0 / 2.2)), 1.0);",
+    "}"
+  ].join("\n");
+
+  function shader(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
+  }
+  const vs = shader(gl.VERTEX_SHADER, VS), fs = shader(gl.FRAGMENT_SHADER, FS);
+  if (!vs || !fs) return;
+  const prog = gl.createProgram();
+  gl.attachShader(prog, vs);
+  gl.attachShader(prog, fs);
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+  gl.useProgram(prog);
+
+  const vbo = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
+  const ibo = gl.createBuffer();
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(index), gl.STATIC_DRAW);
+  [["aPos", 3, 0], ["aNor", 3, 3], ["aUv", 2, 6], ["aMat", 1, 8]].forEach(function (a) {
+    const loc = gl.getAttribLocation(prog, a[0]);
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, a[1], gl.FLOAT, false, 36, a[2] * 4);
+  });
+  const u = {};
+  ["uModel", "uViewProj", "uBack", "uFront", "uSide", "uKey", "uEye", "uAccent", "uMetal", "uGloss"].forEach(function (n) {
+    u[n] = gl.getUniformLocation(prog, n);
+  });
+
+  // ---------- textures: the photo for the back, a drawing for the front ----------
+  function pot(n) { return Math.min(2048, Math.pow(2, Math.ceil(Math.log2(n)))); }
+  function texture(source, unit) {
+    const t = gl.createTexture();
+    gl.activeTexture(gl.TEXTURE0 + unit);
+    gl.bindTexture(gl.TEXTURE_2D, t);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
+    gl.generateMipmap(gl.TEXTURE_2D);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  }
+  function backCanvas() {
+    const c = document.createElement("canvas");
+    c.width = pot(img.naturalWidth * 2);
+    c.height = pot(img.naturalHeight * 2);
+    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+    return c;
+  }
+  // picture: the front cut from a product sheet, when the phone has one; otherwise a drawing
+  function frontCanvas(picture) {
+    const c = document.createElement("canvas");
+    c.width = 1024;
+    c.height = 2048;
+    const g = c.getContext("2d");
+    const sx = c.width / cfg.body[0], sy = c.height / cfg.body[1]; // pixels per mm, per axis
+    const top = cfg.screen[0], bottom = cfg.screen[1], side = cfg.screen[2];
+    const screenRect = [side * sx, top * sy, (cfg.body[0] - 2 * side) * sx, (cfg.body[1] - top - bottom) * sy];
+    if (picture) {
+      g.drawImage(picture, 0, 0, c.width, c.height);
+    } else {
+      g.fillStyle = "#151519";
+      g.fillRect(0, 0, c.width, c.height);
+      const screen = g.createLinearGradient(0, 0, 0, c.height);
+      screen.addColorStop(0, "#0a0b10");
+      screen.addColorStop(1, "#030304");
+      g.fillStyle = screen;
+      g.fillRect(screenRect[0], screenRect[1], screenRect[2], screenRect[3]);
+    }
+    // a soft diagonal sheen on the glass, so the screen never reads as a flat black block
+    const sheen = g.createLinearGradient(0, c.height * 0.15, c.width, c.height * 0.55);
+    sheen.addColorStop(0, "rgba(255,255,255,0)");
+    sheen.addColorStop(0.45, "rgba(255,255,255,0.05)");
+    sheen.addColorStop(0.5, "rgba(255,255,255,0.09)");
+    sheen.addColorStop(0.62, "rgba(255,255,255,0)");
+    g.fillStyle = sheen;
+    g.fillRect(screenRect[0], screenRect[1], screenRect[2], screenRect[3]);
+    if (picture) return c;
+    function dot(x, y, r, color) {
+      g.fillStyle = color;
+      g.beginPath();
+      g.ellipse(x * sx, y * sy, r * sx, r * sy, 0, 0, Math.PI * 2);
+      g.fill();
+    }
+    const mid = cfg.body[0] / 2, ear = top * 0.48;
+    g.fillStyle = "#34353b";
+    g.beginPath();
+    if (g.roundRect) g.roundRect((mid - 6) * sx, (ear - 0.6) * sy, 12 * sx, 1.2 * sy, 0.6 * sx);
+    else g.rect((mid - 6) * sx, (ear - 0.6) * sy, 12 * sx, 1.2 * sy);
+    g.fill();
+    dot(mid + 13, ear, 1.5, "#2a2b31");
+    dot(mid + 13, ear, 0.75, "#0b1020");
+    dot(mid + 12.75, ear - 0.25, 0.22, "#5a6a90");
+    if (cfg.iris) {
+      dot(mid - 13, ear, 1.5, "#2a2b31");
+      dot(mid - 13, ear, 0.75, "#1c0a0d");
+      dot(mid - 19, ear, 0.9, "#26262b");
+    }
+    return c;
+  }
+
+  let ready = false;
+  function setup(picture) {
+    texture(backCanvas(), 0);
+    texture(frontCanvas(picture), 1);
+    gl.uniform1i(u.uBack, 0);
+    gl.uniform1i(u.uFront, 1);
+    gl.uniform3fv(u.uSide, cfg.side);
+    gl.uniform3fv(u.uKey, cfg.keyColor || cfg.side);
+    gl.uniform3fv(u.uAccent, [1.0, 0.35, 0.0]);
+    gl.uniform1f(u.uMetal, cfg.metal ? 1 : 0);
+    gl.uniform1f(u.uGloss, cfg.gloss);
+    gl.enable(gl.DEPTH_TEST);
+    gl.clearColor(0, 0, 0, 0);
+
+    canvas.className = "device-hero__3d";
+    canvas.setAttribute("role", "img");
+    canvas.setAttribute("aria-label", img.alt);
+    canvas.tabIndex = 0;
+    img.after(canvas);
+    resize();
+    ready = true;
+    draw();
+    img.classList.add("is-replaced");
+    start();
+  }
+
+  // ---------- view ----------
+  const camDist = 4.6, fov = 30 * Math.PI / 180;
+  let viewProj = null;
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
+    const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w;
+      canvas.height = h;
+    }
+    gl.viewport(0, 0, w, h);
+    viewProj = multiply(perspective(fov, w / h, 0.1, 20), translate(0, 0, -camDist));
+    gl.uniform3fv(u.uEye, [0, 0, camDist]);
+  }
+
+  let yaw = reduced ? -0.6 : -0.35; // start showing the back, a little turned
+  const pitch = 0.12;
+  function draw() {
+    if (!ready) return;
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    // face the back first: yaw 0 shows the front, so turn half a circle
+    const model = multiply(rotateX(pitch), rotateY(yaw + Math.PI));
+    gl.uniformMatrix4fv(u.uModel, false, model);
+    gl.uniformMatrix4fv(u.uViewProj, false, viewProj);
+    gl.drawElements(gl.TRIANGLES, index.length, gl.UNSIGNED_SHORT, 0);
+  }
+
+  // ---------- motion: a slow turn, drag to spin, the spin settles back to the slow turn ----------
+  const cruise = reduced ? 0 : 0.42; // radians per second
+  let speed = cruise, dragging = false, lastX = 0, lastMove = 0, raf = 0, last = 0, visible = true;
+
+  function frame(now) {
+    raf = 0;
+    const dt = Math.min(0.05, (now - (last || now)) / 1000);
+    last = now;
+    if (!dragging) {
+      speed += (cruise - speed) * (1 - Math.exp(-dt * 1.6));
+      yaw += speed * dt;
+    }
+    draw();
+    if (visible && (dragging || Math.abs(speed) > 0.002)) raf = requestAnimationFrame(frame);
+    else last = 0;
+  }
+  function start() {
+    if (!raf && visible) raf = requestAnimationFrame(frame);
+  }
+
+  canvas.addEventListener("pointerdown", function (e) {
+    dragging = true;
+    lastX = e.clientX;
+    lastMove = performance.now();
+    speed = 0;
+    canvas.setPointerCapture(e.pointerId);
+    canvas.classList.add("is-dragging");
+    start();
+  });
+  canvas.addEventListener("pointermove", function (e) {
+    if (!dragging) return;
+    const now = performance.now(), dx = e.clientX - lastX;
+    const step = dx * 0.011;
+    yaw += step;
+    speed = step / Math.max(0.008, (now - lastMove) / 1000);
+    lastX = e.clientX;
+    lastMove = now;
+  });
+  function release() {
+    if (!dragging) return;
+    dragging = false;
+    if (performance.now() - lastMove > 80) speed = 0; // held still before letting go
+    speed = Math.max(-12, Math.min(12, speed));
+    canvas.classList.remove("is-dragging");
+    start();
+  }
+  canvas.addEventListener("pointerup", release);
+  canvas.addEventListener("pointercancel", release);
+  canvas.addEventListener("keydown", function (e) {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    e.preventDefault();
+    speed += e.key === "ArrowLeft" ? -2.5 : 2.5;
+    start();
+  });
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting && !document.hidden;
+      start();
+    }).observe(canvas);
+  }
+  document.addEventListener("visibilitychange", function () {
+    visible = !document.hidden;
+    start();
+  });
+  if ("ResizeObserver" in window) new ResizeObserver(function () { resize(); draw(); }).observe(canvas);
+  canvas.addEventListener("webglcontextlost", function () {
+    ready = false;
+    canvas.remove();
+    img.classList.remove("is-replaced");
+  });
+
+  // wait for the file only: decode() can stay pending in a background tab
+  function load(image) {
+    return new Promise(function (resolve, reject) {
+      if (image.complete && image.naturalWidth) return resolve();
+      image.addEventListener("load", resolve, { once: true });
+      image.addEventListener("error", reject, { once: true });
+    });
+  }
+  let picture = null;
+  if (cfg.front) {
+    picture = new Image();
+    picture.src = new URL("3d/" + cfg.front, img.currentSrc || img.src).href;
+  }
+  Promise.all([load(img), picture ? load(picture).catch(function () { picture = null; }) : null]).then(
+    function () { setup(picture); },
+    function () { if (img.complete && img.naturalWidth) setup(picture); }
+  );
+})();
