@@ -5,7 +5,8 @@
 // Without WebGL the photo simply stays where it is.
 (function () {
   // Millimetres: body width, height, depth; corner radius; rounding of the back and front edges; screen
-  // borders (top, bottom, sides). Colours are 0-1 sRGB. "metal" sides reflect like aluminium.
+  // borders (top, bottom, sides). Colours are 0-1 sRGB. "metal" sides reflect like aluminium; tone:
+  // exposure, contrast and contrast pivot of the final colour.
   const PHONES = {
     "lumia-950-xl": {
       body: [78.4, 151.9, 8.1], corner: 4.4,
@@ -17,6 +18,7 @@
         glass: 2.0
       },
       screen: [15.0, 10.7, 3.7], side: [0.13, 0.135, 0.145], metal: false, gloss: 0.08, iris: true,
+      tone: [0.85, 1.3, 0.3], // a little darker and more contrast: deep black, brighter logo and camera ring
       front: "lumia-950-xl-front.webp",
       camera: { u: 0.5014, v: 0.1518, r: 0.1518, height: 1.7 },
       // volume up, power, volume down, camera; keyBand: centre below the front face and height, in mm
@@ -229,6 +231,7 @@
     "varying vec3 vPos; varying vec3 vNor; varying vec2 vUv; varying float vMat;",
     "uniform sampler2D uBack; uniform sampler2D uFront;",
     "uniform vec3 uSide; uniform vec3 uKey; uniform vec3 uEye; uniform vec3 uAccent; uniform float uMetal; uniform float uGloss;",
+    "uniform vec3 uTone;", // exposure, contrast, contrast pivot
     "vec3 lin(vec3 c) { return pow(c, vec3(2.2)); }",
     // a studio around the phone: dark floor, a soft box above, two tall strips at the sides
     "vec3 studio(vec3 r) {",
@@ -271,7 +274,9 @@
     "  float mirror = vMat > 1.5 ? 0.12 + 0.88 * fres : mix(fres, 0.6, metal);",
     "  vec3 col = diffuse * (1.0 - 0.8 * metal) + tint * s * spec + env * tint * refl * mirror;",
     "  col += uAccent * pow(1.0 - ndv, 3.0) * d3 * 0.35;",
-    "  gl_FragColor = vec4(pow(col, vec3(1.0 / 2.2)), 1.0);",
+    "  vec3 c = pow(col * uTone.x, vec3(1.0 / 2.2));",
+    "  c = clamp((c - uTone.z) * uTone.y + uTone.z, 0.0, 1.0);",
+    "  gl_FragColor = vec4(c, 1.0);",
     "}"
   ].join("\n");
 
@@ -407,7 +412,7 @@
         gl.vertexAttribPointer(loc, a[1], gl.FLOAT, false, 36, a[2] * 4);
       });
       const u = {};
-      ["uModel", "uViewProj", "uBack", "uFront", "uSide", "uKey", "uEye", "uAccent", "uMetal", "uGloss"].forEach(function (n) {
+      ["uModel", "uViewProj", "uBack", "uFront", "uSide", "uKey", "uEye", "uAccent", "uMetal", "uGloss", "uTone"].forEach(function (n) {
         u[n] = gl.getUniformLocation(prog, n);
       });
       texture(gl, backCanvas(photo), 0);
@@ -419,6 +424,7 @@
       gl.uniform3fv(u.uAccent, [1.0, 0.35, 0.0]);
       gl.uniform1f(u.uMetal, cfg.metal ? 1 : 0);
       gl.uniform1f(u.uGloss, cfg.gloss);
+      gl.uniform3fv(u.uTone, cfg.tone || [1, 1, 0.5]);
       gl.enable(gl.DEPTH_TEST);
       gl.clearColor(0, 0, 0, 0);
 
