@@ -5,10 +5,10 @@
   <script>try{if(localStorage.getItem("theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lumia 1520: LineageOS 18.1 (Android 11) | Lorenzo Giannoccaro</title>
-  <meta name="description" content="LineageOS 18.1 (Android 11) per il Nokia Lumia 1520 (bandit): cosa funziona, cosa viene dopo, sorgenti e crediti.">
+  <meta name="description" content="LineageOS 18.1 (Android 11) per il Nokia Lumia 1520 (bandit): stato, guida all’installazione, download, sorgenti e crediti.">
   <meta name="theme-color" content="#000000">
   <meta property="og:title" content="Lumia 1520: LineageOS 18.1 (Android 11)">
-  <meta property="og:description" content="LineageOS 18.1 (Android 11) per il Nokia Lumia 1520 (bandit): cosa funziona, cosa viene dopo, sorgenti e crediti.">
+  <meta property="og:description" content="LineageOS 18.1 (Android 11) per il Nokia Lumia 1520 (bandit): stato, guida all’installazione, download, sorgenti e crediti.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lorenzo Giannoccaro">
   <meta property="og:image" content="https://giannoccarol.github.io/assets/img/og/og-1520.png">
@@ -25,8 +25,8 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=df76557">
-  <script src="../../../assets/js/theme.js?v=df76557" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=de315e6">
+  <script src="../../../assets/js/theme.js?v=de315e6" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -67,9 +67,6 @@
         <div>
           <h1 class="device__name" id="bandit-title">Lumia 1520</h1>
           <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Build di prova</span></p>
-          <div class="prose">
-            <p>Il telefono è uscito con Windows Phone 8 e non ha mai avuto un produttore Android. Si avvia tramite UEFI, BootShim e lk1st nel kernel msm8974 3.4 di LineageOS, adattato alla TrustZone di Windows Phone. Il firmware del modem viene dall’immagine originale, dove è cifrato: lo decifra all’avvio la TrustZone del telefono stesso.</p>
-          </div>
           <div class="actions">
             <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261114-bandit" data-goatcounter-click="download-rom-1520">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
@@ -82,62 +79,264 @@
         <img class="device-hero__photo" src="../../../assets/img/phones/lumia-1520.webp" width="270" height="508" alt="Il retro di un Lumia 1520 giallo">
       </header>
 
+      <dl class="facts">
+        <div><dt>Ultima build</dt><dd>14 novembre 2026</dd></div>
+        <div><dt>Android</dt><dd>11 (RQ3A.211001.001)</dd></div>
+        <div><dt>LineageOS</dt><dd>18.1, userdebug, chiavi di test</dd></div>
+        <div><dt>Patch di sicurezza</dt><dd>5 febbraio 2024</dd></div>
+        <div><dt>Kernel</dt><dd>3.4.113, LineageOS msm8974</dd></div>
+        <div><dt>Chip</dt><dd>Snapdragon 800 (MSM8974)</dd></div>
+        <div><dt>Nome in codice</dt><dd>bandit</dd></div>
+        <div><dt>SELinux</dt><dd>Permissive</dd></div>
+      </dl>
+
+      <ul class="onthispage" aria-label="In questa pagina">
+        <li><a href="#bandit-status">Stato</a></li>
+        <li><a href="#bandit-install">Installazione</a></li>
+        <li><a href="#bandit-downloads">Download</a></li>
+        <li><a href="#bandit-hardware">Hardware</a></li>
+        <li><a href="#bandit-sources">Sorgenti</a></li>
+        <li><a href="#bandit-credits">Crediti</a></li>
+      </ul>
+
+      <div class="intro prose">
+        <p>Le prime build Android per il Lumia 1520. Il telefono è uscito con Windows Phone 8 e non ha mai avuto un vendor Android, quindi la build parte dal boot manager di Windows Phone attraverso BootShim e lk1st e usa il kernel 3.4 msm8974 di LineageOS adattato alla TrustZone di Windows Phone, con i blob del OnePlus One e driver scritti per l’hardware del Lumia.</p>
+        <p>Il firmware del modem viene dall’immagine originale, dove è cifrato: lo decifra all’avvio la TrustZone del telefono stesso. LineageOS funziona senza app Google. Considera queste build sperimentali.</p>
+      </div>
+
+      <section class="news" aria-labelledby="bandit-news">
+        <h2 id="bandit-news">Novità della build 2026-11-14</h2>
+        <ul>
+          <li>Fotocamere posteriore e frontale: foto e video, autofocus e flash LED, con la taratura dei moduli fotocamera dei Lumia. La fotocamera si apre anche più in fretta.</li>
+          <li>LumiaParts, l’app delle impostazioni del dispositivo: profili prestazioni, l’interruttore del doppio tocco per riattivare e i tasti capacitivi, con i riquadri delle Impostazioni rapide.</li>
+          <li>Le impostazioni di fluidità del Lumia 930: il lavoro in background resta lontano dai core che disegnano lo schermo, la CPU accelera al tocco e la GPU ha una frequenza minima mentre scorri e apri le app.</li>
+          <li>Niente più zone nere durante le animazioni.</li>
+          <li>Con l’installer 0.3.1 o più recente, lk1st mostra un menu fastboot sullo schermo.</li>
+        </ul>
+      </section>
+
       <aside class="telegram" aria-label="Canale Telegram">
         <p><strong>Segui i port di 1520 e 930 su Telegram</strong>Build di prova, avanzamenti e richieste di tester escono prima lì.</p>
         <a class="button" href="https://t.me/Android_Port_Nokia_1520_930" data-goatcounter-click="telegram-1520-930">Entra nel canale</a>
       </aside>
 
-      <div class="columns">
-        <div>
-          <h2>Funziona già</h2>
-          <ul class="mark is-works">
-            <li>Tutti e quattro i core della CPU, display 1080p con accelerazione GPU</li>
-            <li>Touch e tasti capacitivi</li>
-            <li>Wi-Fi, Bluetooth, NFC</li>
-            <li>SIM, dati LTE, SMS e chiamate in uscita</li>
-            <li>Altoparlante e capsula</li>
-            <li>Fotocamere posteriore e frontale: foto e video, autofocus e flash</li>
-            <li>App delle impostazioni Lumia: profili prestazioni, doppio tocco per riattivare, tasti capacitivi</li>
-            <li>Menu fastboot di lk1st sullo schermo (con l’installer 0.3.1 o più recente)</li>
-            <li>Decodifica video in hardware</li>
-            <li>MicroSD, sensori, ricarica</li>
-          </ul>
+      <!-- ---------- status ---------- -->
+
+      <section class="block" id="bandit-status" aria-labelledby="bandit-status-title">
+        <h2 id="bandit-status-title">Stato</h2>
+        <ul class="legend" aria-label="Legenda">
+          <li class="is-works">Funziona</li>
+          <li class="is-broken">Non funziona ancora</li>
+          <li class="is-testing">Da provare</li>
+        </ul>
+
+        <h3 class="status-title">Cosa funziona</h3>
+        <div class="board">
+          <div>
+            <h4>Display e sistema</h4>
+            <ul class="mark is-works">
+              <li>Avvio con UEFI, BootShim e lk1st. Con l’installer 0.3.1 o più recente, lk1st mostra un menu fastboot sullo schermo</li>
+              <li>Tutti e quattro i core della CPU</li>
+              <li>Display 1080p con accelerazione GPU, luminosità e luminosità automatica</li>
+              <li>Touch, doppio tocco per riattivare</li>
+              <li>Tasti capacitivi (indietro, home, app recenti) con retroilluminazione</li>
+              <li>Profili prestazioni nell’app delle impostazioni Lumia</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Rete e connessioni</h4>
+            <ul class="mark is-works">
+              <li>Wi-Fi</li>
+              <li>Bluetooth</li>
+              <li>NFC (NXP PN544, con la taratura dell’antenna del firmware originale)</li>
+              <li>SIM, dati LTE e SMS</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Chiamate e audio</h4>
+            <ul class="mark is-works">
+              <li>Chiamate in uscita</li>
+              <li>Altoparlante (amplificatore TI TAS2552) e capsula</li>
+              <li>Rilevamento del jack delle cuffie</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Fotocamera e video</h4>
+            <ul class="mark is-works">
+              <li>Fotocamere posteriore e frontale: foto e video, autofocus, flash LED, anteprima dritta e colori corretti</li>
+              <li>Riproduzione video con decodifica hardware, YouTube a 1080p60 compreso</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Sensori, memoria e batteria</h4>
+            <ul class="mark is-works">
+              <li>Accelerometro, giroscopio, magnetometro, luce, prossimità</li>
+              <li>MicroSD, anche come memoria adottabile</li>
+              <li>Percentuale della batteria e ricarica</li>
+              <li>ADB via USB</li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h2>In lavorazione</h2>
-          <ul class="mark is-broken">
-            <li>Microfono in chiamata: da riprovare, la prova precedente si è rivelata inaffidabile su questi telefoni</li>
-            <li>Fix GPS: lo stesso software fa il fix sul Lumia 930, da provare su un 1520</li>
-            <li>Niente sospensione profonda con questo firmware; il risparmio a schermo spento arriva con la prossima build</li>
-            <li>Fluidità: i fotogrammi arrivano in tempo, il limite è il pannello in modalità comando</li>
-          </ul>
+
+        <div class="callouts">
+          <div class="callout">
+            <h3 class="status-title">In attesa delle vostre prove</h3>
+            <ul class="mark is-testing">
+              <li>Microfono in chiamata: la prova precedente si è rivelata inaffidabile su questi telefoni, quindi ne serve una nuova</li>
+              <li>Chiamate in entrata</li>
+              <li>Durata della batteria su lunghi periodi</li>
+              <li>Modelli diversi dall’RM-937 (RM-938, RM-939, RM-940)</li>
+            </ul>
+          </div>
+          <div class="callout">
+            <h3 class="status-title">Non funziona ancora</h3>
+            <ul class="mark is-broken">
+              <li>GPS: ancora nessun fix satellitare. Lo stesso software fa il fix sul Lumia 930, quindi la prossima prova è all’aperto su un 1520</li>
+              <li>Niente sospensione profonda con questo firmware, quindi a schermo spento la batteria si scarica più in fretta. Il risparmio a schermo spento arriva con la prossima build</li>
+              <li>Le transizioni tra le app possono scattare: i fotogrammi arrivano in tempo, il limite è il pannello in modalità comando</li>
+              <li>Display sempre attivo</li>
+              <li>SELinux è permissive</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- ---------- install ---------- -->
 
       <section class="block" id="bandit-install" aria-labelledby="bandit-install-title">
         <h2 id="bandit-install-title">Installazione</h2>
-        <p class="prose">Da un Lumia 1520 ancora con Windows Phone. L’installazione di Android cancella Windows e tutto quello che c’è sul telefono: fai i backup che l’installer propone e conservali.</p>
+        <p class="warning">Un’installazione completa cancella Windows e tutto quello che c’è sul telefono. Leggi tutta la guida prima di iniziare. Installi a tuo rischio: non c’è garanzia, e per tornare a Windows bisogna installare un’immagine di Windows con WPinternals o Windows Device Recovery Tool.</p>
+
+        <h3>Con l’installer (consigliato)</h3>
+        <div class="prose">
+          <p>L’installer per Windows e Linux fa il backup del telefono, copia il firmware originale, installa BootShim e lk1st su EFIESP, crea le partizioni Android e poi installa la ROM. Avvia la TWRP del Lumia 1520 in RAM e non la scrive mai sul telefono. La sua <a href="https://github.com/lumia-msm8974/bandit-installer/blob/v0.3.2/docs/GUIDE.md">guida</a> descrive ogni passo.</p>
+          <p>Ti servono:</p>
+          <ul>
+            <li>Un Lumia 1520 (RM-937, RM-938, RM-939 o RM-940)</li>
+            <li><a href="https://github.com/ReneLergner/WPinternals">WPinternals</a>, per lo sblocco del bootloader e la modalità mass storage della prima installazione. Funziona solo su Windows, anche se poi usi l’installer su Linux</li>
+            <li>Un PC con Windows 10 o 11 (64 bit) o con Linux. Il pacchetto per Windows ha il suo Python; su Linux servono Python 3.8 o più recente, util-linux e ntfs-3g</li>
+            <li>Android SDK Platform Tools (adb e fastboot). Se mancano, l’installer propone di scaricarli</li>
+            <li>Su Windows, il driver USB di Google</li>
+            <li>La batteria sopra il 50% e un buon cavo USB, collegato direttamente al PC</li>
+            <li>Per avviare Pulita o Aggiornamento da Android: il debug USB attivo</li>
+          </ul>
+        </div>
+
+        <div class="table-wrap">
+          <table class="modes">
+            <caption class="visually-hidden">Modalità dell’installer</caption>
+            <thead>
+              <tr><th scope="col">Modalità</th><th scope="col">Si parte da</th><th scope="col">Cosa fa</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Completa</th>
+                <td>Windows 10 Mobile o 8.1, sbloccato con WPinternals e in modalità mass storage</td>
+                <td>Cancella Windows. Prima fa il backup del telefono: conservalo, contiene la calibrazione del tuo telefono e l’unica copia esatta di Windows. Poi firmware, catena di avvio, partizioni Android, provisioning e ROM. Se si ferma, avviala di nuovo e riprende da dove si era fermata.</td>
+              </tr>
+              <tr>
+                <th scope="row">Pulita</th>
+                <td>lk1st e le partizioni Android già presenti</td>
+                <td>Installa la ROM e cancella tutti i dati Android, memoria interna compresa.</td>
+              </tr>
+              <tr>
+                <th scope="row">Aggiornamento</th>
+                <td>Questa ROM</td>
+                <td>Installa la nuova build e mantiene i tuoi dati.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <ol class="steps">
           <li>Sblocca il bootloader con WPinternals su un PC Windows, poi passa il telefono in modalità mass storage.</li>
-          <li>Scarica l’installer e metti lo zip della ROM con il suo <code>SHA256SUMS</code> nella cartella <code>rom</code> dell’installer; la TWRP la scarica l’installer da solo. Avvialo e scegli Lumia 1520.</li>
-          <li>Modalità Completa: backup, firmware, catena di avvio, partizioni Android e ROM, uno dopo l’altro, con una conferma scritta prima di ogni passo che scrive sul telefono.</li>
-          <li>Il primo avvio richiede qualche minuto. Le build successive si installano con la modalità Aggiornamento, senza cancellare i dati.</li>
+          <li>Scarica l’installer e metti lo zip della ROM con il suo <code>SHA256SUMS</code> nella cartella <code>rom</code> dell’installer. La TWRP la scarica l’installer da solo.</li>
+          <li>Avvia <code>installer.bat</code> su Windows o <code>./installer.sh</code> su Linux, scegli Lumia 1520 e poi Completa, Pulita o Aggiornamento.</li>
+          <li>Segui le istruzioni. Ogni passo che scrive sul telefono ti chiede di scrivere una parola di conferma, e ogni file viene controllato con il suo SHA-256 prima dell’uso.</li>
+          <li>Aspetta il primo avvio: richiede diversi minuti.</li>
         </ol>
+
+        <h3>Installazione manuale</h3>
+        <p class="prose">Per un telefono che ha già lk1st e le partizioni Android, per esempio dopo un’installazione Completa.</p>
+        <ol class="steps">
+          <li>Arriva al fastboot di lk1st: da Android esegui <code>adb reboot bootloader</code>, dalla TWRP scegli Reboot &gt; Bootloader.</li>
+          <li>Avvia la TWRP del Lumia 1520 senza installarla:
+            <pre><code>fastboot boot twrp-3.7.0_9-1-bandit.img</code></pre></li>
+          <li>Solo alla prima installazione: Wipe &gt; Format Data, poi cancella Cache e Dalvik.</li>
+          <li>Fai il sideload della ROM da Advanced &gt; ADB Sideload. È normale che il trasferimento si fermi intorno al 47%.
+            <pre><code>adb sideload lineage-18.1-20261114-UNOFFICIAL-bandit.zip</code></pre></li>
+          <li>Riavvia.</li>
+        </ol>
+
+        <h3>Aggiornamento</h3>
+        <p class="prose">Avvia l’installer in modalità Aggiornamento, oppure avvia di nuovo la TWRP (passo 2 qui sopra) e fai il sideload del nuovo zip senza cancellare i dati.</p>
+
+        <h3>Tasti o gesti</h3>
+        <p class="prose">I tre tasti capacitivi funzionano da subito. Per usare i gesti, attiva la barra di navigazione sullo schermo in Impostazioni &gt; Sistema &gt; Pulsanti: i tasti e la loro retroilluminazione si spengono. Poi scegli la navigazione con i gesti in Impostazioni &gt; Sistema &gt; Gesti &gt; Navigazione del sistema.</p>
+
+        <h3>Se resta in bootloop</h3>
+        <p class="prose">Se adb vede ancora il telefono, avvia l’installer in modalità Aggiornamento o Pulita: ferma il ciclo con <code>adb reboot bootloader</code>. Altrimenti arriva a lk1st, avvia la TWRP con <code>fastboot boot</code> e rifai il sideload della ROM. Volume su all’accensione apre sempre la modalità flash, la via del ritorno con WPinternals.</p>
       </section>
 
-      <ul class="inline-links">
-        <li><a href="https://github.com/lumia-msm8974">Sorgenti su GitHub</a></li>
-        <li><a href="https://github.com/lumia-msm8974/bandit-installer" data-goatcounter-click="installer-1520-930">Installer per Windows e Linux</a></li>
-      </ul>
+      <!-- ---------- downloads ---------- -->
 
-      <section class="block" aria-labelledby="bandit-credits">
-        <h2 id="bandit-credits">Crediti</h2>
+      <section class="block" id="bandit-downloads" aria-labelledby="bandit-downloads-title">
+        <h2 id="bandit-downloads-title">Download</h2>
+        <ul class="links">
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261114-bandit" data-goatcounter-click="download-rom-1520">ROM, build 2026-11-14</a><span>Release su GitHub con lo zip (circa 570 MB) e il suo SHA256SUMS. Lo zip contiene il firmware del telefono, quindi si installa da solo</span></li>
+          <li><a href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.2" data-goatcounter-click="installer-1520">Installer 0.3.2</a><span>Per Windows e Linux, con le modalità Completa, Pulita e Aggiornamento</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/twrp-bandit-20261102" data-goatcounter-click="download-twrp-1520">TWRP per il Lumia 1520</a><span><code>twrp-3.7.0_9-1-bandit.img</code>, la scarica l’installer quando manca</span></li>
+          <li><a href="https://github.com/ReneLergner/WPinternals">WPinternals</a><span>Sblocco del bootloader e modalità mass storage, solo su Windows</span></li>
+        </ul>
+      </section>
+
+      <!-- ---------- hardware ---------- -->
+
+      <section class="block" id="bandit-hardware" aria-labelledby="bandit-hardware-title">
+        <h2 id="bandit-hardware-title">Hardware</h2>
+        <dl class="specs">
+          <dt>Chip</dt><dd>Qualcomm Snapdragon 800 (MSM8974), quattro core Krait 400 a 2,2 GHz</dd>
+          <dt>Grafica</dt><dd>Adreno 330</dd>
+          <dt>Memoria</dt><dd>2 GB di RAM</dd>
+          <dt>Archiviazione</dt><dd>16 o 32 GB, slot microSD</dd>
+          <dt>Display</dt><dd>LCD IPS da 6 pollici, 1080 × 1920, 368 ppi</dd>
+          <dt>Fotocamera posteriore</dt><dd>PureView da 20 MP, sensore da 1/2,5 pollici, f/2.4, stabilizzazione ottica, flash a due LED</dd>
+          <dt>Fotocamera frontale</dt><dd>1,2 MP, video a 720p</dd>
+          <dt>Batteria</dt><dd>3400 mAh, non removibile, ricarica wireless Qi</dd>
+          <dt>Connessioni</dt><dd>LTE, Wi-Fi 802.11ac, Bluetooth 4.0, NFC, micro USB</dd>
+          <dt>Modelli</dt><dd>RM-937, RM-938, RM-939, RM-940. Le build sono provate su un RM-937</dd>
+        </dl>
+        <p class="specs-source">Dalle <a href="https://web.archive.org/web/20140904084801/http://www.nokia.com/global/products/phone/lumia1520/specifications/">specifiche di Nokia</a> (copia archiviata) e da <a href="https://en.wikipedia.org/wiki/Nokia_Lumia_1520">Wikipedia</a>.</p>
+      </section>
+
+      <!-- ---------- sources ---------- -->
+
+      <section class="block" id="bandit-sources" aria-labelledby="bandit-sources-title">
+        <h2 id="bandit-sources-title">Sorgenti</h2>
+        <ul class="links">
+          <li><a href="https://github.com/lumia-msm8974/android_kernel_nokia_msm8974/tree/lineage-18.1-bandit">Kernel</a><span>Kernel msm8974 di LineageOS, branch lineage-18.1-bandit</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/tree/lineage-18.1">Device tree</a><span>Branch lineage-18.1</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_vendor_nokia_bandit/tree/lineage-18.1">Vendor</a><span>Branch lineage-18.1</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_oppo_msm8974-common/tree/lineage-18.1-lumia">Albero comune msm8974</a><span>Branch lineage-18.1-lumia, in comune con il Lumia 930</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_packages_apps_LumiaParts">LumiaParts</a><span>App delle impostazioni del dispositivo, in comune con il Lumia 930</span></li>
+          <li><a href="https://github.com/lumia-msm8974/bandit-manifests/tree/lineage-18.1">Manifest locale</a><span>Tutto quello che serve sopra LineageOS 18.1 per compilarla</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/tree/twrp-9.0">Device tree della TWRP</a><span>Branch twrp-9.0</span></li>
+          <li><a href="https://github.com/lumia-msm8974/lk2nd/tree/bandit">lk1st</a><span>lk2nd, branch bandit</span></li>
+          <li><a href="https://github.com/lumia-msm8974/bandit-installer" data-goatcounter-click="installer-1520-930">Installer</a><span>Per il Lumia 1520 e il 930</span></li>
+        </ul>
+      </section>
+
+      <!-- ---------- credits ---------- -->
+
+      <section class="block" id="bandit-credits" aria-labelledby="bandit-credits-title">
+        <h2 id="bandit-credits-title">Crediti</h2>
+        <p class="prose">Questo port si regge sul lavoro di molte persone. Grazie a tutti.</p>
         <ul class="credits">
           <li><strong>KorelisLabs</strong>: lumia-1520-mainline (catena di avvio, device tree, particolarità della TrustZone, indirizzi dell’hardware, APDS-9930).</li>
           <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux (SMP tramite la mailbox UEFI, touch, grafica).</li>
           <li><strong>imbushuo</strong>: BootShim.</li>
           <li><strong>msm8916-mainline</strong>: lk2nd (lk1st).</li>
-          <li><strong>René Lergner</strong> (HeathCliff): WPInternals; <strong>AkariRiku</strong> e <strong>joaozittoo</strong>: i file donatori dell’RM-1085.</li>
+          <li><strong>René Lergner</strong> (HeathCliff): WPinternals; <strong>AkariRiku</strong> e <strong>joaozittoo</strong>: i file donatori dell’RM-1085.</li>
           <li><strong>WOA-Project</strong> e <strong>Legacy Portable Computing Wiki</strong>: guide allo sblocco.</li>
           <li><strong>Android4Lumia950</strong> (djokcho, EpicLPer, j0sh1x, sonic011gamer e la community): l’installer Android per Lumia usato come modello per la catena di avvio e la disposizione delle partizioni, e il lavoro sul 950 XL riusato qui (avvio del modem, bootstrap UIM).</li>
           <li><strong>msm8974-mainline</strong> e <strong>postmarketOS</strong>.</li>
@@ -151,9 +350,9 @@
   </main>
 
   <footer class="footer">
+    <p>Immagine del Lumia 1520: render promozionale Nokia.</p>
     <p>Build non ufficiali, non affiliate né approvate da LineageOS, Microsoft o Nokia.</p>
     <p>Testi in Fira Sans di Erik Spiekermann, Ralph du Carrois e del team Carrois, con licenza SIL Open Font License. Niente cookie: le visite sono contate in forma anonima con <a href="https://www.goatcounter.com">GoatCounter</a>.</p>
-    <p>Immagine del Lumia 1520: render promozionale Nokia.</p>
   </footer>
 </body>
 </html>

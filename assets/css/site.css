@@ -314,6 +314,92 @@ pre code {
   }
 }
 
+/* small-screen menu (theme.js wraps the links and adds the button; without it the links just wrap) */
+.sitenav-links {
+  display: contents;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 52rem) {
+  .has-menu .masthead {
+    position: relative;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-bottom: 0.9rem;
+  }
+
+  .has-menu .sitenav {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0 1.1rem;
+  }
+
+  .has-menu .sitenav .lang {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .has-menu .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: -0.5rem -0.6rem -0.5rem -0.3rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .menu-toggle svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .menu-icon-close,
+  .masthead.is-open .menu-icon-open {
+    display: none;
+  }
+
+  .masthead.is-open .menu-icon-close {
+    display: inline;
+  }
+
+  .has-menu .sitenav-links {
+    display: none;
+  }
+
+  /* the open menu drops below the bar, over the page */
+  .has-menu .masthead.is-open .sitenav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: 0 var(--gutter) 0.75rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .has-menu .sitenav-links a {
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--line);
+    color: var(--ink);
+    font-size: var(--step-1);
+  }
+
+  .has-menu .sitenav-links a[aria-current="page"] {
+    color: var(--accent);
+  }
+}
+
 .prose {
   max-width: var(--measure);
 }
@@ -1150,6 +1236,47 @@ kbd {
   font-variant-numeric: tabular-nums lining-nums;
 }
 
+/* phone hardware: label and value on one row, stacked on narrow screens */
+.specs {
+  display: grid;
+  grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr);
+  max-width: var(--measure);
+  margin: 0;
+}
+
+.specs dt,
+.specs dd {
+  margin: 0;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.specs dt {
+  color: var(--muted);
+  padding-right: 1.5rem;
+}
+
+.specs dd {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.specs-source {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+@media (max-width: 34rem) {
+  .specs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .specs dd {
+    border-top: 0;
+    padding-top: 0;
+  }
+}
+
 .onthispage {
   list-style: none;
   padding: 0;
@@ -1601,6 +1728,12 @@ button.button:disabled {
 }
 .anim .masthead.is-hidden {
   transform: translateY(-110%);
+}
+/* an open small-screen menu keeps the bar in view, and the faded edge would hide the menu below it */
+.anim .masthead.is-open {
+  transform: none;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 /* ---------- name: letters rise one by one ---------- */

@@ -5,10 +5,10 @@
   <script>try{if(localStorage.getItem("theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lumia 930: LineageOS 18.1 (Android 11) | Lorenzo Giannoccaro</title>
-  <meta name="description" content="LineageOS 18.1 (Android 11) for the Nokia Lumia 930 (martini), booting on a test phone: what works, how it was installed, sources and credits.">
+  <meta name="description" content="LineageOS 18.1 (Android 11) for the Nokia Lumia 930 (martini): status, install guide, downloads, sources and credits.">
   <meta name="theme-color" content="#000000">
   <meta property="og:title" content="Lumia 930: LineageOS 18.1 (Android 11)">
-  <meta property="og:description" content="LineageOS 18.1 (Android 11) for the Nokia Lumia 930 (martini), booting on a test phone: what works, how it was installed, sources and credits.">
+  <meta property="og:description" content="LineageOS 18.1 (Android 11) for the Nokia Lumia 930 (martini): status, install guide, downloads, sources and credits.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Lorenzo Giannoccaro">
   <meta property="og:image" content="https://giannoccarol.github.io/assets/img/og/og-930.png">
@@ -25,8 +25,8 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=df76557">
-  <script src="../../assets/js/theme.js?v=df76557" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=de315e6">
+  <script src="../../assets/js/theme.js?v=de315e6" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -67,86 +67,262 @@
         <div>
           <h1 class="device__name" id="martini-title">Lumia 930</h1>
           <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Test builds</span></p>
-          <div class="prose">
-            <p>The 930 (RM-1045) shares its chip with the 1520, so the port starts from the 1520 code. On 13 November 2026 it ran on a real Lumia 930 for the first time: the installer set up the boot chain from the phone’s own Windows boot manager, and Android 11 reached the setup screen. Since 14 November both cameras, the vibration motor and the motion sensors work too, and the first test build is out.</p>
-          </div>
           <div class="actions">
             <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261115-martini" data-goatcounter-click="download-rom-930">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
               Download test build 2026-11-15
             </a>
-            <a class="button" href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.0" data-goatcounter-click="installer-930">Get the installer</a>
+            <a class="button" href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.2" data-goatcounter-click="installer-930">Get the installer</a>
             <a class="button" href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/twrp-martini-20261113" data-goatcounter-click="download-twrp-930">TWRP for the Lumia 930</a>
           </div>
         </div>
         <img class="device-hero__photo" src="../../assets/img/phones/lumia-930.webp" width="473" height="900" alt="The back of an orange Lumia 930">
       </header>
 
+      <dl class="facts">
+        <div><dt>Latest build</dt><dd>15 November 2026</dd></div>
+        <div><dt>Android</dt><dd>11 (RQ3A.211001.001)</dd></div>
+        <div><dt>LineageOS</dt><dd>18.1, userdebug, test keys</dd></div>
+        <div><dt>Security patch</dt><dd>5 February 2024</dd></div>
+        <div><dt>Kernel</dt><dd>3.4.113, LineageOS msm8974</dd></div>
+        <div><dt>Chip</dt><dd>Snapdragon 800 (MSM8974)</dd></div>
+        <div><dt>Codename</dt><dd>martini</dd></div>
+        <div><dt>SELinux</dt><dd>Permissive</dd></div>
+      </dl>
+
+      <ul class="onthispage" aria-label="On this page">
+        <li><a href="#martini-status">Status</a></li>
+        <li><a href="#martini-install">Install</a></li>
+        <li><a href="#martini-downloads">Downloads</a></li>
+        <li><a href="#martini-hardware">Hardware</a></li>
+        <li><a href="#martini-sources">Sources</a></li>
+        <li><a href="#martini-credits">Credits</a></li>
+      </ul>
+
+      <div class="intro prose">
+        <p>The 930 shares its chip and its Windows Phone firmware family with the <a href="../lumia-1520/">Lumia 1520</a>, so the port starts from the 1520 code. On 13 November 2026 it ran on a real Lumia 930 (RM-1045) for the first time: the installer set up the boot chain from the phone’s own Windows boot manager, and Android 11 reached the setup screen.</p>
+        <p>The builds are tested on an RM-1045. LineageOS works without any Google apps. Treat these builds as experimental.</p>
+      </div>
+
+      <section class="news" aria-labelledby="martini-news">
+        <h2 id="martini-news">New in test build 2026-11-15</h2>
+        <ul>
+          <li>Power saving with the screen off: the kernel gives back the clock and voltage votes the firmware leaves behind. Measured on the phone, the screen-off draw goes from about 235 to about 160 mA.</li>
+          <li>Groundwork for VoLTE: phh’s IMS stack, ported to Android 11, is in the build but stays off. Calls use 2G and 3G as before.</li>
+        </ul>
+      </section>
+
       <aside class="telegram" aria-label="Telegram channel">
         <p><strong>Follow the 1520 and 930 ports on Telegram</strong>Test builds, progress and requests for testers come out there first.</p>
         <a class="button" href="https://t.me/Android_Port_Nokia_1520_930" data-goatcounter-click="telegram-1520-930">Join the channel</a>
       </aside>
 
-      <div class="columns">
-        <div>
-          <h2>Working on the test phone</h2>
-          <ul class="mark is-works">
-            <li>lk1st and TWRP, started from the Windows Phone boot manager</li>
-            <li>Android 11 up to the setup screen, all four CPU cores</li>
-            <li>AMOLED display with brightness and screen off</li>
-            <li>Touch, double tap to wake</li>
-            <li>Wi-Fi and Bluetooth</li>
-            <li>NFC</li>
-            <li>SIM, LTE mobile data and SMS</li>
-            <li>Calls, with the earpiece and the microphone</li>
-            <li>GPS with a satellite fix</li>
-            <li>Rear camera with autofocus and flash, and the front camera: photos and video; the rear camera opens in under 3 seconds</li>
-            <li>Rear LED flash and torch</li>
-            <li>Video playback with hardware decoding</li>
-            <li>Vibration, driven through the audio chip as on the original system</li>
-            <li>Sound from the speaker</li>
-            <li>Accelerometer, gyroscope and magnetometer; light and proximity sensor</li>
-            <li>Charging, up to 4.35 V with the original battery</li>
-            <li>ADB</li>
-          </ul>
+      <!-- ---------- status ---------- -->
+
+      <section class="block" id="martini-status" aria-labelledby="martini-status-title">
+        <h2 id="martini-status-title">Status</h2>
+        <ul class="legend" aria-label="Legend">
+          <li class="is-works">Works</li>
+          <li class="is-broken">Not working yet</li>
+          <li class="is-testing">Needs testing</li>
+        </ul>
+
+        <h3 class="status-title">What works on the test phone</h3>
+        <div class="board">
+          <div>
+            <h4>Display and system</h4>
+            <ul class="mark is-works">
+              <li>Boot through UEFI, BootShim and lk1st, started from the Windows Phone boot manager, with a fastboot menu on the screen</li>
+              <li>All four CPU cores</li>
+              <li>AMOLED display with brightness and screen off</li>
+              <li>Touch, double tap to wake</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Network and connections</h4>
+            <ul class="mark is-works">
+              <li>Wi-Fi</li>
+              <li>Bluetooth</li>
+              <li>NFC</li>
+              <li>SIM, LTE data and SMS</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Calls and sound</h4>
+            <ul class="mark is-works">
+              <li>Calls with the earpiece and the microphone</li>
+              <li>Loudspeaker</li>
+              <li>Vibration, driven through the audio chip as on Windows</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Camera and video</h4>
+            <ul class="mark is-works">
+              <li>Rear camera with autofocus, LED flash and torch; front camera. Photos and video on both</li>
+              <li>Video playback with hardware decoding</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Location, sensors and battery</h4>
+            <ul class="mark is-works">
+              <li>GPS with a satellite fix: 14 satellites and 6 m accuracy on the test phone</li>
+              <li>Accelerometer, gyroscope and magnetometer, calibrated while in use; light and proximity sensor</li>
+              <li>Charging</li>
+              <li>ADB</li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h2>Still to do</h2>
-          <ul class="mark is-broken">
-            <li>VoLTE: the phone registers on the IMS network, but calls still fall back to 3G</li>
-            <li>No deep sleep on this firmware, so the battery drains faster with the screen off</li>
-          </ul>
+
+        <div class="callouts">
+          <div class="callout">
+            <h3 class="status-title">Waiting for your reports</h3>
+            <ul class="mark is-testing">
+              <li>Lumia 930 phones other than the test phone</li>
+              <li>Headset</li>
+              <li>Qi wireless charging</li>
+            </ul>
+          </div>
+          <div class="callout">
+            <h3 class="status-title">Not working yet</h3>
+            <ul class="mark is-broken">
+              <li>VoLTE. In the tests the phone registered on the IMS network only with settings given by hand, and calls fell back to 3G</li>
+              <li>A SIM inserted with the phone on is only read after a restart: the modem has no hot swap</li>
+              <li>No deep sleep on this firmware, so standby drains the battery faster than on Windows</li>
+              <li>A flash photo with the lens covered keeps the LED on until the camera service restarts</li>
+              <li>SELinux is permissive</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- ---------- install ---------- -->
 
       <section class="block" id="martini-install" aria-labelledby="martini-install-title">
         <h2 id="martini-install-title">Install</h2>
-        <p class="prose">From a Lumia 930 (RM-1045) still on Windows Phone. Every step has run on a real phone; the installer’s one-click Full mode stays off on the 930 until it has run end to end, so the steps are done one by one from its advanced tools. This erases Windows and everything on the phone: make the backups the installer offers and keep them.</p>
+        <p class="warning">Installing Android erases Windows and everything on the phone. Read the whole guide before you start. You flash at your own risk: there is no warranty, and going back to Windows means flashing a Windows image with WPinternals or Windows Device Recovery Tool.</p>
+
+        <h3>With the installer</h3>
+        <div class="prose">
+          <p>The installer of the Lumia 1520 supports the 930 too, for Windows and Linux. Every step has run on a real RM-1045 on Windows Phone 8.1, one at a time. The installer starts the Lumia 930 TWRP in RAM and never writes it to the phone. Its <a href="https://github.com/lumia-msm8974/bandit-installer/blob/v0.3.2/docs/GUIDE.md">guide</a> describes every step.</p>
+          <p>You need:</p>
+          <ul>
+            <li>A Lumia 930 (RM-1045). The installer checks the model and refuses the Lumia Icon and 929 (RM-927), which have their own firmware</li>
+            <li><a href="https://github.com/ReneLergner/WPinternals">WPinternals</a>, for the bootloader unlock and the mass storage mode of a first install. It runs only on Windows, also if you then use the installer on Linux</li>
+            <li>A Windows 10 or 11 PC (64-bit) or a Linux PC. The Windows package brings its own Python; on Linux you need Python 3.8 or newer, util-linux and ntfs-3g</li>
+            <li>Android SDK Platform Tools (adb and fastboot). If they are missing, the installer offers to download them</li>
+            <li>On Windows, the Google USB driver</li>
+            <li>The battery above 50% and a good USB cable, plugged straight into the PC</li>
+            <li>To start Clean or Update from Android: USB debugging on</li>
+          </ul>
+        </div>
+
+        <div class="table-wrap">
+          <table class="modes">
+            <caption class="visually-hidden">Installer modes</caption>
+            <thead>
+              <tr><th scope="col">Mode</th><th scope="col">Start from</th><th scope="col">What it does</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Full</th>
+                <td>Windows Phone, unlocked with WPinternals and in mass storage mode</td>
+                <td>Locked on the 930 until it has run end to end on one: run its steps from the advanced tools, as below. They erase Windows. Make the backup the installer offers and keep it, it holds your phone’s calibration and the only exact copy of Windows.</td>
+              </tr>
+              <tr>
+                <th scope="row">Clean</th>
+                <td>lk1st and the Android partitions already in place</td>
+                <td>Installs the ROM and erases all Android data, internal storage included.</td>
+              </tr>
+              <tr>
+                <th scope="row">Update</th>
+                <td>This ROM</td>
+                <td>Installs the new build and keeps your data.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <ol class="steps">
           <li>Unlock the bootloader with WPinternals on a Windows PC, then switch the phone to mass storage mode.</li>
-          <li>Download the installer and put the ROM zip with its <code>SHA256SUMS</code> in its <code>rom</code> folder; the installer downloads the TWRP by itself. Start it and pick Lumia 930.</li>
-          <li>Advanced tools: Backup, then Firmware, then Boot chain. At the next start the phone stops in lk1st’s fastboot menu; run Check lk1st.</li>
-          <li>Advanced tools: Android partitions. This erases Windows.</li>
-          <li>Clean mode: TWRP in RAM, data formatted, ROM installed. The first boot takes a few minutes. Later builds install with the Update mode, without a wipe.</li>
+          <li>Download the installer and put the ROM zip with its <code>SHA256SUMS</code> in its <code>rom</code> folder. The installer downloads the TWRP by itself. Start it and pick Lumia 930.</li>
+          <li>Advanced tools: Backup, then Firmware, then Boot chain. The phone stays in mass storage mode.</li>
+          <li>Restart the phone: it stops in lk1st’s fastboot menu. Then Advanced tools &gt; Check lk1st.</li>
+          <li>Advanced tools &gt; Android partitions. This is the step that erases Windows.</li>
+          <li>Clean mode: TWRP in RAM, data formatted, ROM installed. The first boot takes a few minutes.</li>
         </ol>
+        <p class="prose">Every step that writes to the phone asks you to type a confirmation word, and every file is checked against its SHA-256 before it’s used.</p>
+
+        <h3>Updating</h3>
+        <p class="prose">Run the installer in Update mode. By hand: get to lk1st with <code>adb reboot bootloader</code>, boot the TWRP and sideload the new zip from Advanced &gt; ADB Sideload, without wiping data. The transfer stopping around 47% is normal.</p>
+        <pre><code>fastboot boot twrp-3.7.0_9-0-martini.img
+adb sideload lineage-18.1-20261115-UNOFFICIAL-martini.zip</code></pre>
+
+        <h3>If it bootloops</h3>
+        <p class="prose">If adb still sees the phone, run the installer in Update or Clean mode: it stops the loop with <code>adb reboot bootloader</code>. Otherwise get to lk1st, boot the TWRP with <code>fastboot boot</code> and sideload the ROM again. Volume up at power-on always opens the flash mode, the way back with WPinternals.</p>
       </section>
 
-      <ul class="inline-links">
-        <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini">Device tree on GitHub</a></li>
-        <li><a href="https://github.com/lumia-msm8974">All sources</a></li>
-        <li><a href="https://github.com/lumia-msm8974/bandit-installer" data-goatcounter-click="installer-1520-930">Installer for Windows and Linux</a></li>
-      </ul>
+      <!-- ---------- downloads ---------- -->
 
-      <section class="block" aria-labelledby="martini-credits">
-        <h2 id="martini-credits">Credits</h2>
+      <section class="block" id="martini-downloads" aria-labelledby="martini-downloads-title">
+        <h2 id="martini-downloads-title">Downloads</h2>
+        <ul class="links">
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261115-martini" data-goatcounter-click="download-rom-930">ROM, test build 2026-11-15</a><span>GitHub release with the zip (about 575 MB) and its SHA256SUMS. The zip carries the phone’s firmware; the phone’s own calibration and modem data are copied from the phone by the installer</span></li>
+          <li><a href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.2" data-goatcounter-click="installer-930">Installer 0.3.2</a><span>For Windows and Linux, shared with the Lumia 1520</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/twrp-martini-20261113" data-goatcounter-click="download-twrp-930">TWRP for the Lumia 930</a><span><code>twrp-3.7.0_9-0-martini.img</code>, downloaded by the installer when it’s missing</span></li>
+          <li><a href="https://github.com/ReneLergner/WPinternals">WPinternals</a><span>Bootloader unlock and mass storage mode, Windows only</span></li>
+        </ul>
+      </section>
+
+      <!-- ---------- hardware ---------- -->
+
+      <section class="block" id="martini-hardware" aria-labelledby="martini-hardware-title">
+        <h2 id="martini-hardware-title">Hardware</h2>
+        <dl class="specs">
+          <dt>Chip</dt><dd>Qualcomm Snapdragon 800 (MSM8974), four Krait 400 cores at 2.2 GHz</dd>
+          <dt>Graphics</dt><dd>Adreno 330</dd>
+          <dt>Memory</dt><dd>2 GB RAM</dd>
+          <dt>Storage</dt><dd>32 GB, no memory card slot</dd>
+          <dt>Display</dt><dd>5 inch AMOLED, 1080 × 1920, 441 ppi</dd>
+          <dt>Rear camera</dt><dd>20 MP PureView, 1/2.5 inch sensor, f/2.4, optical image stabilisation, dual LED flash</dd>
+          <dt>Front camera</dt><dd>1.2 MP, f/2.4, 720p video</dd>
+          <dt>Battery</dt><dd>2420 mAh, not removable, Qi wireless charging</dd>
+          <dt>Connections</dt><dd>LTE, Wi-Fi 802.11ac, Bluetooth 4.0, NFC, micro USB</dd>
+          <dt>Models</dt><dd>RM-1045</dd>
+        </dl>
+        <p class="specs-source">From <a href="https://web.archive.org/web/20140607223554/http://www.nokia.com/global/products/phone/lumia930/specifications/">Nokia’s specifications</a> (archived copy) and <a href="https://en.wikipedia.org/wiki/Nokia_Lumia_930">Wikipedia</a>.</p>
+      </section>
+
+      <!-- ---------- sources ---------- -->
+
+      <section class="block" id="martini-sources" aria-labelledby="martini-sources-title">
+        <h2 id="martini-sources-title">Sources</h2>
+        <ul class="links">
+          <li><a href="https://github.com/lumia-msm8974/android_kernel_nokia_msm8974/tree/lineage-18.1-martini">Kernel</a><span>LineageOS msm8974 kernel, lineage-18.1-martini branch</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/tree/lineage-18.1">Device tree</a><span>lineage-18.1 branch, started as a copy of the Lumia 1520 tree</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_vendor_nokia_martini/tree/lineage-18.1">Vendor</a><span>lineage-18.1 branch</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_oppo_msm8974-common/tree/lineage-18.1-lumia">msm8974 common tree</a><span>lineage-18.1-lumia branch, shared with the Lumia 1520</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_packages_apps_LumiaParts">LumiaParts</a><span>Device settings app, shared with the Lumia 1520</span></li>
+          <li><a href="https://github.com/lumia-msm8974/martini-manifests">Local manifest</a><span>Everything you need on top of LineageOS 18.1 to build it</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/tree/twrp-9.0">TWRP device tree</a><span>twrp-9.0 branch</span></li>
+          <li><a href="https://github.com/lumia-msm8974/lk2nd/tree/martini">lk1st</a><span>lk2nd, martini branch</span></li>
+          <li><a href="https://github.com/lumia-msm8974/bandit-installer" data-goatcounter-click="installer-1520-930">Installer</a><span>For the Lumia 1520 and 930</span></li>
+        </ul>
+      </section>
+
+      <!-- ---------- credits ---------- -->
+
+      <section class="block" id="martini-credits" aria-labelledby="martini-credits-title">
+        <h2 id="martini-credits-title">Credits</h2>
         <p class="prose">The 930 port starts from the <a href="../lumia-1520/">Lumia 1520</a> one, so everyone credited there is part of it too. For the 930 itself:</p>
         <ul class="credits">
-          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux, with the 930 boot chain, touch and hardware notes.</li>
-          <li><strong>2314372037</strong> (zh/hao): LineageOS 17.1 on the 930, used as a reference for its panel, audio and vibration.</li>
+          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux, with the 930 hardware map, boot chain and SMP through the UEFI parking mailboxes.</li>
+          <li><strong>2314372037</strong> (zh/hao): LineageOS 17.1, the first Android port that boots on the 930, used as a reference for the speaker route, the partition layout, the keys and the vibration motor.</li>
           <li><strong>imbushuo</strong> (Bingxing Wang): BootShim and the 930 lk; <strong>rickliu2000</strong>: Lumia930Pkg.</li>
           <li><strong>Mainline4Lumia</strong> (Dominduchami): lk2nd support for the 930; <strong>Android4Lumia</strong> (J0SH1X, sonic011gamer): the 930 kernel and lk2nd.</li>
-          <li><strong>sonic011gamer</strong>: the Lumia driver packages the 930 firmware comes from.</li>
-          <li><strong>KorelisLabs</strong> (lumia-1520-mainline), <strong>msm8916-mainline</strong> (lk2nd) and <strong>René Lergner</strong> (HeathCliff, WPInternals).</li>
+          <li><strong>sonic011gamer</strong>: Lumia-Drivers, the Windows driver packages the 930 firmware and Sensor Core settings come from.</li>
+          <li><strong>Pierre-Hugues Husson</strong> (phhusson) and <strong>krazey</strong>: the open-source IMS stack, with parts by <strong>amikhasenko</strong>, <strong>ewan-xu</strong> (AEC3), <strong>Langsdorff</strong> and <strong>TrebleDroid</strong>.</li>
+          <li><strong>libqmi</strong> (freedesktop.org): the QMI definitions used to check the radio requests.</li>
+          <li><strong>KorelisLabs</strong> (lumia-1520-mainline), <strong>msm8916-mainline</strong> (lk2nd) and <strong>René Lergner</strong> (HeathCliff, WPinternals).</li>
           <li><strong>LineageOS</strong> and <strong>TheMuppets</strong>, <strong>TeamWin</strong> (TWRP) and <strong>Android4Lumia950</strong> (djokcho, EpicLPer, j0sh1x, sonic011gamer and the community).</li>
         </ul>
       </section>
