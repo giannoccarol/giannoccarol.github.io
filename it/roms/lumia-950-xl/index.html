@@ -25,8 +25,8 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=4565a9c">
-  <script src="../../../assets/js/theme.js?v=4565a9c" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=7f18e43">
+  <script src="../../../assets/js/theme.js?v=7f18e43" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -173,6 +173,7 @@
             <h4>Sensori, memoria e batteria</h4>
             <ul class="mark is-works">
               <li>Prossimità (schermo spento durante le chiamate), accelerometro, giroscopio, magnetometro, luce, barometro</li>
+              <li>GPS: fix satellitare all’aperto, confermato da un tester. Al chiuso il fix può tardare molto o non arrivare; con le app Google, in Maps funziona la posizione di rete (Wi-Fi e celle)</li>
               <li>MicroSD</li>
               <li>Sospensione profonda a schermo spento; il display sempre attivo consuma circa 80-100 mA quando è acceso</li>
             </ul>
@@ -194,10 +195,10 @@
               <li>Durata della batteria su lunghi periodi</li>
               <li>VoLTE con operatori diversi da Iliad e chiamate VoLTE in entrata</li>
               <li>Altri dock USB-C e lapdock: segnala il modello e cosa funziona</li>
+              <li>GPS: tempo del primo fix e precisione in posti diversi</li>
             </ul>
             <h3 class="status-title">Non funziona ancora</h3>
             <ul class="mark is-broken">
-              <li>GPS: nessun fix satellitare per ora, lo sto studiando sul lato modem. Con le app Google installate, in Maps funziona la posizione di rete (Wi-Fi e celle)</li>
               <li>Riconoscimento per lo sblocco con l’iride</li>
               <li>Dock USB-C: il primo collegamento può non riuscire o riavviare il telefono (ricollegalo); il dock ThinkPad non ricarica il telefono; l’HP Elite x3 Lapdock dà il video ma non l’USB</li>
               <li>SELinux è permissive</li>
@@ -219,7 +220,7 @@
           <ul>
             <li>Un PC con Windows 10 o 11</li>
             <li><a href="https://github.com/ReneLergner/WPinternals">WPInternals</a>, per la prima installazione da Windows 10 Mobile</li>
-            <li>Android SDK Platform Tools (adb e fastboot) nel PATH</li>
+            <li>Android SDK Platform Tools (adb e fastboot), nel PATH o in una cartella <code>platform-tools</code> accanto all’installer. Se mancano, l’installer propone di scaricarli</li>
             <li>Il driver USB di Google, installato per tutto il sistema</li>
             <li>La batteria sopra il 50% e un buon cavo USB</li>
             <li>Una partizione cache in ext4, perché la ROM la usa come /metadata. Lo zip della ROM la controlla e, se non lo è, si ferma con le istruzioni</li>
@@ -343,7 +344,7 @@
           <li><strong>René Lergner</strong>: WPInternals.</li>
           <li><strong>Konrad Dybcio</strong> e <strong>WOA-Project</strong>: documentazione dell’hardware di Lumia 950 e 950 XL nei kernel mainline e WOA; <strong>gus33</strong> (WOA-Project) e gli autori di <strong>LumiaWoA</strong>: i driver ricostruiti di PHY e mux USB-C.</li>
           <li><strong>Analogix</strong>: i valori di riferimento dell’ANX7816 per il segnale DisplayPort.</li>
-          <li><strong>Aleksandar Jovanovic</strong>: prove dei dock USB-C.</li>
+          <li><strong>Aleksandar Jovanovic</strong>: prove dei dock USB-C, dell’installer (prima installazione completa da Windows 10 Mobile) e del GPS.</li>
           <li><strong>Microsoft</strong> e <strong>Qualcomm</strong>: i driver Windows Phone del Lumia 950 XL, riferimento per la calibrazione della fotocamera, la fotocamera e il LED IR dell’iride, i limiti di ricarica della batteria, il power delivery USB-C e il bridge DisplayPort. Il motore di riconoscimento dell’iride segue i metodi pubblicati da J. Daugman.</li>
         </ul>
       </section>
