@@ -25,8 +25,9 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=11ec2f5">
-  <script src="../../../assets/js/theme.js?v=11ec2f5" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=5394c53">
+  <script src="../../../assets/js/theme.js?v=5394c53" defer></script>
+  <script src="../../../assets/js/phone3d.js" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -68,15 +69,15 @@
           <h1 class="device__name" id="bandit-title">Lumia 1520</h1>
           <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Build di prova</span></p>
           <div class="actions">
-            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261114-bandit" data-goatcounter-click="download-rom-1520">
+            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261115-bandit" data-goatcounter-click="download-rom-1520">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
-              Scarica la build del 14/11/2026
+              Scarica la build del 15/11/2026
             </a>
             <a class="button" href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.2" data-goatcounter-click="installer-1520">Scarica l’installer</a>
             <a class="button" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/twrp-bandit-20261102" data-goatcounter-click="download-twrp-1520">TWRP per il Lumia 1520</a>
           </div>
         </div>
-        <img class="device-hero__photo" src="../../../assets/img/phones/lumia-1520.webp" width="270" height="508" alt="Il retro di un Lumia 1520 giallo">
+        <img class="device-hero__photo" data-phone="lumia-1520" src="../../../assets/img/phones/lumia-1520.webp" width="524" height="1013" alt="Il retro di un Lumia 1520 giallo">
       </header>
 
       <dl class="facts">
@@ -105,13 +106,11 @@
       </div>
 
       <section class="news" aria-labelledby="bandit-news">
-        <h2 id="bandit-news">Novità della build 2026-11-14</h2>
+        <h2 id="bandit-news">Novità della build del 15/11/2026</h2>
         <ul>
-          <li>Fotocamere posteriore e frontale: foto e video, autofocus e flash LED, con la taratura dei moduli fotocamera dei Lumia. La fotocamera si apre anche più in fretta.</li>
-          <li>LumiaParts, l’app delle impostazioni del dispositivo: profili prestazioni, l’interruttore del doppio tocco per riattivare e i tasti capacitivi, con i riquadri delle Impostazioni rapide.</li>
-          <li>Le impostazioni di fluidità del Lumia 930: il lavoro in background resta lontano dai core che disegnano lo schermo, la CPU accelera al tocco e la GPU ha una frequenza minima mentre scorri e apri le app.</li>
-          <li>Niente più zone nere durante le animazioni.</li>
-          <li>Con l’installer 0.3.1 o più recente, lk1st mostra un menu fastboot sullo schermo.</li>
+          <li>Risparmio a schermo spento: il kernel restituisce i voti di clock e tensione lasciati dal firmware. Misurato sul telefono, il consumo a schermo spento passa da circa 525 a circa 140 mA.</li>
+          <li>Ricarica wireless Qi confermata sul telefono.</li>
+          <li>Dalla build del 14/11/2026: entrambe le fotocamere, LumiaParts, le impostazioni di fluidità del 930 e il menu fastboot di lk1st (installer 0.3.1 o più recente).</li>
         </ul>
       </section>
 
@@ -192,7 +191,7 @@
             <h3 class="status-title">Non funziona ancora</h3>
             <ul class="mark is-broken">
               <li>GPS: ancora nessun fix satellitare. Lo stesso software fa il fix sul Lumia 930, quindi la prossima prova è all’aperto su un 1520</li>
-              <li>Niente sospensione profonda con questo firmware, quindi a schermo spento la batteria si scarica più in fretta. Il risparmio a schermo spento arriva con la prossima build</li>
+              <li>Niente sospensione profonda con questo firmware, quindi in standby la batteria si scarica più in fretta che su Windows</li>
               <li>Le transizioni tra le app possono scattare: i fotogrammi arrivano in tempo, il limite è il pannello in modalità comando</li>
               <li>Display sempre attivo</li>
               <li>SELinux è permissive</li>
@@ -283,7 +282,7 @@
       <section class="block" id="bandit-downloads" aria-labelledby="bandit-downloads-title">
         <h2 id="bandit-downloads-title">Download</h2>
         <ul class="links">
-          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261114-bandit" data-goatcounter-click="download-rom-1520">ROM, build 2026-11-14</a><span>Release su GitHub con lo zip (circa 570 MB) e il suo SHA256SUMS. Lo zip contiene il firmware del telefono, quindi si installa da solo</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261115-bandit" data-goatcounter-click="download-rom-1520">ROM, build del 15/11/2026</a><span>Release su GitHub con lo zip (circa 570 MB) e il suo SHA256SUMS. Lo zip contiene il firmware del telefono, quindi si installa da solo</span></li>
           <li><a href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.2" data-goatcounter-click="installer-1520">Installer 0.3.2</a><span>Per Windows e Linux, con le modalità Completa, Pulita e Aggiornamento</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/twrp-bandit-20261102" data-goatcounter-click="download-twrp-1520">TWRP per il Lumia 1520</a><span><code>twrp-3.7.0_9-1-bandit.img</code>, la scarica l’installer quando manca</span></li>
           <li><a href="https://github.com/ReneLergner/WPinternals">WPinternals</a><span>Sblocco del bootloader e modalità mass storage, solo su Windows</span></li>

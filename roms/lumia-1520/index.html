@@ -25,8 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=11ec2f5">
-  <script src="../../assets/js/theme.js?v=11ec2f5" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=5394c53">
+  <script src="../../assets/js/theme.js?v=5394c53" defer></script>
+  <script src="../../assets/js/phone3d.js" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -68,15 +69,15 @@
           <h1 class="device__name" id="bandit-title">Lumia 1520</h1>
           <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Test builds</span></p>
           <div class="actions">
-            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261114-bandit" data-goatcounter-click="download-rom-1520">
+            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261115-bandit" data-goatcounter-click="download-rom-1520">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
-              Download build 2026-11-14
+              Download build 2026-11-15
             </a>
             <a class="button" href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.2" data-goatcounter-click="installer-1520">Get the installer</a>
             <a class="button" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/twrp-bandit-20261102" data-goatcounter-click="download-twrp-1520">TWRP for the Lumia 1520</a>
           </div>
         </div>
-        <img class="device-hero__photo" src="../../assets/img/phones/lumia-1520.webp" width="270" height="508" alt="The back of a yellow Lumia 1520">
+        <img class="device-hero__photo" data-phone="lumia-1520" src="../../assets/img/phones/lumia-1520.webp" width="524" height="1013" alt="The back of a yellow Lumia 1520">
       </header>
 
       <dl class="facts">
@@ -105,13 +106,11 @@
       </div>
 
       <section class="news" aria-labelledby="bandit-news">
-        <h2 id="bandit-news">New in build 2026-11-14</h2>
+        <h2 id="bandit-news">New in build 2026-11-15</h2>
         <ul>
-          <li>Rear and front cameras: photos and video, autofocus and LED flash, with the tuning of the Lumia camera modules. The camera also opens faster.</li>
-          <li>LumiaParts, the device settings app: performance profiles, the double tap to wake switch and the capacitive keys, with Quick Settings tiles.</li>
-          <li>The smoothness settings of the Lumia 930: background work kept off the cores that draw the screen, a CPU boost on touch and a GPU floor while you scroll and open apps.</li>
-          <li>No more black areas while animating.</li>
-          <li>With the installer 0.3.1 or newer, lk1st shows a fastboot menu on the screen.</li>
+          <li>Power saving with the screen off: the kernel gives back the clock and voltage votes the firmware leaves behind. Measured on the phone, the screen-off draw goes from about 525 to about 140 mA.</li>
+          <li>Qi wireless charging confirmed on the phone.</li>
+          <li>Since build 2026-11-14: both cameras, LumiaParts, the smoothness settings of the 930 and the lk1st fastboot menu (installer 0.3.1 or newer).</li>
         </ul>
       </section>
 
@@ -192,7 +191,7 @@
             <h3 class="status-title">Not working yet</h3>
             <ul class="mark is-broken">
               <li>GPS: no satellite fix yet. The same software gets a fix on the Lumia 930, so an outdoor test on a 1520 comes next</li>
-              <li>No deep sleep on this firmware, so the battery drains faster with the screen off. A screen-off power saving comes with the next build</li>
+              <li>No deep sleep on this firmware, so standby drains the battery faster than on Windows</li>
               <li>App transitions can stutter: frames arrive on time, the limit is the command-mode panel</li>
               <li>Always-on display</li>
               <li>SELinux is permissive</li>
@@ -283,7 +282,7 @@
       <section class="block" id="bandit-downloads" aria-labelledby="bandit-downloads-title">
         <h2 id="bandit-downloads-title">Downloads</h2>
         <ul class="links">
-          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261114-bandit" data-goatcounter-click="download-rom-1520">ROM, build 2026-11-14</a><span>GitHub release with the zip (about 570 MB) and its SHA256SUMS. The zip carries the phone’s firmware, so it installs on its own</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261115-bandit" data-goatcounter-click="download-rom-1520">ROM, build 2026-11-15</a><span>GitHub release with the zip (about 570 MB) and its SHA256SUMS. The zip carries the phone’s firmware, so it installs on its own</span></li>
           <li><a href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.2" data-goatcounter-click="installer-1520">Installer 0.3.2</a><span>For Windows and Linux, with Full, Clean and Update modes</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/twrp-bandit-20261102" data-goatcounter-click="download-twrp-1520">TWRP for the Lumia 1520</a><span><code>twrp-3.7.0_9-1-bandit.img</code>, downloaded by the installer when it’s missing</span></li>
           <li><a href="https://github.com/ReneLergner/WPinternals">WPinternals</a><span>Bootloader unlock and mass storage mode, Windows only</span></li>
