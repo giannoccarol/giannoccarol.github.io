@@ -25,9 +25,9 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=7f97246">
-  <script src="../../../assets/js/theme.js?v=7f97246" defer></script>
-  <script src="../../../assets/js/phone3d.js?v=7f97246" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=89d861b">
+  <script src="../../../assets/js/theme.js?v=89d861b" defer></script>
+  <script src="../../../assets/js/phone3d.js?v=89d861b" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -108,9 +108,10 @@
       <section class="news" aria-labelledby="bandit-news">
         <h2 id="bandit-news">Novità della build del 15/11/2026</h2>
         <ul>
+          <li>Aggiornata il 16 novembre con lo stesso nome di file: se l’avevi già scaricata, scaricala di nuovo e controlla <code>SHA256SUMS</code>.</li>
+          <li>Power collapse della CPU a schermo spento: tra un risveglio e l’altro si spengono i core, la cache L2 e l’alimentazione della CPU, con le stesse chiamate al firmware che usa Windows. Misurato con il Wi-Fi acceso, il consumo a schermo spento passa da circa 146 a circa 94 mA. Una notte in standby senza SIM ha usato il 39% della batteria in circa 12 ore e mezza.</li>
           <li>Risparmio a schermo spento: il kernel restituisce i voti di clock e tensione lasciati dal firmware. Misurato sul telefono, il consumo a schermo spento passa da circa 525 a circa 140 mA.</li>
           <li>Ricarica wireless Qi confermata sul telefono.</li>
-          <li>Dalla build del 14/11/2026: entrambe le fotocamere, LumiaParts, le impostazioni di fluidità del 930 e il menu fastboot di lk1st (installer 0.3.1 o più recente).</li>
         </ul>
       </section>
 
@@ -183,6 +184,7 @@
             <ul class="mark is-testing">
               <li>Microfono in chiamata: la prova precedente si è rivelata inaffidabile su questi telefoni, quindi ne serve una nuova</li>
               <li>Chiamate in entrata</li>
+              <li>Chiamate e SMS con l’aggiornamento del 16 novembre, non ancora riprovati</li>
               <li>Durata della batteria su lunghi periodi</li>
               <li>Modelli diversi dall’RM-937 (RM-938, RM-939, RM-940)</li>
             </ul>
@@ -191,7 +193,7 @@
             <h3 class="status-title">Non funziona ancora</h3>
             <ul class="mark is-broken">
               <li>GPS: ancora nessun fix satellitare. Lo stesso software fa il fix sul Lumia 930, quindi la prossima prova è all’aperto su un 1520</li>
-              <li>Niente sospensione profonda con questo firmware, quindi in standby la batteria si scarica più in fretta che su Windows</li>
+              <li>Niente sospensione profonda con questo firmware: ora la CPU si spegne tra un risveglio e l’altro, ma in standby la batteria scende ancora più in fretta che con Windows</li>
               <li>Le transizioni tra le app possono scattare: i fotogrammi arrivano in tempo, il limite è il pannello in modalità comando</li>
               <li>Display sempre attivo</li>
               <li>SELinux è permissive</li>
@@ -332,7 +334,7 @@
         <p class="prose">Questo port si regge sul lavoro di molte persone. Grazie a tutti.</p>
         <ul class="credits">
           <li><strong>KorelisLabs</strong>: lumia-1520-mainline (catena di avvio, device tree, particolarità della TrustZone, indirizzi dell’hardware, APDS-9930).</li>
-          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux (SMP tramite la mailbox UEFI, touch, grafica).</li>
+          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux (SMP tramite la mailbox della UEFI, che il power collapse usa anche per riprendere, touch, grafica).</li>
           <li><strong>imbushuo</strong>: BootShim.</li>
           <li><strong>msm8916-mainline</strong>: lk2nd (lk1st).</li>
           <li><strong>René Lergner</strong> (HeathCliff): WPinternals; <strong>AkariRiku</strong> e <strong>joaozittoo</strong>: i file donatori dell’RM-1085.</li>

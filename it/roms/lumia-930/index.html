@@ -25,9 +25,9 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=7f97246">
-  <script src="../../../assets/js/theme.js?v=7f97246" defer></script>
-  <script src="../../../assets/js/phone3d.js?v=7f97246" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=89d861b">
+  <script src="../../../assets/js/theme.js?v=89d861b" defer></script>
+  <script src="../../../assets/js/phone3d.js?v=89d861b" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -108,6 +108,8 @@
       <section class="news" aria-labelledby="martini-news">
         <h2 id="martini-news">Novità della build di prova 2026-11-15</h2>
         <ul>
+          <li>Aggiornata il 16 novembre con lo stesso nome di file: se l’avevi già scaricata, scaricala di nuovo e controlla <code>SHA256SUMS</code>.</li>
+          <li>Power collapse della CPU a schermo spento: tra un risveglio e l’altro si spengono i core, la cache L2 e l’alimentazione della CPU, con le stesse chiamate al firmware che usa Windows. Misurato con Wi-Fi e SIM accesi, il consumo a schermo spento passa da circa 160 a circa 84 mA, e quello con lo schermo sempre attivo da circa 307 a circa 255 mA.</li>
           <li>Risparmio a schermo spento: il kernel restituisce i voti di clock e di tensione che il firmware lascia attivi. Misurato sul telefono, il consumo a schermo spento passa da circa 235 a circa 160 mA.</li>
           <li>Basi per il VoLTE: lo stack IMS di phh, portato su Android 11, è nella build ma resta spento. Le chiamate usano 2G e 3G come prima.</li>
         </ul>
@@ -178,6 +180,7 @@
           <div class="callout">
             <h3 class="status-title">In attesa delle vostre prove</h3>
             <ul class="mark is-testing">
+              <li>Chiamate e SMS con l’aggiornamento del 16 novembre, non ancora riprovati</li>
               <li>Altri Lumia 930 oltre al telefono di prova</li>
               <li>Cuffie</li>
             </ul>
@@ -187,7 +190,8 @@
             <ul class="mark is-broken">
               <li>VoLTE. Nelle prove il telefono si è registrato sulla rete IMS solo con impostazioni date a mano, e le chiamate sono ripiegate sul 3G</li>
               <li>Una SIM inserita a telefono acceso viene letta solo dopo un riavvio: il modem non supporta l’inserimento a caldo</li>
-              <li>Niente sospensione profonda con questo firmware, quindi in standby la batteria si scarica più in fretta che su Windows</li>
+              <li>Niente sospensione profonda con questo firmware: ora la CPU si spegne tra un risveglio e l’altro, ma in standby la batteria scende ancora più in fretta che con Windows</li>
+              <li>Se il telefono si accende con il cavo già collegato a una porta del PC, carica a 500 mA invece di 1,5 A finché non ricolleghi il cavo</li>
               <li>Una foto con il flash e l’obiettivo coperto lascia il LED acceso finché il servizio della fotocamera non riparte</li>
               <li>SELinux è permissive</li>
             </ul>
@@ -315,7 +319,7 @@ adb sideload lineage-18.1-20261115-UNOFFICIAL-martini.zip</code></pre>
         <h2 id="martini-credits-title">Crediti</h2>
         <p class="prose">Il port del 930 parte da quello del <a href="../lumia-1520/">Lumia 1520</a>, quindi chi è citato lì fa parte anche di questo. Per il 930 in particolare:</p>
         <ul class="credits">
-          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux, con la mappa dell’hardware del 930, la catena di avvio e l’SMP attraverso le mailbox di parcheggio della UEFI.</li>
+          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux, con la mappa dell’hardware del 930, la catena di avvio e l’SMP tramite le mailbox di parcheggio della UEFI, che il power collapse usa anche per riprendere.</li>
           <li><strong>2314372037</strong> (zh/hao): LineageOS 17.1, il primo port Android che si avvia sul 930, usato come riferimento per il percorso dell’altoparlante, lo schema delle partizioni, i tasti e il motore della vibrazione.</li>
           <li><strong>imbushuo</strong> (Bingxing Wang): BootShim e l’lk del 930; <strong>rickliu2000</strong>: Lumia930Pkg.</li>
           <li><strong>Mainline4Lumia</strong> (Dominduchami): supporto lk2nd per il 930; <strong>Android4Lumia</strong> (J0SH1X, sonic011gamer): il kernel e l’lk2nd del 930.</li>

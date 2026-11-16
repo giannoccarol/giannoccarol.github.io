@@ -25,9 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=7f97246">
-  <script src="../../assets/js/theme.js?v=7f97246" defer></script>
-  <script src="../../assets/js/phone3d.js?v=7f97246" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=89d861b">
+  <script src="../../assets/js/theme.js?v=89d861b" defer></script>
+  <script src="../../assets/js/phone3d.js?v=89d861b" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -108,6 +108,8 @@
       <section class="news" aria-labelledby="martini-news">
         <h2 id="martini-news">New in test build 2026-11-15</h2>
         <ul>
+          <li>Updated on 16 November with the same file name: if you downloaded it before, download it again and check <code>SHA256SUMS</code>.</li>
+          <li>CPU power collapse with the screen off: between wakeups the CPU cores, the L2 cache and the CPU power rail switch off, through the same firmware calls Windows uses. Measured with Wi-Fi and SIM on, the screen-off draw goes from about 160 to about 84 mA, and the always-on display from about 307 to about 255 mA.</li>
           <li>Power saving with the screen off: the kernel gives back the clock and voltage votes the firmware leaves behind. Measured on the phone, the screen-off draw goes from about 235 to about 160 mA.</li>
           <li>Groundwork for VoLTE: phh’s IMS stack, ported to Android 11, is in the build but stays off. Calls use 2G and 3G as before.</li>
         </ul>
@@ -178,6 +180,7 @@
           <div class="callout">
             <h3 class="status-title">Waiting for your reports</h3>
             <ul class="mark is-testing">
+              <li>Calls and SMS with the 16 November update, not tested again yet</li>
               <li>Lumia 930 phones other than the test phone</li>
               <li>Headset</li>
             </ul>
@@ -187,7 +190,8 @@
             <ul class="mark is-broken">
               <li>VoLTE. In the tests the phone registered on the IMS network only with settings given by hand, and calls fell back to 3G</li>
               <li>A SIM inserted with the phone on is only read after a restart: the modem has no hot swap</li>
-              <li>No deep sleep on this firmware, so standby drains the battery faster than on Windows</li>
+              <li>No deep sleep on this firmware: the CPU now powers down between wakeups, but standby still drains the battery faster than on Windows</li>
+              <li>If the phone starts with the cable already in a PC port, it charges at 500 mA instead of 1.5 A until you plug the cable in again</li>
               <li>A flash photo with the lens covered keeps the LED on until the camera service restarts</li>
               <li>SELinux is permissive</li>
             </ul>
@@ -315,7 +319,7 @@ adb sideload lineage-18.1-20261115-UNOFFICIAL-martini.zip</code></pre>
         <h2 id="martini-credits-title">Credits</h2>
         <p class="prose">The 930 port starts from the <a href="../lumia-1520/">Lumia 1520</a> one, so everyone credited there is part of it too. For the 930 itself:</p>
         <ul class="credits">
-          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux, with the 930 hardware map, boot chain and SMP through the UEFI parking mailboxes.</li>
+          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux, with the 930 hardware map, boot chain and SMP through the UEFI parking mailboxes, which the power collapse also uses to resume.</li>
           <li><strong>2314372037</strong> (zh/hao): LineageOS 17.1, the first Android port that boots on the 930, used as a reference for the speaker route, the partition layout, the keys and the vibration motor.</li>
           <li><strong>imbushuo</strong> (Bingxing Wang): BootShim and the 930 lk; <strong>rickliu2000</strong>: Lumia930Pkg.</li>
           <li><strong>Mainline4Lumia</strong> (Dominduchami): lk2nd support for the 930; <strong>Android4Lumia</strong> (J0SH1X, sonic011gamer): the 930 kernel and lk2nd.</li>

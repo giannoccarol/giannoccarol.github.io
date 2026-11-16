@@ -25,9 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=7f97246">
-  <script src="../../assets/js/theme.js?v=7f97246" defer></script>
-  <script src="../../assets/js/phone3d.js?v=7f97246" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=89d861b">
+  <script src="../../assets/js/theme.js?v=89d861b" defer></script>
+  <script src="../../assets/js/phone3d.js?v=89d861b" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -108,9 +108,10 @@
       <section class="news" aria-labelledby="bandit-news">
         <h2 id="bandit-news">New in build 2026-11-15</h2>
         <ul>
+          <li>Updated on 16 November with the same file name: if you downloaded it before, download it again and check <code>SHA256SUMS</code>.</li>
+          <li>CPU power collapse with the screen off: between wakeups the CPU cores, the L2 cache and the CPU power rail switch off, through the same firmware calls Windows uses. Measured with Wi-Fi on, the screen-off draw goes from about 146 to about 94 mA. A night in standby without a SIM used 39% of the battery in about 12 and a half hours.</li>
           <li>Power saving with the screen off: the kernel gives back the clock and voltage votes the firmware leaves behind. Measured on the phone, the screen-off draw goes from about 525 to about 140 mA.</li>
           <li>Qi wireless charging confirmed on the phone.</li>
-          <li>Since build 2026-11-14: both cameras, LumiaParts, the smoothness settings of the 930 and the lk1st fastboot menu (installer 0.3.1 or newer).</li>
         </ul>
       </section>
 
@@ -183,6 +184,7 @@
             <ul class="mark is-testing">
               <li>Microphone in calls: the earlier test turned out to be unreliable on these phones, so it needs a new one</li>
               <li>Incoming calls</li>
+              <li>Calls and SMS with the 16 November update, not tested again yet</li>
               <li>Battery life over long periods</li>
               <li>Models other than the RM-937 (RM-938, RM-939, RM-940)</li>
             </ul>
@@ -191,7 +193,7 @@
             <h3 class="status-title">Not working yet</h3>
             <ul class="mark is-broken">
               <li>GPS: no satellite fix yet. The same software gets a fix on the Lumia 930, so an outdoor test on a 1520 comes next</li>
-              <li>No deep sleep on this firmware, so standby drains the battery faster than on Windows</li>
+              <li>No deep sleep on this firmware: the CPU now powers down between wakeups, but standby still drains the battery faster than on Windows</li>
               <li>App transitions can stutter: frames arrive on time, the limit is the command-mode panel</li>
               <li>Always-on display</li>
               <li>SELinux is permissive</li>
@@ -332,7 +334,7 @@
         <p class="prose">This port stands on the work of many people. Thank you all.</p>
         <ul class="credits">
           <li><strong>KorelisLabs</strong>: lumia-1520-mainline (boot chain, device tree, TrustZone quirks, hardware addresses, APDS-9930).</li>
-          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux (SMP through the UEFI mailbox, touch, graphics).</li>
+          <li><strong>Markynose</strong> (Mark Buchok): lumia930-linux (SMP through the UEFI mailbox, which the power collapse also uses to resume, touch, graphics).</li>
           <li><strong>imbushuo</strong>: BootShim.</li>
           <li><strong>msm8916-mainline</strong>: lk2nd (lk1st).</li>
           <li><strong>René Lergner</strong> (HeathCliff): WPinternals; <strong>AkariRiku</strong> and <strong>joaozittoo</strong>: the RM-1085 donor files.</li>
