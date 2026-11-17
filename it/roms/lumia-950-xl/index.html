@@ -25,9 +25,9 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=89d861b">
-  <script src="../../../assets/js/theme.js?v=89d861b" defer></script>
-  <script src="../../../assets/js/phone3d.js?v=89d861b" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=671d3e4">
+  <script src="../../../assets/js/theme.js?v=671d3e4" defer></script>
+  <script src="../../../assets/js/phone3d.js?v=671d3e4" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -109,7 +109,7 @@
         <h2 id="cityman-news">Novità della build del 15/11/2026</h2>
         <ul>
           <li>Corretto l’autofocus della fotocamera posteriore: l’AF continuo e il tocco per mettere a fuoco muovono di nuovo la lente, quindi i soggetti vicini vengono nitidi in ogni app fotocamera.</li>
-          <li>Dual SIM sul Lumia 950 XL Dual SIM (RM-1116): entrambi gli slot, chiamate e SMS su ogni SIM e dati mobili da scegliere tra le due SIM nelle Impostazioni. L’audio delle chiamate sulla SIM 2 è in attesa di conferma.</li>
+          <li>Dual SIM sul Lumia 950 XL Dual SIM (RM-1116): entrambi gli slot, chiamate e SMS su ogni SIM e dati mobili da spostare tra le SIM nelle Impostazioni. Chiamate in entrata e in uscita su entrambe le SIM, con l’audio nei due sensi e il numero giusto, confermate da un tester.</li>
           <li>Lo zip si installa anche dalla TWRP del Lumia 950 e si ferma prima di scrivere qualsiasi cosa su un telefono che non è un Lumia, come un vero Nexus 5X o 6P.</li>
         </ul>
       </section>
@@ -134,6 +134,7 @@
               <li>Display AMOLED WQHD con accelerazione GPU, display sempre attivo</li>
               <li>Touch, doppio tocco per riattivare</li>
               <li>Profili prestazioni (Risparmio, Bilanciato, Prestazioni) in Impostazioni &gt; Batteria e nelle Impostazioni rapide</li>
+              <li>Menu del bootloader sullo schermo: in fastboot compare il menu di lk2nd (Continue, Reboot, Recovery, Bootloader, Power off), con i tasti volume per spostarsi e il tasto di accensione per scegliere. Arriva con l’installer</li>
             </ul>
           </div>
           <div>
@@ -141,7 +142,6 @@
             <ul class="mark is-works">
               <li>Wi-Fi (QCA6174), anche sui telefoni senza i MAC di Wi-Fi e Bluetooth impostati</li>
               <li>SIM, dati LTE e SMS (wrapper IRadio 1.4 sopra rild)</li>
-              <li>Dual SIM sull’RM-1116: chiamate e SMS su entrambe le SIM, dati mobili da scegliere nelle Impostazioni</li>
               <li>Bluetooth, compreso lo streaming audio A2DP</li>
               <li>NFC</li>
             </ul>
@@ -188,6 +188,7 @@
           <div class="callout">
             <h3 class="status-title">Sperimentale</h3>
             <ul class="mark is-experimental">
+              <li><strong>Dual SIM</strong> sull’RM-1116: entrambi gli slot SIM, chiamate e SMS su ogni SIM, dati mobili su una delle due SIM dalle Impostazioni. Le chiamate in entrata e in uscita con l’audio su entrambe le SIM sono confermate da un tester. Dopo aver cambiato la SIM dati, riavvia prima di chiamare.</li>
               <li><strong>VoLTE</strong> (chiamate in 4G) con lo stack IMS open source di phh. Si registra sulla rete IMS dell’operatore con l’autenticazione della SIM e IPsec, e gestisce da sé l’audio della chiamata. Provato su Iliad (Italia): chiamate in uscita con audio nei due sensi e SMS con il VoLTE attivo. Altri operatori possono funzionare se la loro rete lo accetta: segnala il tuo operatore e il risultato. Se i dati mobili si fermano dopo una chiamata VoLTE caduta, riavvia.</li>
               <li><strong>Sblocco con l’iride</strong> (Impostazioni &gt; Sicurezza e privacy &gt; Sblocco del dispositivo). La fotocamera IR dell’iride, il suo LED IR e la registrazione funzionano, con un’anteprima IR dal vivo, ma il riconoscimento non sblocca ancora il telefono. È una biometria debole, quindi le app bancarie e i pagamenti non la accettano mai. Il LED IR lampeggia in sincronia con i fotogrammi della fotocamera entro i limiti del driver Windows, e in ogni caso il kernel lo spegne 100 ms dopo l’ultima scrittura.</li>
             </ul>
@@ -196,7 +197,6 @@
             <h3 class="status-title">In attesa delle vostre prove</h3>
             <ul class="mark is-testing">
               <li>Chiamate con un auricolare Bluetooth (audio a banda stretta): corrette, in attesa di conferma</li>
-              <li>Audio delle chiamate sulla SIM 2 del modello dual SIM</li>
               <li>Durata della batteria su lunghi periodi</li>
               <li>VoLTE con operatori diversi da Iliad e chiamate VoLTE in entrata</li>
               <li>Altri dock USB-C e lapdock: segnala il modello e cosa funziona</li>
@@ -221,6 +221,7 @@
         <h3>Con l’installer (consigliato)</h3>
         <div class="prose">
           <p>L’installer cityman per Windows segue passo per passo l’installer LK ufficiale di Android4Lumia950 (Developer Menu, boot shim, LK, partizioni Android, provisioning), poi installa questa ROM con la TWRP per Android 16. La ROM ha bisogno di quella TWRP: con la versione precedente il suo zip si ferma.</p>
+          <p>L’installer porta anche un suo LK, compilato da lk2nd con un driver per il pannello del 950 XL: così in fastboot compare il menu del bootloader invece di uno schermo nero. Full lo installa al posto dell’LK ufficiale; Clean e Update sostituiscono un LK precedente, e <code>-KeepLk</code> lo lascia com’è.</p>
           <p>Ti servono:</p>
           <ul>
             <li>Un PC con Windows 10 o 11</li>
@@ -248,12 +249,12 @@
               <tr>
                 <th scope="row">Clean</th>
                 <td>LK e partizioni Android già presenti, per esempio LineageOS 18.1 di Android4Lumia950</td>
-                <td>Installa questa ROM e cancella tutti i dati.</td>
+                <td>Installa questa ROM e cancella tutti i dati. Sostituisce un LK precedente con quello che mostra il menu del bootloader.</td>
               </tr>
               <tr>
                 <th scope="row">Update</th>
                 <td>Questa ROM</td>
-                <td>Installa la nuova build e mantiene i tuoi dati.</td>
+                <td>Installa la nuova build e conserva i tuoi dati. Sostituisce un LK precedente con quello che mostra il menu del bootloader.</td>
               </tr>
             </tbody>
           </table>
@@ -293,7 +294,7 @@
         <h2 id="cityman-downloads-title">Download</h2>
         <ul class="links">
           <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261115-cityman" data-goatcounter-click="download-rom-950xl">ROM, build del 15/11/2026</a><span>Release su GitHub con lo zip (circa 1 GB) e il suo SHA256SUMS</span></li>
-          <li><a href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Installer</a><span>Per Windows, con le modalità Full, Clean e Update</span></li>
+          <li><a href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Installer</a><span>Per Windows, con le modalità Full, Clean e Update e l’LK con il menu del bootloader</span></li>
           <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/twrp-cityman-a16-20261030" data-goatcounter-click="download-twrp-950xl">TWRP per Android 16</a><span><code>twrp-cityman-a16.img</code>, richiesta da questa ROM</span></li>
           <li><a href="https://github.com/Android4Lumia950/installer/tree/cityman-temp">Installer LK di Android4Lumia950</a><span>Quello ufficiale, branch cityman-temp, per l’installazione manuale</span></li>
         </ul>
@@ -341,6 +342,8 @@
           <li><a href="https://github.com/giannoccarol/android_packages_apps_CitymanParts">CitymanParts</a><span>Profili prestazioni</span></li>
           <li><a href="https://github.com/giannoccarol/cityman-iris">cityman-iris</a><span>Motore di riconoscimento dell’iride e servizio di sblocco</span></li>
           <li><a href="https://github.com/krazey/ims">krazey/ims</a><span>Stack IMS per il VoLTE, con una patch nel manifest locale</span></li>
+          <li><a href="https://github.com/lumia-msm8974/lk2nd/tree/cityman">lk1st</a><span>lk2nd, branch cityman, con il driver del pannello del 950 XL</span></li>
+          <li><a href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Installer</a><span>Per Windows, con l’LK che installa</span></li>
         </ul>
       </section>
 
@@ -366,9 +369,10 @@
           <li><strong>TeamWin</strong>: TWRP. La TWRP per Android 16 è la TWRP cityman dell’installer Android4Lumia950 con il kernel Android 16.</li>
           <li><strong>sonic011gamer</strong> (snaccy): il branch cityman-temp dell’installer Android4Lumia950 e il video di installazione.</li>
           <li><strong>René Lergner</strong>: WPInternals.</li>
+          <li><strong>msm8916-mainline</strong> (Stephan Gerhold e i contributori): lk2nd (lk1st); <strong>Android4Lumia950</strong>: il fork di lk2nd da cui è compilato l’LK del 950 XL. Il driver del pannello segue il codice display di LK di Qualcomm per i telefoni di riferimento MSM8994.</li>
           <li><strong>Konrad Dybcio</strong> e <strong>WOA-Project</strong>: documentazione dell’hardware di Lumia 950 e 950 XL nei kernel mainline e WOA; <strong>gus33</strong> (WOA-Project) e gli autori di <strong>LumiaWoA</strong>: i driver ricostruiti di PHY e mux USB-C.</li>
           <li><strong>Analogix</strong>: i valori di riferimento dell’ANX7816 per il segnale DisplayPort.</li>
-          <li><strong>Aleksandar Jovanovic</strong>: prove dei dock USB-C, dell’installer (prima installazione completa da Windows 10 Mobile) e del GPS, e i log e le prove di chiamata del dual SIM.</li>
+          <li><strong>Aleksandar Jovanovic</strong>: prove dei dock USB-C, dell’installer (prima installazione completa da Windows 10 Mobile), del GPS e del dual SIM, con i log e le prove di chiamata in dual SIM.</li>
           <li><strong>Microsoft</strong> e <strong>Qualcomm</strong>: i driver Windows Phone del Lumia 950 XL, riferimento per la calibrazione della fotocamera, la fotocamera e il LED IR dell’iride, i limiti di ricarica della batteria, il power delivery USB-C e il bridge DisplayPort. Il motore di riconoscimento dell’iride segue i metodi pubblicati da J. Daugman.</li>
         </ul>
       </section>
