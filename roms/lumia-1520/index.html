@@ -25,9 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=f88d546">
-  <script src="../../assets/js/theme.js?v=f88d546" defer></script>
-  <script src="../../assets/js/phone3d.js?v=f88d546" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=e252c79">
+  <script src="../../assets/js/theme.js?v=e252c79" defer></script>
+  <script src="../../assets/js/phone3d.js?v=e252c79" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -69,9 +69,9 @@
           <h1 class="device__name" id="bandit-title">Lumia 1520</h1>
           <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Test builds</span></p>
           <div class="actions">
-            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261115-bandit" data-goatcounter-click="download-rom-1520">
+            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261122-bandit" data-goatcounter-click="download-rom-1520">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
-              Download build 2026-11-15
+              Download build 2026-11-22
             </a>
             <a class="button" href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.4" data-goatcounter-click="installer-1520">Get the installer</a>
             <a class="button" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/twrp-bandit-20261102" data-goatcounter-click="download-twrp-1520">TWRP for the Lumia 1520</a>
@@ -81,7 +81,7 @@
       </header>
 
       <dl class="facts">
-        <div><dt>Latest build</dt><dd>15 November 2026</dd></div>
+        <div><dt>Latest build</dt><dd>22 November 2026</dd></div>
         <div><dt>Android</dt><dd>11 (RQ3A.211001.001)</dd></div>
         <div><dt>LineageOS</dt><dd>18.1, userdebug, test keys</dd></div>
         <div><dt>Security patch</dt><dd>5 February 2024</dd></div>
@@ -106,12 +106,13 @@
       </div>
 
       <section class="news" aria-labelledby="bandit-news">
-        <h2 id="bandit-news">New in build 2026-11-15</h2>
+        <h2 id="bandit-news">New in build 2026-11-22</h2>
         <ul>
-          <li>Updated on 16 November with the same file name: if you downloaded it before, download it again and check <code>SHA256SUMS</code>.</li>
-          <li>CPU power collapse with the screen off: between wakeups the CPU cores, the L2 cache and the CPU power rail switch off, through the same firmware calls Windows uses. Measured with Wi-Fi on, the screen-off draw goes from about 146 to about 94 mA. A night in standby without a SIM used 39% of the battery in about 12 and a half hours.</li>
-          <li>Power saving with the screen off: the kernel gives back the clock and voltage votes the firmware leaves behind. Measured on the phone, the screen-off draw goes from about 525 to about 140 mA.</li>
-          <li>Qi wireless charging confirmed on the phone.</li>
+          <li>The memory bus no longer stays at its lowest speed. Since the first build a startup script set the CPU vote for the memory bus to a governor whose hardware monitor never works on the Lumias, so the bus stayed at 100 MHz. Now it follows the CPU: on the 1520 a memory access that misses the cache takes 50-57 ns instead of 450-570, and six system apps opened one after the other took 2.8 s instead of 10.6 s.</li>
+          <li>ROW disk scheduler: a small synchronous write, what an app pays every time it saves to its database, takes 2.1 ms instead of 3.3. On the 930, opening apps while something writes in the background takes a third of the time.</li>
+          <li>Apps stay in the background: Android closed them after a fixed count, long before memory ran out.</li>
+          <li>Quick settings no longer draw faded edges on scrolling labels, which made them expand at 50 fps on the 930.</li>
+          <li>The small system apps are compiled in full, and a new installation starts with animations at 0.5x.</li>
         </ul>
       </section>
 
@@ -184,7 +185,7 @@
             <ul class="mark is-testing">
               <li>Microphone in calls: the earlier test turned out to be unreliable on these phones, so it needs a new one</li>
               <li>Incoming calls</li>
-              <li>Calls and SMS with the 16 November update, not tested again yet</li>
+              <li>Calls, SMS and mobile data with this build, not tested again yet</li>
               <li>Battery life over long periods</li>
               <li>Models other than the RM-937 (RM-938, RM-939, RM-940)</li>
             </ul>
@@ -265,7 +266,7 @@
             <pre><code>fastboot boot twrp-3.7.0_9-1-bandit.img</code></pre></li>
           <li>First install only: Wipe &gt; Format Data, then wipe Cache and Dalvik.</li>
           <li>Sideload the ROM from Advanced &gt; ADB Sideload. The transfer stopping around 47% is normal.
-            <pre><code>adb sideload lineage-18.1-20261114-UNOFFICIAL-bandit.zip</code></pre></li>
+            <pre><code>adb sideload lineage-18.1-20261122-UNOFFICIAL-bandit.zip</code></pre></li>
           <li>Reboot.</li>
         </ol>
 
@@ -284,7 +285,7 @@
       <section class="block" id="bandit-downloads" aria-labelledby="bandit-downloads-title">
         <h2 id="bandit-downloads-title">Downloads</h2>
         <ul class="links">
-          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261115-bandit" data-goatcounter-click="download-rom-1520">ROM, build 2026-11-15</a><span>GitHub release with the zip (about 570 MB) and its SHA256SUMS. The zip carries the phone’s firmware, so it installs on its own</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261122-bandit" data-goatcounter-click="download-rom-1520">ROM, build 2026-11-22</a><span>GitHub release with the zip (about 600 MB) and its SHA256SUMS. The zip carries the phone’s firmware, so it installs on its own</span></li>
           <li><a href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.4" data-goatcounter-click="installer-1520">Installer 0.3.4</a><span>For Windows and Linux, with Full, Clean and Update modes</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/twrp-bandit-20261102" data-goatcounter-click="download-twrp-1520">TWRP for the Lumia 1520</a><span><code>twrp-3.7.0_9-1-bandit.img</code>, downloaded by the installer when it’s missing</span></li>
           <li><a href="https://github.com/ReneLergner/WPinternals">WPinternals</a><span>Bootloader unlock and mass storage mode, Windows only</span></li>
@@ -320,7 +321,7 @@
           <li><a href="https://github.com/lumia-msm8974/android_vendor_nokia_bandit/tree/lineage-18.1">Vendor</a><span>lineage-18.1 branch</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_device_oppo_msm8974-common/tree/lineage-18.1-lumia">msm8974 common tree</a><span>lineage-18.1-lumia branch, shared with the Lumia 930</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_packages_apps_LumiaParts">LumiaParts</a><span>Device settings app, shared with the Lumia 930</span></li>
-          <li><a href="https://github.com/lumia-msm8974/bandit-manifests/tree/lineage-18.1">Local manifest</a><span>Everything you need on top of LineageOS 18.1 to build it</span></li>
+          <li><a href="https://github.com/lumia-msm8974/bandit-manifests/tree/lineage-18.1">Local manifest</a><span>Everything you need on top of LineageOS 18.1 to build it, with the patches for frameworks/base</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/tree/twrp-9.0">TWRP device tree</a><span>twrp-9.0 branch</span></li>
           <li><a href="https://github.com/lumia-msm8974/lk2nd/tree/bandit">lk1st</a><span>lk2nd, bandit branch</span></li>
           <li><a href="https://github.com/lumia-msm8974/bandit-installer" data-goatcounter-click="installer-1520-930">Installer</a><span>For the Lumia 1520 and 930</span></li>
