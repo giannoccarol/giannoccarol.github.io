@@ -25,9 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=e252c79">
-  <script src="../../assets/js/theme.js?v=e252c79" defer></script>
-  <script src="../../assets/js/phone3d.js?v=e252c79" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=6cae5af">
+  <script src="../../assets/js/theme.js?v=6cae5af" defer></script>
+  <script src="../../assets/js/phone3d.js?v=6cae5af" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -108,8 +108,8 @@
       <section class="news" aria-labelledby="bandit-news">
         <h2 id="bandit-news">New in build 2026-11-22</h2>
         <ul>
-          <li>The memory bus no longer stays at its lowest speed. Since the first build a startup script set the CPU vote for the memory bus to a governor whose hardware monitor never works on the Lumias, so the bus stayed at 100 MHz. Now it follows the CPU: on the 1520 a memory access that misses the cache takes 50-57 ns instead of 450-570, and six system apps opened one after the other took 2.8 s instead of 10.6 s.</li>
-          <li>ROW disk scheduler: a small synchronous write, what an app pays every time it saves to its database, takes 2.1 ms instead of 3.3. On the 930, opening apps while something writes in the background takes a third of the time.</li>
+          <li>The memory bus no longer stays at its lowest speed. Since the first build a startup script set the CPU vote for the memory bus to a governor whose hardware monitor never works on the Lumias, so the bus stayed at 100 MHz. Now it follows the CPU: apps start in half the time, and a memory access that misses the cache takes 90% less.</li>
+          <li>ROW disk scheduler: a small synchronous write, what an app pays every time it saves to its database, takes 35% less time. On the 930, opening apps while something writes in the background takes 60% less.</li>
           <li>Apps stay in the background: Android closed them after a fixed count, long before memory ran out.</li>
           <li>Quick settings no longer draw faded edges on scrolling labels, which made them expand at 50 fps on the 930.</li>
           <li>The small system apps are compiled in full, and a new installation starts with animations at 0.5x.</li>

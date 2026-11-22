@@ -25,9 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=e252c79">
-  <script src="../../assets/js/theme.js?v=e252c79" defer></script>
-  <script src="../../assets/js/phone3d.js?v=e252c79" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=6cae5af">
+  <script src="../../assets/js/theme.js?v=6cae5af" defer></script>
+  <script src="../../assets/js/phone3d.js?v=6cae5af" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -108,8 +108,8 @@
       <section class="news" aria-labelledby="martini-news">
         <h2 id="martini-news">New in test build 2026-11-22</h2>
         <ul>
-          <li>The memory bus no longer stays at its lowest speed. Since the first build a startup script set the CPU vote for the memory bus to a governor whose hardware monitor never works on the Lumias, so the bus stayed at 100 MHz. Now it follows the CPU: 15 apps start cold in 7.3 s instead of 14.3 s, and Telegram X just opened scrolls with 97-98% of frames on time instead of 59-68%.</li>
-          <li>ROW disk scheduler: opening apps while something writes in the background takes a third of the time, and a small synchronous write, what an app pays every time it saves to its database, takes 2.5 ms instead of 21.</li>
+          <li>The memory bus no longer stays at its lowest speed. Since the first build a startup script set the CPU vote for the memory bus to a governor whose hardware monitor never works on the Lumias, so the bus stayed at 100 MHz. Now it follows the CPU: apps start in half the time, and Telegram X just opened scrolls with 97-98% of frames on time instead of 59-68%.</li>
+          <li>ROW disk scheduler: opening apps while something writes in the background takes 60% less time, and a small synchronous write, what an app pays every time it saves to its database, 88% less.</li>
           <li>Apps stay in the background: Android closed them after a fixed count, long before memory ran out. With 16 apps opened, 13 are still there when you come back instead of 3.</li>
           <li>Quick settings expand at 60 fps, with 99.8% of frames on time instead of 82-84%.</li>
           <li>The small system apps are compiled in full, and a new installation starts with animations at 0.5x.</li>

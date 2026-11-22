@@ -25,9 +25,9 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=e252c79">
-  <script src="../../../assets/js/theme.js?v=e252c79" defer></script>
-  <script src="../../../assets/js/phone3d.js?v=e252c79" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=6cae5af">
+  <script src="../../../assets/js/theme.js?v=6cae5af" defer></script>
+  <script src="../../../assets/js/phone3d.js?v=6cae5af" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -108,8 +108,8 @@
       <section class="news" aria-labelledby="martini-news">
         <h2 id="martini-news">Novità della build di prova del 22/11/2026</h2>
         <ul>
-          <li>Il bus della memoria non resta più alla velocità minima. Dalla prima build uno script di avvio affidava il voto della CPU per il bus a un governor il cui monitor hardware sui Lumia non funziona mai, così il bus restava a 100 MHz. Ora segue la CPU: 15 app si avviano a freddo in 7,3 s invece di 14,3 s, e Telegram X appena aperto scorre con il 97-98% dei fotogrammi in tempo invece del 59-68%.</li>
-          <li>Scheduler del disco ROW: aprire le app mentre qualcosa scrive in background richiede un terzo del tempo, e una piccola scrittura sincrona, quello che un'app paga ogni volta che salva nel suo database, costa 2,5 ms invece di 21.</li>
+          <li>Il bus della memoria non resta più alla velocità minima. Dalla prima build uno script di avvio affidava il voto della CPU per il bus a un governor il cui monitor hardware sui Lumia non funziona mai, così il bus restava a 100 MHz. Ora segue la CPU: le app si avviano in metà del tempo, e Telegram X appena aperto scorre con il 97-98% dei fotogrammi in tempo invece del 59-68%.</li>
+          <li>Scheduler del disco ROW: aprire le app mentre qualcosa scrive in background richiede il 60% di tempo in meno, e una piccola scrittura sincrona, quello che un'app paga ogni volta che salva nel suo database, l'88% in meno.</li>
           <li>Le app restano in background: Android le chiudeva dopo un numero fisso, molto prima che finisse la memoria. Con 16 app aperte, quando torni ce ne sono ancora 13 invece di 3.</li>
           <li>I riquadri rapidi si aprono a 60 fps, con il 99,8% dei fotogrammi in tempo invece dell'82-84%.</li>
           <li>Le piccole app di sistema sono compilate per intero, e un'installazione nuova parte con le animazioni a 0,5x.</li>
