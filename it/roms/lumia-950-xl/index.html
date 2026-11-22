@@ -25,9 +25,9 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=6cae5af">
-  <script src="../../../assets/js/theme.js?v=6cae5af" defer></script>
-  <script src="../../../assets/js/phone3d.js?v=6cae5af" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=37162b8">
+  <script src="../../../assets/js/theme.js?v=37162b8" defer></script>
+  <script src="../../../assets/js/phone3d.js?v=37162b8" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -69,9 +69,9 @@
           <h1 class="device__name" id="cityman-title">Lumia 950 XL</h1>
           <p class="device__meta"><span>LineageOS 23.2, Android 16</span><span class="status is-works">Disponibile</span></p>
           <div class="actions">
-            <a class="button button--primary" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261115-cityman" data-goatcounter-click="download-rom-950xl">
+            <a class="button button--primary" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261122-cityman" data-goatcounter-click="download-rom-950xl">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
-              Scarica la build del 15/11/2026
+              Scarica la build del 22/11/2026
             </a>
             <a class="button" href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Scarica l’installer</a>
             <a class="button" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/twrp-cityman-a16-20261030" data-goatcounter-click="download-twrp-950xl">TWRP per Android 16</a>
@@ -81,7 +81,7 @@
       </header>
 
       <dl class="facts">
-        <div><dt>Ultima build</dt><dd>15 novembre 2026</dd></div>
+        <div><dt>Ultima build</dt><dd>22 novembre 2026</dd></div>
         <div><dt>Android</dt><dd>16 (BP4A.251205.006)</dd></div>
         <div><dt>LineageOS</dt><dd>23.2, userdebug, chiavi di test</dd></div>
         <div><dt>Patch di sicurezza</dt><dd>1 ottobre 2026</dd></div>
@@ -106,11 +106,11 @@
       </div>
 
       <section class="news" aria-labelledby="cityman-news">
-        <h2 id="cityman-news">Novità della build del 15/11/2026</h2>
+        <h2 id="cityman-news">Novità della build del 22/11/2026</h2>
         <ul>
-          <li>Corretto l’autofocus della fotocamera posteriore: l’AF continuo e il tocco per mettere a fuoco muovono di nuovo la lente, quindi i soggetti vicini vengono nitidi in ogni app fotocamera.</li>
-          <li>Dual SIM sul Lumia 950 XL Dual SIM (RM-1116): entrambi gli slot, chiamate e SMS su ogni SIM e dati mobili da spostare tra le SIM nelle Impostazioni. Chiamate in entrata e in uscita su entrambe le SIM, con l’audio nei due sensi e il numero giusto, confermate da un tester.</li>
-          <li>Lo zip si installa anche dalla TWRP del Lumia 950 e si ferma prima di scrivere qualsiasi cosa su un telefono che non è un Lumia, come un vero Nexus 5X o 6P.</li>
+          <li>Le app restano in memoria e tornano più in fretta. Android spegne il suo JIT su ogni kernel più vecchio del 3.12, ma questo kernel 3.10 ha già la correzione a cui serve quel controllo: ora le app hanno il JIT e salvano i loro profili. Due correzioni della memoria, in lmkd e nel kernel, tengono vive le app in background.</li>
+          <li>Misurato aprendo 16 app e poi riaprendole: tutte e 16 ancora in memoria invece di 7, e da 9 a 10 s per riaprirle tutte invece di 17-18 s. Scorrimento e animazioni non cambiano.</li>
+          <li>Dual SIM: dopo aver cambiato la SIM dati, il 4G passa su quella SIM al riavvio successivo, e nel frattempo le chiamate funzionano su entrambe le SIM.</li>
         </ul>
       </section>
 
@@ -188,7 +188,7 @@
           <div class="callout">
             <h3 class="status-title">Sperimentale</h3>
             <ul class="mark is-experimental">
-              <li><strong>Dual SIM</strong> sull’RM-1116: entrambi gli slot SIM, chiamate e SMS su ogni SIM, dati mobili su una delle due SIM dalle Impostazioni. Le chiamate in entrata e in uscita con l’audio su entrambe le SIM sono confermate da un tester. Dopo aver cambiato la SIM dati, riavvia prima di chiamare.</li>
+              <li><strong>Dual SIM</strong> sull’RM-1116: entrambi gli slot SIM, chiamate e SMS su ogni SIM, dati mobili su una delle due SIM dalle Impostazioni. Le chiamate in entrata e in uscita con l’audio su entrambe le SIM sono confermate da un tester. Dopo aver cambiato la SIM dati, il 4G passa su quella SIM al riavvio successivo e nel frattempo le chiamate funzionano. Secondo un tester va meglio di prima, ma non è ancora perfetto.</li>
               <li><strong>VoLTE</strong> (chiamate in 4G) con lo stack IMS open source di phh. Si registra sulla rete IMS dell’operatore con l’autenticazione della SIM e IPsec, e gestisce da sé l’audio della chiamata. Provato su Iliad (Italia): chiamate in uscita con audio nei due sensi e SMS con il VoLTE attivo. Altri operatori possono funzionare se la loro rete lo accetta: segnala il tuo operatore e il risultato. Se i dati mobili si fermano dopo una chiamata VoLTE caduta, riavvia.</li>
               <li><strong>Sblocco con l’iride</strong> (Impostazioni &gt; Sicurezza e privacy &gt; Sblocco del dispositivo). La fotocamera IR dell’iride, il suo LED IR e la registrazione funzionano, con un’anteprima IR dal vivo, ma il riconoscimento non sblocca ancora il telefono. È una biometria debole, quindi le app bancarie e i pagamenti non la accettano mai. Il LED IR lampeggia in sincronia con i fotogrammi della fotocamera entro i limiti del driver Windows, e in ogni caso il kernel lo spegne 100 ms dopo l’ultima scrittura.</li>
             </ul>
@@ -276,7 +276,7 @@
             <pre><code>fastboot boot twrp-cityman-a16.img</code></pre></li>
           <li>Solo alla prima installazione: Wipe &gt; Format Data, poi cancella Cache e Dalvik.</li>
           <li>Fai il sideload della ROM da Advanced &gt; ADB Sideload. <code>SHA256SUMS</code> serve solo all’installer.
-            <pre><code>adb sideload lineage-23.2-20261115-UNOFFICIAL-cityman.zip</code></pre></li>
+            <pre><code>adb sideload lineage-23.2-20261122-UNOFFICIAL-cityman.zip</code></pre></li>
           <li>Facoltativo: fai il sideload di un pacchetto GApps per Android 16 (MindTheGapps o NikGapps core) prima del primo avvio.</li>
           <li>Riavvia.</li>
         </ol>
@@ -293,7 +293,7 @@
       <section class="block" id="cityman-downloads" aria-labelledby="cityman-downloads-title">
         <h2 id="cityman-downloads-title">Download</h2>
         <ul class="links">
-          <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261115-cityman" data-goatcounter-click="download-rom-950xl">ROM, build del 15/11/2026</a><span>Release su GitHub con lo zip (circa 1 GB) e il suo SHA256SUMS</span></li>
+          <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261122-cityman" data-goatcounter-click="download-rom-950xl">ROM, build del 22/11/2026</a><span>Release su GitHub con lo zip (circa 1 GB) e il suo SHA256SUMS</span></li>
           <li><a href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Installer</a><span>Per Windows, con le modalità Full, Clean e Update e l’LK con il menu del bootloader</span></li>
           <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/twrp-cityman-a16-20261030" data-goatcounter-click="download-twrp-950xl">TWRP per Android 16</a><span><code>twrp-cityman-a16.img</code>, richiesta da questa ROM</span></li>
           <li><a href="https://github.com/Android4Lumia950/installer/tree/cityman-temp">Installer LK di Android4Lumia950</a><span>Quello ufficiale, branch cityman-temp, per l’installazione manuale</span></li>
