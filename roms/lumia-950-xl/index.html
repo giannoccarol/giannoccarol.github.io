@@ -25,9 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=185acf9">
-  <script src="../../assets/js/theme.js?v=185acf9" defer></script>
-  <script src="../../assets/js/phone3d.js?v=185acf9" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=43eab31">
+  <script src="../../assets/js/theme.js?v=43eab31" defer></script>
+  <script src="../../assets/js/phone3d.js?v=43eab31" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -69,9 +69,9 @@
           <h1 class="device__name" id="cityman-title">Lumia 950 XL</h1>
           <p class="device__meta"><span>LineageOS 23.2, Android 16</span><span class="status is-works">Available</span></p>
           <div class="actions">
-            <a class="button button--primary" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261122-cityman" data-goatcounter-click="download-rom-950xl">
+            <a class="button button--primary" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261123-cityman" data-goatcounter-click="download-rom-950xl">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
-              Download build 2026-11-22
+              Download build 2026-11-23
             </a>
             <a class="button" href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Get the installer</a>
             <a class="button" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/twrp-cityman-a16-20261030" data-goatcounter-click="download-twrp-950xl">TWRP for Android 16</a>
@@ -81,7 +81,7 @@
       </header>
 
       <dl class="facts">
-        <div><dt>Latest build</dt><dd>22 November 2026</dd></div>
+        <div><dt>Latest build</dt><dd>23 November 2026</dd></div>
         <div><dt>Android</dt><dd>16 (BP4A.251205.006)</dd></div>
         <div><dt>LineageOS</dt><dd>23.2, userdebug, test keys</dd></div>
         <div><dt>Security patch</dt><dd>1 October 2026</dd></div>
@@ -106,11 +106,11 @@
       </div>
 
       <section class="news" aria-labelledby="cityman-news">
-        <h2 id="cityman-news">New in build 2026-11-22</h2>
+        <h2 id="cityman-news">New in build 2026-11-23</h2>
         <ul>
-          <li>Apps stay in memory and come back faster. Android turns its JIT off on every kernel older than 3.12, but this 3.10 kernel already has the fix that check is about: apps now get a JIT and save their profiles. Two memory fixes, in lmkd and in the kernel, keep background apps alive.</li>
-          <li>Measured by opening 16 apps and then reopening them: all 16 still in memory instead of 7, and 9 to 10 s to reopen them all instead of 17 to 18 s. Scrolling and animations are unchanged.</li>
-          <li>Dual SIM: after changing the data SIM, 4G moves to it at the next reboot, and calls on both SIMs keep working in the meantime.</li>
+          <li>The camera button works. Unlocked, one press opens the camera. Locked or with the screen off, hold it until it vibrates, about 0.8 s: a short press does nothing, so it does not go off in your pocket.</li>
+          <li>In Arco a half press focuses and a full press takes the photo. The camera closes when the screen turns off, unless it is recording, so the next press opens it instead of taking a photo.</li>
+          <li>You choose what the button does in Settings &gt; System &gt; Camera button: camera, flashlight, an app or nothing, for a press and for a long press.</li>
         </ul>
       </section>
 
@@ -159,6 +159,7 @@
               <li>Rear camera: autofocus, optical image stabilisation, correct colours, lower noise and brighter exposure; 1080p video at 30 fps with a new binned sensor mode</li>
               <li>Front camera: colour photos and video, also in low light, with the colours of the Windows camera calibration</li>
               <li>Rear LED flash and torch</li>
+              <li>Two-stage camera button, with actions you can choose</li>
               <li>Third-party camera apps: Open Camera (Camera1 and Camera2, manual ISO and shutter) and <a href="#cityman-extras">Arco</a></li>
               <li>Video playback, YouTube with sound included, with hardware decoding and encoding (Venus firmware signed for this phone)</li>
             </ul>
@@ -276,7 +277,7 @@
             <pre><code>fastboot boot twrp-cityman-a16.img</code></pre></li>
           <li>First install only: Wipe &gt; Format Data, then wipe Cache and Dalvik.</li>
           <li>Sideload the ROM from Advanced &gt; ADB Sideload. <code>SHA256SUMS</code> is only needed by the installer.
-            <pre><code>adb sideload lineage-23.2-20261122-UNOFFICIAL-cityman.zip</code></pre></li>
+            <pre><code>adb sideload lineage-23.2-20261123-UNOFFICIAL-cityman.zip</code></pre></li>
           <li>Optional: sideload an Android 16 GApps package (MindTheGapps or NikGapps core) before the first boot.</li>
           <li>Reboot.</li>
         </ol>
@@ -293,7 +294,7 @@
       <section class="block" id="cityman-downloads" aria-labelledby="cityman-downloads-title">
         <h2 id="cityman-downloads-title">Downloads</h2>
         <ul class="links">
-          <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261122-cityman" data-goatcounter-click="download-rom-950xl">ROM, build 2026-11-22</a><span>GitHub release with the zip (about 1 GB) and its SHA256SUMS</span></li>
+          <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261123-cityman" data-goatcounter-click="download-rom-950xl">ROM, build 2026-11-22</a><span>GitHub release with the zip (about 1 GB) and its SHA256SUMS</span></li>
           <li><a href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Installer</a><span>For Windows, with Full, Clean and Update modes and the LK with the bootloader menu</span></li>
           <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/twrp-cityman-a16-20261030" data-goatcounter-click="download-twrp-950xl">TWRP for Android 16</a><span><code>twrp-cityman-a16.img</code>, required by this ROM</span></li>
           <li><a href="https://github.com/Android4Lumia950/installer/tree/cityman-temp">Android4Lumia950 LK installer</a><span>The official one, cityman-temp branch, for manual installation</span></li>
