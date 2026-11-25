@@ -25,9 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=d14bcbf">
-  <script src="../../assets/js/theme.js?v=d14bcbf" defer></script>
-  <script src="../../assets/js/phone3d.js?v=d14bcbf" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=9eaa956">
+  <script src="../../assets/js/theme.js?v=9eaa956" defer></script>
+  <script src="../../assets/js/phone3d.js?v=9eaa956" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -69,9 +69,9 @@
           <h1 class="device__name" id="bandit-title">Lumia 1520</h1>
           <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Test builds</span></p>
           <div class="actions">
-            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261123-bandit" data-goatcounter-click="download-rom-1520">
+            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261125-bandit" data-goatcounter-click="download-rom-1520">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
-              Download build 2026-11-23
+              Download build 2026-11-25
             </a>
             <a class="button" href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.4" data-goatcounter-click="installer-1520">Get the installer</a>
             <a class="button" href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/twrp-bandit-20261102" data-goatcounter-click="download-twrp-1520">TWRP for the Lumia 1520</a>
@@ -81,7 +81,7 @@
       </header>
 
       <dl class="facts">
-        <div><dt>Latest build</dt><dd>23 November 2026</dd></div>
+        <div><dt>Latest build</dt><dd>25 November 2026</dd></div>
         <div><dt>Android</dt><dd>11 (RQ3A.211001.001)</dd></div>
         <div><dt>LineageOS</dt><dd>18.1, userdebug, test keys</dd></div>
         <div><dt>Security patch</dt><dd>5 February 2024</dd></div>
@@ -106,13 +106,12 @@
       </div>
 
       <section class="news" aria-labelledby="bandit-news">
-        <h2 id="bandit-news">New in build 2026-11-23</h2>
+        <h2 id="bandit-news">New in build 2026-11-25</h2>
         <ul>
-          <li>The camera button works as on Windows Phone. Locked or with the screen off, hold it for 0.8 seconds until it vibrates and the camera opens. Unlocked, one press is enough. Turning the screen off closes the camera, and a half press focuses and shows the focus ring. You can change its action in the Lumia settings app.</li>
-          <li>Colours are no longer washed out: the panel's adaptive backlight is off, and the LiveDisplay colour settings now reach the display.</li>
-          <li>4K at 30 fps and 1080p at 60 fps from the rear camera, under Camera settings, Resolution and quality, Back camera video mode. 4K uses the centre of the sensor.</li>
-          <li>Front camera photos no longer come out white, flash photos no longer come out black, and Open Camera records at 30 fps instead of 10.</li>
-          <li>The microphone no longer disappears after some boots, the clock keeps the time across a power off, and the key light timeout in the Lumia settings app no longer crashes.</li>
+          <li>Updates without a PC, from Settings &gt; System &gt; Updater: it finds the next builds, downloads them and installs them through the recovery. If the recovery partition is empty, the ROM writes the LineageOS recovery there. A TWRP you installed there stays, and it installs the update too. Google apps and Magisk are kept the same way as with a sideload. On the test phone a full update took 2 minutes 20 seconds from the tap to Android.</li>
+          <li>Fixed a hang at boot: the video firmware could start while the modem was still loading, and the phone froze until a forced restart. Now they start one at a time.</li>
+          <li>From the <a href="../lumia-930/">Lumia 930</a>, not tried on a 1520 yet: video no longer goes bright and dark by itself in dim scenes, 1080p at 60 fps uses the normal video path with its noise filters, and other camera apps get 4K and 60 fps. <a href="https://github.com/giannoccarol/cityman-camera">Arco</a> 0.5.2 comes with the ROM.</li>
+          <li>The CPU is no longer cut to 300 MHz when the chip is hot: the limit stops at 1190 MHz. New limits from the temperature of the body, with the thresholds Windows Phone uses on the 1520: half brightness at 53 °C, slower charging from 56 °C, shutdown at 70 °C. The thermal service now reads the body thermistor.</li>
         </ul>
       </section>
 
@@ -142,6 +141,7 @@
               <li>Touch, double tap to wake</li>
               <li>Capacitive keys (back, home, recent apps) with backlight</li>
               <li>Performance profiles in the Lumia settings app</li>
+              <li>Updates from Settings &gt; System &gt; Updater, from build 2026-11-25 on</li>
             </ul>
           </div>
           <div>
@@ -185,7 +185,9 @@
           <div class="callout">
             <h3 class="status-title">Waiting for your reports</h3>
             <ul class="mark is-testing">
-              <li>Pre-release build 2026-11-25, never run on a 1520: it has the video exposure, 1080p at 60 fps and thermal fixes of the <a href="../lumia-930/">Lumia 930</a>, Arco, and new limits from the temperature of the body. Try it and report, or stay on 2026-11-23</li>
+              <li>The camera changes of build 2026-11-25 (video exposure, 1080p at 60 fps): measured on the <a href="../lumia-930/">Lumia 930</a>, not tried on a 1520 yet</li>
+              <li>The thermal limits at their real temperatures</li>
+              <li>Updates through the Updater with Google apps installed: the test phone has none</li>
               <li>Microphone in calls: the earlier test turned out to be unreliable on these phones, so it needs a new one</li>
               <li>Incoming calls</li>
               <li>Calls, SMS and mobile data with this build, not tested again yet</li>
@@ -270,12 +272,12 @@
             <pre><code>fastboot boot twrp-3.7.0_9-1-bandit.img</code></pre></li>
           <li>First install only: Wipe &gt; Format Data, then wipe Cache and Dalvik.</li>
           <li>Sideload the ROM from Advanced &gt; ADB Sideload. The transfer stopping around 47% is normal.
-            <pre><code>adb sideload lineage-18.1-20261123-UNOFFICIAL-bandit.zip</code></pre></li>
+            <pre><code>adb sideload lineage-18.1-20261125-UNOFFICIAL-bandit.zip</code></pre></li>
           <li>Reboot.</li>
         </ol>
 
         <h3>Updating</h3>
-        <p class="prose">Run the installer in Update mode, or boot the TWRP again (step 2 above) and sideload the new zip without wiping data.</p>
+        <p class="prose">From build 2026-11-25 on, open Settings &gt; System &gt; Updater: it shows a new build when there is one, downloads it and installs it through the recovery, with no PC. Build 2026-11-25 itself has to be installed the old way: run the installer in Update mode, or boot the TWRP again (step 2 above) and sideload the new zip without wiping data.</p>
 
         <h3>Keys or gestures</h3>
         <p class="prose">The three capacitive keys work by default. To use gestures, turn on the on-screen navigation bar in Settings &gt; System &gt; Buttons: the keys and their backlight turn off. Then pick Gesture navigation in Settings &gt; System &gt; Gestures &gt; System navigation.</p>
@@ -289,8 +291,8 @@
       <section class="block" id="bandit-downloads" aria-labelledby="bandit-downloads-title">
         <h2 id="bandit-downloads-title">Downloads</h2>
         <ul class="links">
-          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261123-bandit" data-goatcounter-click="download-rom-1520">ROM, build 2026-11-23</a><span>GitHub release with the zip (about 600 MB) and its SHA256SUMS. The zip carries the phone’s firmware, so it installs on its own</span></li>
-          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261125-bandit" data-goatcounter-click="download-rom-1520-pre">ROM, pre-release build 2026-11-25</a><span>Not run on a 1520 yet. Same install steps; to go back, sideload the 2026-11-23 zip without a wipe</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261125-bandit" data-goatcounter-click="download-rom-1520">ROM, build 2026-11-25</a><span>GitHub release with the zip (about 600 MB) and its SHA256SUMS. The zip carries the phone’s firmware, so it installs on its own</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/lineage-18.1-20261123-bandit" data-goatcounter-click="download-rom-1520-prev">ROM, build 2026-11-23</a><span>The previous build, to go back: sideload it without a wipe</span></li>
           <li><a href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.4" data-goatcounter-click="installer-1520">Installer 0.3.4</a><span>For Windows and Linux, with Full, Clean and Update modes</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_device_nokia_bandit/releases/tag/twrp-bandit-20261102" data-goatcounter-click="download-twrp-1520">TWRP for the Lumia 1520</a><span><code>twrp-3.7.0_9-1-bandit.img</code>, downloaded by the installer when it’s missing</span></li>
           <li><a href="https://github.com/ReneLergner/WPinternals">WPinternals</a><span>Bootloader unlock and mass storage mode, Windows only</span></li>
