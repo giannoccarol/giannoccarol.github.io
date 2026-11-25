@@ -25,9 +25,9 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=9eaa956">
-  <script src="../../../assets/js/theme.js?v=9eaa956" defer></script>
-  <script src="../../../assets/js/phone3d.js?v=9eaa956" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=c3150a1">
+  <script src="../../../assets/js/theme.js?v=c3150a1" defer></script>
+  <script src="../../../assets/js/phone3d.js?v=c3150a1" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -69,9 +69,9 @@
           <h1 class="device__name" id="cityman-title">Lumia 950 XL</h1>
           <p class="device__meta"><span>LineageOS 23.2, Android 16</span><span class="status is-works">Disponibile</span></p>
           <div class="actions">
-            <a class="button button--primary" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261123-cityman" data-goatcounter-click="download-rom-950xl">
+            <a class="button button--primary" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261125-cityman" data-goatcounter-click="download-rom-950xl">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
-              Scarica la build del 23/11/2026
+              Scarica la build del 25/11/2026
             </a>
             <a class="button" href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Scarica l’installer</a>
             <a class="button" href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/twrp-cityman-a16-20261030" data-goatcounter-click="download-twrp-950xl">TWRP per Android 16</a>
@@ -81,7 +81,7 @@
       </header>
 
       <dl class="facts">
-        <div><dt>Ultima build</dt><dd>23 novembre 2026</dd></div>
+        <div><dt>Ultima build</dt><dd>25 novembre 2026</dd></div>
         <div><dt>Android</dt><dd>16 (BP4A.251205.006)</dd></div>
         <div><dt>LineageOS</dt><dd>23.2, userdebug, chiavi di test</dd></div>
         <div><dt>Patch di sicurezza</dt><dd>1 ottobre 2026</dd></div>
@@ -106,11 +106,12 @@
       </div>
 
       <section class="news" aria-labelledby="cityman-news">
-        <h2 id="cityman-news">Novità della build del 23/11/2026</h2>
+        <h2 id="cityman-news">Novità della build del 25/11/2026</h2>
         <ul>
-          <li>Il tasto fotocamera funziona. Da sbloccato basta una pressione per aprire la fotocamera. Da bloccato o a schermo spento tienilo premuto finché non vibra, circa 0,8 s: una pressione breve non fa nulla, così non si attiva in tasca.</li>
-          <li>In Arco a metà corsa mette a fuoco e premuto fino in fondo scatta. La fotocamera si chiude quando si spegne lo schermo, salvo durante una registrazione, così la pressione successiva la apre invece di scattare.</li>
-          <li>Scegli cosa fa il tasto in Impostazioni &gt; Sistema &gt; Tasto fotocamera: fotocamera, torcia, un'app o nessuna azione, per la pressione breve e per quella lunga.</li>
+          <li>Aggiornamenti senza PC, da Impostazioni &gt; Sistema &gt; Aggiornamenti di sistema: trova le build successive, le scarica e le installa attraverso la TWRP, e il telefono torna su da solo. Sul telefono di prova, con le app Google, l’installazione ha richiesto 3 minuti dopo il download. La build del 25/11/2026 si installa ancora come prima.</li>
+          <li>Per questo lo zip sostituisce l’LK ufficiale con quello dell’installer, che avvia la recovery quando il telefono si riavvia in recovery, e conserva quello ufficiale in <code>aboot</code> come <code>emmc_appsboot.mbn.official</code>. Scrive anche la TWRP per Android 16 nella partizione recovery quando è vuota o contiene la vecchia TWRP dell’installer. Qualsiasi altro LK o recovery resta com’è.</li>
+          <li>Le app Google restano dopo un aggiornamento: il loro backup veniva saltato a ogni installazione, ora non serve rifare il loro sideload dopo la ROM.</li>
+          <li>Il doppio tocco per riattivare funziona subito dopo lo spegnimento dello schermo. Con il display sempre attivo non faceva niente per i primi 4 secondi.</li>
         </ul>
       </section>
 
@@ -133,6 +134,7 @@
               <li>Avvio (non A/B, la partizione cache è usata come /metadata)</li>
               <li>Display AMOLED WQHD con accelerazione GPU, display sempre attivo</li>
               <li>Touch, doppio tocco per riattivare</li>
+              <li>Aggiornamenti da Impostazioni &gt; Sistema &gt; Aggiornamenti di sistema, dalla build del 25/11/2026 in poi</li>
               <li>Profili prestazioni (Risparmio, Bilanciato, Prestazioni) in Impostazioni &gt; Batteria e nelle Impostazioni rapide</li>
               <li>Menu del bootloader sullo schermo: in fastboot compare il menu di lk2nd (Continue, Reboot, Recovery, Bootloader, Power off), con i tasti volume per spostarsi e il tasto di accensione per scegliere. Arriva con l’installer</li>
             </ul>
@@ -199,6 +201,7 @@
             <ul class="mark is-testing">
               <li>Chiamate con un auricolare Bluetooth (audio a banda stretta): corrette, in attesa di conferma</li>
               <li>Durata della batteria su lunghi periodi</li>
+              <li>La sostituzione dell’LK da parte dello zip sui telefoni che hanno ancora l’LK ufficiale: provata solo su copie della partizione</li>
               <li>VoLTE con operatori diversi da Iliad e chiamate VoLTE in entrata</li>
               <li>Altri dock USB-C e lapdock: segnala il modello e cosa funziona</li>
               <li>GPS: tempo del primo fix e precisione in posti diversi</li>
@@ -277,13 +280,13 @@
             <pre><code>fastboot boot twrp-cityman-a16.img</code></pre></li>
           <li>Solo alla prima installazione: Wipe &gt; Format Data, poi cancella Cache e Dalvik.</li>
           <li>Fai il sideload della ROM da Advanced &gt; ADB Sideload. <code>SHA256SUMS</code> serve solo all’installer.
-            <pre><code>adb sideload lineage-23.2-20261123-UNOFFICIAL-cityman.zip</code></pre></li>
+            <pre><code>adb sideload lineage-23.2-20261125-UNOFFICIAL-cityman.zip</code></pre></li>
           <li>Facoltativo: fai il sideload di un pacchetto GApps per Android 16 (MindTheGapps o NikGapps core) prima del primo avvio.</li>
           <li>Riavvia.</li>
         </ol>
 
         <h3>Aggiornamento</h3>
-        <p class="prose">Avvia l’installer in modalità Update, oppure avvia di nuovo la TWRP per Android 16 (passo 3 qui sopra) e fai il sideload del nuovo zip senza cancellare i dati. Se usi le GApps, rifai il loro sideload subito dopo la ROM, prima di riavviare.</p>
+        <p class="prose">Dalla build del 25/11/2026 in poi, apri Impostazioni &gt; Sistema &gt; Aggiornamenti di sistema: quando c’è una nuova build la mostra, la scarica e la installa attraverso la TWRP, senza PC. La build del 25/11/2026 va installata come prima: avvia l’installer in modalità Update, oppure avvia di nuovo la TWRP per Android 16 (passo 3 qui sopra) e fai il sideload del nuovo zip senza cancellare i dati. Le app Google restano, non serve rifare il loro sideload.</p>
 
         <h3>Se resta in bootloop</h3>
         <p class="prose">Entra in fastboot, avvia la TWRP per Android 16 con <code>fastboot boot</code> e installa di nuovo la ROM, oppure avvia l’installer in modalità Clean o Update.</p>
@@ -294,7 +297,7 @@
       <section class="block" id="cityman-downloads" aria-labelledby="cityman-downloads-title">
         <h2 id="cityman-downloads-title">Download</h2>
         <ul class="links">
-          <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261123-cityman" data-goatcounter-click="download-rom-950xl">ROM, build del 22/11/2026</a><span>Release su GitHub con lo zip (circa 1 GB) e il suo SHA256SUMS</span></li>
+          <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/lineage-23.2-20261125-cityman" data-goatcounter-click="download-rom-950xl">ROM, build del 25/11/2026</a><span>Release su GitHub con lo zip (circa 1 GB) e il suo SHA256SUMS</span></li>
           <li><a href="https://github.com/giannoccarol/installer-cityman-a16" data-goatcounter-click="installer-950xl">Installer</a><span>Per Windows, con le modalità Full, Clean e Update e l’LK con il menu del bootloader</span></li>
           <li><a href="https://github.com/giannoccarol/android_device_msft_cityman/releases/tag/twrp-cityman-a16-20261030" data-goatcounter-click="download-twrp-950xl">TWRP per Android 16</a><span><code>twrp-cityman-a16.img</code>, richiesta da questa ROM</span></li>
           <li><a href="https://github.com/Android4Lumia950/installer/tree/cityman-temp">Installer LK di Android4Lumia950</a><span>Quello ufficiale, branch cityman-temp, per l’installazione manuale</span></li>
