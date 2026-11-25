@@ -25,9 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=5b98831">
-  <script src="../../assets/js/theme.js?v=5b98831" defer></script>
-  <script src="../../assets/js/phone3d.js?v=5b98831" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=03bd063">
+  <script src="../../assets/js/theme.js?v=03bd063" defer></script>
+  <script src="../../assets/js/phone3d.js?v=03bd063" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -69,9 +69,9 @@
           <h1 class="device__name" id="martini-title">Lumia 930</h1>
           <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Test builds</span></p>
           <div class="actions">
-            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261123-martini" data-goatcounter-click="download-rom-930">
+            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261125-martini" data-goatcounter-click="download-rom-930">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
-              Download test build 2026-11-23
+              Download test build 2026-11-25
             </a>
             <a class="button" href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.4" data-goatcounter-click="installer-930">Get the installer</a>
             <a class="button" href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/twrp-martini-20261113" data-goatcounter-click="download-twrp-930">TWRP for the Lumia 930</a>
@@ -81,7 +81,7 @@
       </header>
 
       <dl class="facts">
-        <div><dt>Latest build</dt><dd>23 November 2026</dd></div>
+        <div><dt>Latest build</dt><dd>25 November 2026</dd></div>
         <div><dt>Android</dt><dd>11 (RQ3A.211001.001)</dd></div>
         <div><dt>LineageOS</dt><dd>18.1, userdebug, test keys</dd></div>
         <div><dt>Security patch</dt><dd>5 February 2024</dd></div>
@@ -106,13 +106,13 @@
       </div>
 
       <section class="news" aria-labelledby="martini-news">
-        <h2 id="martini-news">New in test build 2026-11-23</h2>
+        <h2 id="martini-news">New in test build 2026-11-25</h2>
         <ul>
-          <li>The camera button works as on Windows Phone. Locked or with the screen off, hold it for 0.8 seconds until it vibrates and the camera opens. Unlocked, one press is enough. Turning the screen off closes the camera, and a half press focuses and shows the focus ring. You can change its action in the Lumia settings app.</li>
-          <li>No more blue screen in the video preview. Front camera photos no longer come out white, and flash photos no longer come out black.</li>
-          <li>4K at 30 fps and 1080p at 60 fps from the rear camera, under Camera settings, Resolution and quality, Back camera video mode. 4K uses the centre of the sensor, and 60 fps can drop to 50 in low light.</li>
-          <li>The microphone no longer disappears after some boots, which stopped every video with sound from starting.</li>
-          <li>The clock keeps the time across a power off, and the key light timeout in the Lumia settings app no longer crashes.</li>
+          <li>Video no longer goes bright and dark by itself. In dim scenes the picture pumped about once a second, mostly in 4K and at 60 fps: the sensor dropped every gain change while the exposure was still moving. On a still phone recording 4K in a dim room there were 44 brightness jumps in 14 seconds, now none.</li>
+          <li>1080p at 60 fps is clean. It ran on a camera path without noise filters, with green and purple speckles; now it uses the normal video path. The groups of black frames are gone, and under 50 Hz lights no bands roll through the picture.</li>
+          <li>4K and 1080p at 60 fps also work in other camera apps, and <a href="https://github.com/giannoccarol/cityman-camera">Arco</a> 0.5.2 comes with the ROM, with a video quality picker.</li>
+          <li>The thermal rules load in full. The thermal service read only the first half of its settings file, so the limits on the temperature of the body and the safety shutdowns never ran.</li>
+          <li>The CPU is no longer cut to 300 MHz when the chip is hot, which made the camera lose frames: the limit now stops at 1190 MHz. New with a hot body: slower charging from 46 °C, camera at 15 fps from 49 °C, half brightness at 50 °C, shutdown at 65 °C.</li>
         </ul>
       </section>
 
@@ -163,7 +163,7 @@
             <h4>Camera and video</h4>
             <ul class="mark is-works">
               <li>Rear camera with autofocus, LED flash and torch; front camera. Photos and video on both</li>
-              <li>Rear video in 4K at 30 fps and 1080p at 60 fps from the Camera app</li>
+              <li>Rear video in 4K at 30 fps and 1080p at 60 fps, from the Camera app and from Arco, which comes with the ROM</li>
               <li>Video playback with hardware decoding</li>
             </ul>
           </div>
@@ -185,6 +185,7 @@
               <li>Calls, SMS and mobile data with this build, not tested again yet</li>
               <li>Camera button with the real key on a 930: tested with simulated presses here, and with the real key on the 1520</li>
               <li>Voice level in videos, reported as low on a 930</li>
+              <li>The thermal limits at their real temperatures: tried only with lowered thresholds</li>
               <li>The clock after a full power off with this build</li>
               <li>Lumia 930 phones other than the test phone</li>
               <li>Headset</li>
@@ -264,7 +265,7 @@
         <h3>Updating</h3>
         <p class="prose">Run the installer in Update mode. By hand: get to lk1st with <code>adb reboot bootloader</code>, boot the TWRP and sideload the new zip from Advanced &gt; ADB Sideload, without wiping data. The transfer stopping around 47% is normal.</p>
         <pre><code>fastboot boot twrp-3.7.0_9-0-martini.img
-adb sideload lineage-18.1-20261123-UNOFFICIAL-martini.zip</code></pre>
+adb sideload lineage-18.1-20261125-UNOFFICIAL-martini.zip</code></pre>
 
         <h3>If it bootloops</h3>
         <p class="prose">If adb still sees the phone, run the installer in Update or Clean mode: it stops the loop with <code>adb reboot bootloader</code>. Otherwise get to lk1st, boot the TWRP with <code>fastboot boot</code> and sideload the ROM again. Volume up at power-on always opens the flash mode, the way back with WPinternals.</p>
@@ -275,7 +276,7 @@ adb sideload lineage-18.1-20261123-UNOFFICIAL-martini.zip</code></pre>
       <section class="block" id="martini-downloads" aria-labelledby="martini-downloads-title">
         <h2 id="martini-downloads-title">Downloads</h2>
         <ul class="links">
-          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261123-martini" data-goatcounter-click="download-rom-930">ROM, test build 2026-11-23</a><span>GitHub release with the zip (about 600 MB) and its SHA256SUMS. The zip carries the phone’s firmware; the phone’s own calibration and modem data are copied from the phone by the installer</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261125-martini" data-goatcounter-click="download-rom-930">ROM, test build 2026-11-25</a><span>GitHub release with the zip (about 600 MB) and its SHA256SUMS. The zip carries the phone’s firmware; the phone’s own calibration and modem data are copied from the phone by the installer</span></li>
           <li><a href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.4" data-goatcounter-click="installer-930">Installer 0.3.4</a><span>For Windows and Linux, shared with the Lumia 1520</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/twrp-martini-20261113" data-goatcounter-click="download-twrp-930">TWRP for the Lumia 930</a><span><code>twrp-3.7.0_9-0-martini.img</code>, downloaded by the installer when it’s missing</span></li>
           <li><a href="https://github.com/ReneLergner/WPinternals">WPinternals</a><span>Bootloader unlock and mass storage mode, Windows only</span></li>
