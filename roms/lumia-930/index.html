@@ -25,9 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=48ede8e">
-  <script src="../../assets/js/theme.js?v=48ede8e" defer></script>
-  <script src="../../assets/js/phone3d.js?v=48ede8e" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=d21497d">
+  <script src="../../assets/js/theme.js?v=d21497d" defer></script>
+  <script src="../../assets/js/phone3d.js?v=d21497d" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -108,10 +108,10 @@
       <section class="news" aria-labelledby="martini-news">
         <h2 id="martini-news">New in test build 2026-11-26</h2>
         <ul>
-          <li>Updates without a PC, from Settings &gt; System &gt; Updater: it finds the next builds, downloads them and installs them through the recovery. If the recovery partition is empty, the ROM writes the LineageOS recovery there. A TWRP you installed there stays, and it installs the update too. Google apps and Magisk are kept the same way as with a sideload. On the test phone, with Google apps, a full update took 2 minutes 32 seconds from the tap to Android.</li>
+          <li>Updates without a PC, from Settings &gt; System &gt; Updater: it finds the next builds, downloads them and installs them through the recovery. If the recovery partition is empty, the ROM writes the LineageOS recovery there. A TWRP you installed there stays, and it installs the update too. Google apps and Magisk are kept the same way as with a sideload. If the Wi-Fi drops during the download, it resumes by itself. On the test phone, with Google apps, a full update took 2 minutes 32 seconds from the tap to Android.</li>
           <li>The fix for the hang at boot found on the <a href="../lumia-1520/">Lumia 1520</a>: the video firmware could start while the modem was still loading, and the phone froze until a forced restart. The 930 loads its firmware the same way, so it gets the same fix: one at a time.</li>
           <li>Less drain with the screen off: the main clock of the chip now turns off while the screen is off. Overnight on the test phone, with no cable: 81.5 mA before, 61.7 mA now. It is still not deep sleep.</li>
-          <li>Wi-Fi no longer jumps between 2.4 and 5 GHz. With a weak 5 GHz signal the phone changed band every 20 seconds while idle, with a short drop each time. On the test phone: 12 to 15 changes in 5 minutes before, 1 now.</li>
+          <li>Wi-Fi no longer jumps between 2.4 and 5 GHz. With a weak 5 GHz signal the phone changed band every 20 seconds while idle, with a short drop each time. On the test phone: 12 to 15 changes in 5 minutes before, none in 8 minutes now.</li>
           <li>All the camera and thermal changes of test build 2026-11-25 are in this build.</li>
         </ul>
       </section>
@@ -265,7 +265,7 @@
         <p class="prose">Every step that writes to the phone asks you to type a confirmation word, and every file is checked against its SHA-256 before it’s used.</p>
 
         <h3>Updating</h3>
-        <p class="prose">From build 2026-11-26 on, open Settings &gt; System &gt; Updater: it shows a new build when there is one, downloads it and installs it through the recovery, with no PC. If a download stops moving after the Wi-Fi reconnects, tap Pause and then Resume. Build 2026-11-26 itself has to be installed the old way: run the installer in Update mode, or get to lk1st with <code>adb reboot bootloader</code>, boot the TWRP and sideload the new zip from Advanced &gt; ADB Sideload, without wiping data. The transfer stopping around 47% is normal.</p>
+        <p class="prose">From build 2026-11-26 on, open Settings &gt; System &gt; Updater: it shows a new build when there is one, downloads it and installs it through the recovery, with no PC. If the Wi-Fi drops, the download goes on by itself once it is back. Build 2026-11-26 itself has to be installed the old way: run the installer in Update mode, or get to lk1st with <code>adb reboot bootloader</code>, boot the TWRP and sideload the new zip from Advanced &gt; ADB Sideload, without wiping data. The transfer stopping around 47% is normal.</p>
         <pre><code>fastboot boot twrp-3.7.0_9-0-martini.img
 adb sideload lineage-18.1-20261126-UNOFFICIAL-martini.zip</code></pre>
 

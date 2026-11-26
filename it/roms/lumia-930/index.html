@@ -25,9 +25,9 @@
   <link rel="icon" href="../../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../assets/css/site.css?v=48ede8e">
-  <script src="../../../assets/js/theme.js?v=48ede8e" defer></script>
-  <script src="../../../assets/js/phone3d.js?v=48ede8e" defer></script>
+  <link rel="stylesheet" href="../../../assets/css/site.css?v=d21497d">
+  <script src="../../../assets/js/theme.js?v=d21497d" defer></script>
+  <script src="../../../assets/js/phone3d.js?v=d21497d" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -108,10 +108,10 @@
       <section class="news" aria-labelledby="martini-news">
         <h2 id="martini-news">Novità della build di prova del 26/11/2026</h2>
         <ul>
-          <li>Aggiornamenti senza PC, da Impostazioni &gt; Sistema &gt; Aggiornamenti: trova le build successive, le scarica e le installa attraverso la recovery. Se la partizione recovery è vuota, la ROM ci scrive la recovery LineageOS. Una TWRP che hai installato lì resta, e installa anche lei l’aggiornamento. Le app Google e Magisk restano, come con un sideload. Sul telefono di prova, con le app Google, un aggiornamento completo ha richiesto 2 minuti e 32 secondi dal tocco ad Android.</li>
+          <li>Aggiornamenti senza PC, da Impostazioni &gt; Sistema &gt; Aggiornamenti: trova le build successive, le scarica e le installa attraverso la recovery. Se la partizione recovery è vuota, la ROM ci scrive la recovery LineageOS. Una TWRP che hai installato lì resta, e installa anche lei l’aggiornamento. Le app Google e Magisk restano, come con un sideload. Se il Wi-Fi cade durante il download, riprende da solo. Sul telefono di prova, con le app Google, un aggiornamento completo ha richiesto 2 minuti e 32 secondi dal tocco ad Android.</li>
           <li>La correzione del blocco all’avvio trovato sul <a href="../lumia-1520/">Lumia 1520</a>: il firmware video poteva partire mentre il modem si stava ancora caricando, e il telefono si bloccava fino a un riavvio forzato. Il 930 carica i firmware nello stesso modo, quindi riceve la stessa correzione: uno alla volta.</li>
           <li>Meno consumo a schermo spento: ora il clock principale del chip si spegne mentre lo schermo è spento. Di notte sul telefono di prova, senza cavo: 81,5 mA prima, 61,7 mA adesso. Non è ancora il sonno profondo.</li>
-          <li>Il Wi-Fi non salta più tra 2,4 e 5 GHz. Con un segnale debole a 5 GHz il telefono cambiava banda ogni 20 secondi quando era inattivo, con una breve interruzione ogni volta. Sul telefono di prova: da 12-15 cambi in 5 minuti a 1.</li>
+          <li>Il Wi-Fi non salta più tra 2,4 e 5 GHz. Con un segnale debole a 5 GHz il telefono cambiava banda ogni 20 secondi quando era inattivo, con una breve interruzione ogni volta. Sul telefono di prova: prima 12-15 cambi in 5 minuti, ora nessuno in 8 minuti.</li>
           <li>Questa build contiene tutte le modifiche alla fotocamera e alla gestione termica della build di prova del 25/11/2026.</li>
         </ul>
       </section>
@@ -265,7 +265,7 @@
         <p class="prose">Ogni passo che scrive sul telefono ti chiede di scrivere una parola di conferma, e ogni file viene controllato con il suo SHA-256 prima dell’uso.</p>
 
         <h3>Aggiornamento</h3>
-        <p class="prose">Dalla build del 26/11/2026 in poi, apri Impostazioni &gt; Sistema &gt; Aggiornamenti: quando c’è una nuova build la mostra, la scarica e la installa attraverso la recovery, senza PC. Se un download si ferma dopo che il Wi-Fi si è ricollegato, tocca Pausa e poi Riprendi. La build del 26/11/2026 va installata come prima: avvia l’installer in modalità Aggiornamento, oppure arriva a lk1st con <code>adb reboot bootloader</code>, avvia la TWRP e fai il sideload del nuovo zip da Advanced &gt; ADB Sideload, senza cancellare i dati. È normale che il trasferimento si fermi intorno al 47%.</p>
+        <p class="prose">Dalla build del 26/11/2026 in poi, apri Impostazioni &gt; Sistema &gt; Aggiornamenti: quando c’è una nuova build la mostra, la scarica e la installa attraverso la recovery, senza PC. Se il Wi-Fi cade, il download riprende da solo appena torna. La build del 26/11/2026 va installata come prima: avvia l’installer in modalità Aggiornamento, oppure arriva a lk1st con <code>adb reboot bootloader</code>, avvia la TWRP e fai il sideload del nuovo zip da Advanced &gt; ADB Sideload, senza cancellare i dati. È normale che il trasferimento si fermi intorno al 47%.</p>
         <pre><code>fastboot boot twrp-3.7.0_9-0-martini.img
 adb sideload lineage-18.1-20261126-UNOFFICIAL-martini.zip</code></pre>
 
