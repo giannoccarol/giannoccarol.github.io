@@ -25,9 +25,9 @@
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/fira-sans-compressed-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.css?v=c3150a1">
-  <script src="../../assets/js/theme.js?v=c3150a1" defer></script>
-  <script src="../../assets/js/phone3d.js?v=c3150a1" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=48ede8e">
+  <script src="../../assets/js/theme.js?v=48ede8e" defer></script>
+  <script src="../../assets/js/phone3d.js?v=48ede8e" defer></script>
   <script data-goatcounter="https://giannoccarol.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -69,9 +69,9 @@
           <h1 class="device__name" id="martini-title">Lumia 930</h1>
           <p class="device__meta"><span>LineageOS 18.1, Android 11</span><span class="status is-experimental">Test builds</span></p>
           <div class="actions">
-            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261125-martini" data-goatcounter-click="download-rom-930">
+            <a class="button button--primary" href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261126-martini" data-goatcounter-click="download-rom-930">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>
-              Download test build 2026-11-25
+              Download test build 2026-11-26
             </a>
             <a class="button" href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.4" data-goatcounter-click="installer-930">Get the installer</a>
             <a class="button" href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/twrp-martini-20261113" data-goatcounter-click="download-twrp-930">TWRP for the Lumia 930</a>
@@ -81,7 +81,7 @@
       </header>
 
       <dl class="facts">
-        <div><dt>Latest build</dt><dd>25 November 2026</dd></div>
+        <div><dt>Latest build</dt><dd>26 November 2026</dd></div>
         <div><dt>Android</dt><dd>11 (RQ3A.211001.001)</dd></div>
         <div><dt>LineageOS</dt><dd>18.1, userdebug, test keys</dd></div>
         <div><dt>Security patch</dt><dd>5 February 2024</dd></div>
@@ -106,13 +106,13 @@
       </div>
 
       <section class="news" aria-labelledby="martini-news">
-        <h2 id="martini-news">New in test build 2026-11-25</h2>
+        <h2 id="martini-news">New in test build 2026-11-26</h2>
         <ul>
-          <li>Video no longer goes bright and dark by itself. In dim scenes the picture pumped about once a second, mostly in 4K and at 60 fps: the sensor dropped every gain change while the exposure was still moving. On a still phone recording 4K in a dim room there were 44 brightness jumps in 14 seconds, now none.</li>
-          <li>1080p at 60 fps is clean. It ran on a camera path without noise filters, with green and purple speckles; now it uses the normal video path. The groups of black frames are gone, and under 50 Hz lights no bands roll through the picture.</li>
-          <li>4K and 1080p at 60 fps also work in other camera apps, and <a href="https://github.com/giannoccarol/cityman-camera">Arco</a> 0.5.2 comes with the ROM, with a video quality picker.</li>
-          <li>The thermal rules load in full. The thermal service read only the first half of its settings file, so the limits on the temperature of the body and the safety shutdowns never ran.</li>
-          <li>The CPU is no longer cut to 300 MHz when the chip is hot, which made the camera lose frames: the limit now stops at 1190 MHz. New with a hot body: slower charging from 46 °C, camera at 15 fps from 49 °C, half brightness at 50 °C, shutdown at 65 °C.</li>
+          <li>Updates without a PC, from Settings &gt; System &gt; Updater: it finds the next builds, downloads them and installs them through the recovery. If the recovery partition is empty, the ROM writes the LineageOS recovery there. A TWRP you installed there stays, and it installs the update too. Google apps and Magisk are kept the same way as with a sideload. On the test phone, with Google apps, a full update took 2 minutes 32 seconds from the tap to Android.</li>
+          <li>The fix for the hang at boot found on the <a href="../lumia-1520/">Lumia 1520</a>: the video firmware could start while the modem was still loading, and the phone froze until a forced restart. The 930 loads its firmware the same way, so it gets the same fix: one at a time.</li>
+          <li>Less drain with the screen off: the main clock of the chip now turns off while the screen is off. Overnight on the test phone, with no cable: 81.5 mA before, 61.7 mA now. It is still not deep sleep.</li>
+          <li>Wi-Fi no longer jumps between 2.4 and 5 GHz. With a weak 5 GHz signal the phone changed band every 20 seconds while idle, with a short drop each time. On the test phone: 12 to 15 changes in 5 minutes before, 1 now.</li>
+          <li>All the camera and thermal changes of test build 2026-11-25 are in this build.</li>
         </ul>
       </section>
 
@@ -140,6 +140,7 @@
               <li>All four CPU cores</li>
               <li>AMOLED display with brightness and screen off</li>
               <li>Touch, double tap to wake</li>
+              <li>Updates from Settings &gt; System &gt; Updater, from build 2026-11-26 on</li>
             </ul>
           </div>
           <div>
@@ -183,6 +184,7 @@
             <h3 class="status-title">Waiting for your reports</h3>
             <ul class="mark is-testing">
               <li>Calls, SMS and mobile data with this build, not tested again yet</li>
+              <li>Restarts with the screen off: in a 15.9-hour night with the new screen-off setting the test phone restarted once by itself, on a test kernel. If it happens to you, run <code>adb shell setprop persist.vendor.martini.screenoff_groups 0x29</code>, restart and tell us</li>
               <li>Camera button with the real key on a 930: tested with simulated presses here, and with the real key on the 1520</li>
               <li>Voice level in videos, reported as low on a 930</li>
               <li>The thermal limits at their real temperatures: tried only with lowered thresholds</li>
@@ -263,9 +265,9 @@
         <p class="prose">Every step that writes to the phone asks you to type a confirmation word, and every file is checked against its SHA-256 before it’s used.</p>
 
         <h3>Updating</h3>
-        <p class="prose">Run the installer in Update mode. By hand: get to lk1st with <code>adb reboot bootloader</code>, boot the TWRP and sideload the new zip from Advanced &gt; ADB Sideload, without wiping data. The transfer stopping around 47% is normal.</p>
+        <p class="prose">From build 2026-11-26 on, open Settings &gt; System &gt; Updater: it shows a new build when there is one, downloads it and installs it through the recovery, with no PC. If a download stops moving after the Wi-Fi reconnects, tap Pause and then Resume. Build 2026-11-26 itself has to be installed the old way: run the installer in Update mode, or get to lk1st with <code>adb reboot bootloader</code>, boot the TWRP and sideload the new zip from Advanced &gt; ADB Sideload, without wiping data. The transfer stopping around 47% is normal.</p>
         <pre><code>fastboot boot twrp-3.7.0_9-0-martini.img
-adb sideload lineage-18.1-20261125-UNOFFICIAL-martini.zip</code></pre>
+adb sideload lineage-18.1-20261126-UNOFFICIAL-martini.zip</code></pre>
 
         <h3>If it bootloops</h3>
         <p class="prose">If adb still sees the phone, run the installer in Update or Clean mode: it stops the loop with <code>adb reboot bootloader</code>. Otherwise get to lk1st, boot the TWRP with <code>fastboot boot</code> and sideload the ROM again. Volume up at power-on always opens the flash mode, the way back with WPinternals.</p>
@@ -276,7 +278,8 @@ adb sideload lineage-18.1-20261125-UNOFFICIAL-martini.zip</code></pre>
       <section class="block" id="martini-downloads" aria-labelledby="martini-downloads-title">
         <h2 id="martini-downloads-title">Downloads</h2>
         <ul class="links">
-          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261125-martini" data-goatcounter-click="download-rom-930">ROM, test build 2026-11-25</a><span>GitHub release with the zip (about 600 MB) and its SHA256SUMS. The zip carries the phone’s firmware; the phone’s own calibration and modem data are copied from the phone by the installer</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261126-martini" data-goatcounter-click="download-rom-930">ROM, test build 2026-11-26</a><span>GitHub release with the zip (about 600 MB) and its SHA256SUMS. The zip carries the phone’s firmware; the phone’s own calibration and modem data are copied from the phone by the installer</span></li>
+          <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/lineage-18.1-20261125-martini" data-goatcounter-click="download-rom-930-prev">ROM, test build 2026-11-25</a><span>The previous build, to go back: sideload it without a wipe</span></li>
           <li><a href="https://github.com/lumia-msm8974/bandit-installer/releases/tag/v0.3.4" data-goatcounter-click="installer-930">Installer 0.3.4</a><span>For Windows and Linux, shared with the Lumia 1520</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/releases/tag/twrp-martini-20261113" data-goatcounter-click="download-twrp-930">TWRP for the Lumia 930</a><span><code>twrp-3.7.0_9-0-martini.img</code>, downloaded by the installer when it’s missing</span></li>
           <li><a href="https://github.com/ReneLergner/WPinternals">WPinternals</a><span>Bootloader unlock and mass storage mode, Windows only</span></li>
@@ -312,7 +315,7 @@ adb sideload lineage-18.1-20261125-UNOFFICIAL-martini.zip</code></pre>
           <li><a href="https://github.com/lumia-msm8974/android_vendor_nokia_martini/tree/lineage-18.1">Vendor</a><span>lineage-18.1 branch</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_device_oppo_msm8974-common/tree/lineage-18.1-lumia">msm8974 common tree</a><span>lineage-18.1-lumia branch, shared with the Lumia 1520</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_packages_apps_LumiaParts">LumiaParts</a><span>Device settings app, shared with the Lumia 1520</span></li>
-          <li><a href="https://github.com/lumia-msm8974/martini-manifests">Local manifest</a><span>Everything you need on top of LineageOS 18.1 to build it, with the patches for frameworks/base</span></li>
+          <li><a href="https://github.com/lumia-msm8974/martini-manifests">Local manifest</a><span>Everything you need on top of LineageOS 18.1 to build it, with the patches for frameworks/base, the Wi-Fi framework and Camera2</span></li>
           <li><a href="https://github.com/lumia-msm8974/android_device_nokia_martini/tree/twrp-9.0">TWRP device tree</a><span>twrp-9.0 branch</span></li>
           <li><a href="https://github.com/lumia-msm8974/lk2nd/tree/martini">lk1st</a><span>lk2nd, martini branch</span></li>
           <li><a href="https://github.com/lumia-msm8974/bandit-installer" data-goatcounter-click="installer-1520-930">Installer</a><span>For the Lumia 1520 and 930</span></li>
